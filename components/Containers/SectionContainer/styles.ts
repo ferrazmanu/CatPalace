@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SectionContainer = styled.div`
+export const Section = styled.section`
   width: 100%;
   padding: 2.78vw 0;
   display: flex;
@@ -16,12 +16,4 @@ export const SectionContainer = styled.div`
   .button {
     max-width: 265px;
   }
-`;
-
-export const BlogPostsGrid = styled.div`
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(420px, auto));
-  gap: ${({ theme }) => theme.spacing._30};
-  justify-content: center;
 `;

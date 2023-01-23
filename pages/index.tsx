@@ -13,10 +13,8 @@ export default function Home({ posts, products }) {
         <meta name="description" content="Aqui, seu pet é realeza!" />
         <link rel="icon" href="/assets/images/favicon.ico" />
       </Head>
-      <main>
-        <ProductsSection products={products} />
-        <BlogPostsSection posts={posts} />
-      </main>
+      <ProductsSection products={products} />
+      <BlogPostsSection posts={posts} />
     </Container>
   );
 }

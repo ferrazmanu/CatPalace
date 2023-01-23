@@ -1,6 +1,7 @@
+import { GridContainer } from "@/components/Containers/GridContainer";
+import { SectionContainer } from "@/components/Containers/SectionContainer";
 import { BlogPostCard } from "@/components/Elements/BlogCard";
 import { Button } from "@/components/Elements/Button";
-import * as S from "./styles";
 
 interface Props {
   posts: BlogPosts[];
@@ -20,10 +21,10 @@ interface BlogPosts {
 
 export function BlogPostsSection({ posts }: Props) {
   return (
-    <S.SectionContainer>
+    <SectionContainer id="teste">
       <h2>Blog</h2>
 
-      <S.BlogPostsGrid>
+      <GridContainer>
         {posts.map((post) => {
           return (
             <BlogPostCard
@@ -35,9 +36,9 @@ export function BlogPostsSection({ posts }: Props) {
             />
           );
         })}
-      </S.BlogPostsGrid>
+      </GridContainer>
 
       <Button href="/produtos" text="ver todos" />
-    </S.SectionContainer>
+    </SectionContainer>
   );
 }

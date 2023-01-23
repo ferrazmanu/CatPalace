@@ -1,6 +1,7 @@
+import { GridContainer } from "@/components/Containers/GridContainer";
+import { SectionContainer } from "@/components/Containers/SectionContainer";
 import { Button } from "@/components/Elements/Button";
 import { ProductCard } from "@/components/Elements/ProductCard";
-import * as S from "./styles";
 
 interface Props {
   products: Product[];
@@ -19,10 +20,10 @@ interface Product {
 
 export function ProductsSection({ products }: Props) {
   return (
-    <S.SectionContainer>
+    <SectionContainer>
       <h2>Produtos</h2>
 
-      <S.ProductsGrid>
+      <GridContainer>
         {products.map((product) => {
           return (
             <ProductCard
@@ -34,9 +35,9 @@ export function ProductsSection({ products }: Props) {
             />
           );
         })}
-      </S.ProductsGrid>
+      </GridContainer>
 
       <Button href="/produtos" text="ver todos" />
-    </S.SectionContainer>
+    </SectionContainer>
   );
 }
