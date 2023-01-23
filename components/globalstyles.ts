@@ -32,7 +32,7 @@ const GlobalStyle = createGlobalStyle`
     background-image: url('/assets/images/BG.png');
     background-repeat: repeat;
     background-position: center center;
-    background-size: cover;
+    background-size: contain;
     font-family: ${({ theme }) => theme.fonts.primary_regular};
   }
 
