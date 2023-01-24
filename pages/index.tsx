@@ -4,6 +4,7 @@ import { Container } from "../components/sharedstyles";
 import { GetHomePosts, GetHomeProducts } from "lib/data";
 import { ProductsSection } from "@/components/Sections/Home/ProductsSection";
 import { BlogPostsSection } from "@/components/Sections/Home/BlogSection";
+import { GetServerSideProps, GetStaticProps } from "next";
 
 export default function Home({ posts, products }) {
   return (
@@ -19,11 +20,12 @@ export default function Home({ posts, products }) {
   );
 }
 
-export async function getServerSideProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const posts = (await GetHomePosts()) || [];
   const products = (await GetHomeProducts()) || [];
 
   return {
     props: { posts, products },
+    revalidate: 10,
   };
-}
+};
