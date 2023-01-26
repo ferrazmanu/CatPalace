@@ -12,7 +12,7 @@ export default function Home({ posts, products }) {
       <Head>
         <title>CatPalace</title>
         <meta name="description" content="Aqui, seu pet é realeza!" />
-        <link rel="icon" href="/assets/images/favicon.ico" />
+        <link rel="icon" href="/assets/static/favicon.ico" />
       </Head>
       <ProductsSection products={products} />
       <BlogPostsSection posts={posts} />

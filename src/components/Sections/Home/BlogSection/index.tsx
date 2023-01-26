@@ -38,7 +38,7 @@ export function BlogPostsSection({ posts }: Props) {
         })}
       </GridContainer>
 
-      <Button href="/produtos" text="ver todos" />
+      <Button href="/blog" text="ver todos" />
     </SectionContainer>
   );
 }
