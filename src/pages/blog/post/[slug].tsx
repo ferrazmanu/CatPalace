@@ -6,7 +6,6 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { GetAllPosts, GetAllPostsSlug } from "@/lib/data";
 
 export default function Post({ post }) {
-  console.log(post);
   return (
     <>
       <Container>

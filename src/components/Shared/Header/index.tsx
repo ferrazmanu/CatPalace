@@ -10,15 +10,15 @@ export function Header() {
       <S.Header>
         <Container>
           <S.MenuContainer>
-            <div className="logo">
+            <Link href="/" className="logo">
               <Image
-                src="/assets/images/logo-horizontal.png"
+                src="/assets/static/logo-horizontal.png"
                 width={210}
                 height={90}
                 alt="Logo com um gatinho feliz de coroa"
                 priority={true}
               />
-            </div>
+            </Link>
 
             <ul className="menu">
               {menuLinks.map((links) => {

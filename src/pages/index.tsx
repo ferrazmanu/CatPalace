@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Container } from "../components/sharedstyles";
+import { Container } from "@/components/sharedstyles";
 
 import { GetHomePosts, GetHomeProducts } from "lib/data";
 import { ProductsSection } from "@/components/Sections/Home/ProductsSection";

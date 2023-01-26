@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import * as S from "./styles";
 import { Button } from "../Button";
-import { PriceTagIcon } from "public/assets/icons";
+import { PriceTagIcon } from "@/components/Icons";
 
 interface Props {
   slug: string;
