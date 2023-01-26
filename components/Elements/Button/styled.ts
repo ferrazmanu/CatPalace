@@ -5,7 +5,7 @@ export const Button = styled.a`
   border: 1px solid ${({ theme }) => theme.colors.primary};
   font-size: ${({ theme }) => theme.fontSizes.medium_24};
   color: ${({ theme }) => theme.colors.primary};
-  height: 54px;
+  height: 48px;
   padding: 10px;
   width: 100%;
   display: flex;

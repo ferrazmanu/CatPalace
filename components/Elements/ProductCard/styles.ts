@@ -10,6 +10,7 @@ export const Card = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: ${({ theme }) => theme.spacing._30};
+  max-width: 420px;
 
   .button {
     max-width: 100% !important;
@@ -24,7 +25,8 @@ export const ImageProduct = styled.a`
   justify-content: center;
   align-items: center;
   padding: 5px;
-  max-height: 230px;
+  min-height: 230px;
+  position: relative;
 
   img {
     object-fit: contain;

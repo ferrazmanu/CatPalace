@@ -17,7 +17,7 @@ export function ProductCard({ slug, name, price, imageUrl }: Props) {
     <>
       <S.Card>
         <S.ImageProduct href={`/produtos/${slug}`}>
-          <Image src={imageUrl} width={380} height={230} alt={name} />
+          <Image src={imageUrl} fill alt={name} />
         </S.ImageProduct>
         <S.Content>
           <Link className="product-name" href={`/produtos/${slug}`}>
