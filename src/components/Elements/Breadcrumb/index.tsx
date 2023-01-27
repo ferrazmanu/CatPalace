@@ -3,11 +3,17 @@ import * as S from "./styles";
 
 export function Breadcrumb(props) {
   const { breadcrumb } = props;
-  return breadcrumb.map((links) => {
-    return (
+  return (
+    <>
       <S.Breadcrumb>
-        <Link href={links.url}>{links.text}</Link>
+        {breadcrumb.map((links) => {
+          return (
+            <Link href={links.url} key={links.url}>
+              {links.text}
+            </Link>
+          );
+        })}
       </S.Breadcrumb>
-    );
-  });
+    </>
+  );
 }

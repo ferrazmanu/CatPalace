@@ -16,12 +16,12 @@ export const CloseIcon = ({ width, height, color }: IconProps) => {
         stroke="none"
         strokeWidth="1"
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="Close">
           <rect
             id="Rectangle"
-            fill-rule="nonzero"
+            fillRule="nonzero"
             x="0"
             y="0"
             width="24"
