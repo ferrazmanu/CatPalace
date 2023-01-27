@@ -41,6 +41,57 @@ export async function GetHomeProducts() {
   return data.products;
 }
 
+export async function GetAllProductsBySlug() {
+  const GET_ALL_PRODUCTS_SLUG = gql`
+    {
+      products {
+        slug
+      }
+    }
+  `;
+
+  const data = await api_endpoint.request(GET_ALL_PRODUCTS_SLUG);
+
+  return data.products;
+}
+
+export async function GetAllProducts(slug) {
+  const GET_ALL_PRODUCTS = gql`
+    query GetAllProducts($slug: String!) {
+      products(where: { slug: $slug }) {
+        description
+        slug
+        name
+        oldPrice
+        price
+        specifications {
+          text
+        }
+        images {
+          url
+        }
+      }
+    }
+  `;
+  const variables = { slug };
+  const data = await api_endpoint.request(GET_ALL_PRODUCTS, variables);
+  return data.products;
+}
+
+export async function GetAllPostsSlug() {
+  const GET_ALL_POSTS_SLUG = gql`
+    query GetAllPostsBySlug {
+      posts {
+        slug
+      }
+    }
+  `;
+
+  const data = await api_endpoint.request(GET_ALL_POSTS_SLUG);
+
+  return data.posts;
+}
+
 export async function GetAllPosts(slug) {
   const GET_ALL_POSTS = gql`
     query GetAllPosts($slug: String!) {
@@ -65,19 +116,5 @@ export async function GetAllPosts(slug) {
   `;
   const variables = { slug };
   const data = await api_endpoint.request(GET_ALL_POSTS, variables);
-  return data.posts;
-}
-
-export async function GetAllPostsSlug() {
-  const GET_ALL_POSTS_SLUG = gql`
-    query GetAllPostsBySlug {
-      posts {
-        slug
-      }
-    }
-  `;
-
-  const data = await api_endpoint.request(GET_ALL_POSTS_SLUG);
-
   return data.posts;
 }

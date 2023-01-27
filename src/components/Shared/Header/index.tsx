@@ -1,10 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Container } from "../../sharedstyles";
+import { useState } from "react";
+
 import * as S from "./styles";
+
+import { Container } from "../../sharedstyles";
+import { CloseIcon } from "@/components/Icons";
 import { menuLinks, subMenuLinks } from "./menuLinks";
 
 export function Header() {
+  const [openMenu, setOpenMenu] = useState(false);
+
+  const handleOpenMenu = () => {
+    if (openMenu === true) {
+      setOpenMenu(false);
+    } else {
+      setOpenMenu(true);
+    }
+  };
+
   return (
     <>
       <S.Header>
@@ -20,7 +34,10 @@ export function Header() {
               />
             </Link>
 
-            <ul className="menu">
+            <ul className={`menu ${openMenu ? "open" : "closed"}`}>
+              <button type="button" className="close" onClick={handleOpenMenu}>
+                <CloseIcon />
+              </button>
               {menuLinks.map((links) => {
                 return (
                   <li key={links.id}>
@@ -32,6 +49,15 @@ export function Header() {
                 <Link href="">carrinho</Link>
               </li>
             </ul>
+            <button
+              type="button"
+              className="hamburguer-menu"
+              onClick={handleOpenMenu}
+            >
+              <div></div>
+              <div></div>
+              <div></div>
+            </button>
           </S.MenuContainer>
         </Container>
       </S.Header>

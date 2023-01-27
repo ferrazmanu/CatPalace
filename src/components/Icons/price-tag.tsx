@@ -3,9 +3,9 @@ import { IconProps } from "./iconTypes";
 export const PriceTagIcon = ({ width, height, color }: IconProps) => {
   return (
     <svg
-      fill={color}
-      width={width}
-      height={height}
+      fill={color || "#000"}
+      width={width || "19px"}
+      height={height || "19px"}
       viewBox="-2 0 19 19"
       xmlns="http://www.w3.org/2000/svg"
       className="cf-icon-svg"
