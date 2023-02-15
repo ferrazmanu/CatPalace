@@ -4,6 +4,9 @@ import { Container } from "@/components/sharedstyles";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { GetAllPosts, GetAllPostsSlug } from "@/lib/data";
 import { Breadcrumb } from "@/components/Elements/Breadcrumb";
+import * as S from "styles/postStyles";
+import Image from "next/image";
+import { formatToPTBR } from "utils/format";
 
 export default function Post({ post }) {
   const breadcrumb = [
@@ -23,7 +26,29 @@ export default function Post({ post }) {
 
         <Breadcrumb breadcrumb={breadcrumb} />
 
-        <div>{post[0].title}</div>
+        {post && (
+          <S.PostContainer>
+            <S.Post>
+              <S.ImageContainer>
+                <Image src={post[0].coverImage.url} fill alt={post[0].title} />
+              </S.ImageContainer>
+              <S.Title>
+                <div className="title">
+                  <h2>{post[0].title}</h2>
+                </div>
+                <div className="author">Por: {post[0].author.name}</div>
+              </S.Title>
+
+              <S.Text>
+                <p>{post[0].content.text}</p>
+              </S.Text>
+
+              <S.Date>Publicado em: {formatToPTBR(post[0].date)}</S.Date>
+            </S.Post>
+          </S.PostContainer>
+        )}
+
+        {/* não esquecer te fazer div de outros posts */}
       </Container>
     </>
   );
