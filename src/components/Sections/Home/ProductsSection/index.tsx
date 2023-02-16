@@ -20,24 +20,27 @@ interface Product {
 
 export function ProductsSection({ products }: Props) {
   return (
-    <SectionContainer>
-      <h2>Produtos</h2>
+    <SectionContainer
+      sectionTitle={"Produtos"}
+      children={
+        <>
+          <GridContainer>
+            {products.map((product) => {
+              return (
+                <ProductCard
+                  key={product.id}
+                  slug={product.slug}
+                  imageUrl={product.images[0].url}
+                  name={product.name}
+                  price={product.price}
+                />
+              );
+            })}
+          </GridContainer>
 
-      <GridContainer>
-        {products.map((product) => {
-          return (
-            <ProductCard
-              key={product.id}
-              slug={product.slug}
-              imageUrl={product.images[0].url}
-              name={product.name}
-              price={product.price}
-            />
-          );
-        })}
-      </GridContainer>
-
-      <Button href="/produtos" text="ver todos" />
-    </SectionContainer>
+          <Button href="/produtos" text="ver todos" />
+        </>
+      }
+    />
   );
 }

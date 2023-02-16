@@ -55,7 +55,8 @@ export const MenuContainer = styled.div`
       top: 0;
       flex-direction: column;
       background-color: ${({ theme }) => theme.colors.tertiary};
-      height: 100vh;
+      min-height: 100vh;
+      height: 100%;
       justify-content: flex-start;
       min-width: 40%;
       padding-top: 30px;

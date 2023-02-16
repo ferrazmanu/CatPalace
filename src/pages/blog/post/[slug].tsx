@@ -1,14 +1,18 @@
+import { GetStaticPaths, GetStaticProps } from "next";
+import Image from "next/image";
 import Head from "next/head";
 
-import { Container } from "@/components/sharedstyles";
-import { GetStaticPaths, GetStaticProps } from "next";
-import { GetAllPosts, GetAllPostsSlug } from "@/lib/data";
-import { Breadcrumb } from "@/components/Elements/Breadcrumb";
 import * as S from "styles/postStyles";
-import Image from "next/image";
 import { formatToPTBR } from "utils/format";
+import { GetAllPosts, GetAllPostsSlug, GetOtherPosts } from "@/lib/data";
 
-export default function Post({ post }) {
+import { Breadcrumb } from "@/components/Elements/Breadcrumb";
+import { Container } from "@/components/sharedstyles";
+import { GridContainer } from "@/components/Containers/GridContainer";
+import { BlogPostCard } from "@/components/Elements/BlogCard";
+import { SectionContainer } from "@/components/Containers/SectionContainer";
+
+export default function Post({ post, otherPosts }) {
   const breadcrumb = [
     { url: "/", text: "Início" },
     { url: "/blog", text: "Blog" },
@@ -48,7 +52,27 @@ export default function Post({ post }) {
           </S.PostContainer>
         )}
 
-        {/* não esquecer te fazer div de outros posts */}
+        <SectionContainer
+          sectionTitle={"Outros Posts"}
+          className="outros"
+          children={
+            <>
+              <GridContainer>
+                {otherPosts.map((post) => {
+                  return (
+                    <BlogPostCard
+                      key={post.id}
+                      slug={post.slug}
+                      coverImage={post.coverImage.url}
+                      title={post.title}
+                      exerpt={post.exerpt}
+                    />
+                  );
+                })}
+              </GridContainer>
+            </>
+          }
+        />
       </Container>
     </>
   );
@@ -71,9 +95,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const post = await GetAllPosts(params.slug);
+  const otherPosts = await GetOtherPosts(params.slug);
 
   return {
-    props: { post },
+    props: { post, otherPosts },
     revalidate: 10,
   };
 };

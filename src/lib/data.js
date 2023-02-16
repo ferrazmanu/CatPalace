@@ -118,3 +118,24 @@ export async function GetAllPosts(slug) {
   const data = await api_endpoint.request(GET_ALL_POSTS, variables);
   return data.posts;
 }
+
+export async function GetOtherPosts(slug) {
+  const OTHER_POSTS = gql`
+    query GetOtherPosts($slug: String!) {
+      posts(where: { NOT: { slug: $slug } }) {
+        id
+        exerpt
+        slug
+        title
+        coverImage {
+          url
+        }
+      }
+    }
+  `;
+
+  const variables = { slug };
+  const data = await api_endpoint.request(OTHER_POSTS, variables);
+
+  return data.posts;
+}

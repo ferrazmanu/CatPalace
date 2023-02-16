@@ -6,19 +6,19 @@ export const Card = styled.div`
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  gap: ${({ theme }) => theme.spacing._30};
+  gap: clamp(1.375rem, 1.56vw, 1.875rem);
   max-width: 420px;
 `;
 
 export const ImagePost = styled.a`
   width: 100%;
-  height: 100%;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 5px;
-  max-height: 230px;
+  height: 230px;
+  position: relative;
 
   img {
     object-fit: cover;

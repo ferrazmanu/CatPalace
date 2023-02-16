@@ -7,13 +7,21 @@ export const Section = styled.section`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing._30};
 
-  h2 {
-    font-family: ${({ theme }) => theme.fonts.secondary_regular};
-    font-size: ${({ theme }) => theme.fontSizes.big_60};
-    text-align: center;
-  }
-
   .button {
     max-width: 265px;
   }
+
+  &.outros {
+    h2 {
+      font-family: ${({ theme }) => theme.fonts.primary_regular};
+      font-size: ${({ theme }) => theme.fontSizes.medium_36};
+      text-align: left;
+    }
+  }
+`;
+
+export const SectionTitle = styled.h2`
+  font-family: ${({ theme }) => theme.fonts.secondary_regular};
+  font-size: ${({ theme }) => theme.fontSizes.big_60};
+  text-align: center;
 `;

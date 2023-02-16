@@ -21,24 +21,27 @@ interface BlogPosts {
 
 export function BlogPostsSection({ posts }: Props) {
   return (
-    <SectionContainer id="teste">
-      <h2>Blog</h2>
+    <SectionContainer
+      sectionTitle={"Blog"}
+      children={
+        <>
+          <GridContainer>
+            {posts.map((post) => {
+              return (
+                <BlogPostCard
+                  key={post.id}
+                  slug={post.slug}
+                  coverImage={post.coverImage.url}
+                  title={post.title}
+                  exerpt={post.exerpt}
+                />
+              );
+            })}
+          </GridContainer>
 
-      <GridContainer>
-        {posts.map((post) => {
-          return (
-            <BlogPostCard
-              key={post.id}
-              slug={post.slug}
-              coverImage={post.coverImage.url}
-              title={post.title}
-              exerpt={post.exerpt}
-            />
-          );
-        })}
-      </GridContainer>
-
-      <Button href="/blog" text="ver todos" />
-    </SectionContainer>
+          <Button href="/blog" text="ver todos" />
+        </>
+      }
+    />
   );
 }

@@ -16,7 +16,7 @@ export function BlogPostCard({ slug, title, exerpt, coverImage }: Props) {
     <>
       <S.Card>
         <S.ImagePost href={`/blog/post/${slug}`}>
-          <Image src={coverImage} width={380} height={230} alt={title} />
+          <Image src={coverImage} fill alt={title} />
         </S.ImagePost>
         <S.Content>
           <Link className="post-name" href={`/blog/post/${slug}`}>
