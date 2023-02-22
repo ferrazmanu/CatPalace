@@ -17,6 +17,12 @@ export const Section = styled.section`
       font-size: ${({ theme }) => theme.fontSizes.medium_36};
       text-align: left;
     }
+
+    @media only screen and (max-width: 1024px) {
+      h2 {
+        text-align: center;
+      }
+    }
   }
 `;
 

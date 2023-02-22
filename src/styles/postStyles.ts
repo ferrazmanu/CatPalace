@@ -9,7 +9,7 @@ export const Post = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.tertiary};
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  padding: 30px;
+  padding: ${({ theme }) => theme.spacing._30};
   border-radius: 10px;
   display: flex;
   flex-direction: column;

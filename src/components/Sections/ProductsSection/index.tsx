@@ -2,13 +2,12 @@ import { GridContainer } from "@/components/Containers/GridContainer";
 import { SectionContainer } from "@/components/Containers/SectionContainer";
 import { Button } from "@/components/Elements/Button";
 import { ProductCard } from "@/components/Elements/ProductCard";
+import { ResponsiveSwiperContainer } from "@/components/sharedstyles";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
-
-import * as S from "../styles";
 
 interface Props {
   products: Product[];
@@ -30,7 +29,7 @@ export function ProductsSection({ products }: Props) {
     <SectionContainer
       sectionTitle={"Produtos"}
       children={
-        <S.ResponsiveSwiperContainer>
+        <ResponsiveSwiperContainer>
           <GridContainer>
             {products.map((product) => {
               return (
@@ -66,7 +65,7 @@ export function ProductsSection({ products }: Props) {
           </Swiper>
 
           <Button href="/produtos" text="ver todos" />
-        </S.ResponsiveSwiperContainer>
+        </ResponsiveSwiperContainer>
       }
     />
   );

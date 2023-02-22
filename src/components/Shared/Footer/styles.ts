@@ -77,10 +77,23 @@ export const MenuContainer = styled.div`
           font-family: ${({ theme }) => theme.fonts.primary_medium};
         }
       }
+
+      @media only screen and (max-width: 1024px) {
+        gap: 5px;
+
+        li {
+          &:first-child {
+            margin-bottom: 5px;
+          }
+          a {
+            gap: 5px;
+          }
+        }
+      }
     }
 
     .box-links.redes {
-      li {
+      li:not(:first-child) {
         text-transform: unset;
       }
     }

@@ -13,4 +13,12 @@ export const Breadcrumb = styled.nav`
       content: ">";
     }
   }
+
+  @media only screen and (max-width: 1024px) {
+    gap: 5px;
+
+    a {
+      gap: 5px;
+    }
+  }
 `;

@@ -67,7 +67,7 @@ export const MenuContainer = styled.div`
       min-height: 100vh;
       height: 100%;
       justify-content: flex-start;
-      min-width: 40%;
+      max-width: 300px;
       padding-top: 30px;
       box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.1);
       transition: 0.3s ease-in-out;

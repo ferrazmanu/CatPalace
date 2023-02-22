@@ -7,10 +7,19 @@ import { formatToPTBR } from "utils/format";
 import { GetAllPosts, GetAllPostsSlug, GetOtherPosts } from "@/lib/data";
 
 import { Breadcrumb } from "@/components/Elements/Breadcrumb";
-import { Container } from "@/components/sharedstyles";
+import {
+  Container,
+  ResponsiveSwiperContainer,
+} from "@/components/sharedstyles";
 import { GridContainer } from "@/components/Containers/GridContainer";
 import { BlogPostCard } from "@/components/Elements/BlogCard";
 import { SectionContainer } from "@/components/Containers/SectionContainer";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Button } from "@/components/Elements/Button";
 
 export default function Post({ post, otherPosts }) {
   const breadcrumb = [
@@ -61,19 +70,43 @@ export default function Post({ post, otherPosts }) {
             className="outros"
             children={
               <>
-                <GridContainer>
-                  {otherPosts.map((post) => {
-                    return (
-                      <BlogPostCard
-                        key={post.id}
-                        slug={post.slug}
-                        coverImage={post.coverImage.url}
-                        title={post.title}
-                        exerpt={post.exerpt}
-                      />
-                    );
-                  })}
-                </GridContainer>
+                <ResponsiveSwiperContainer>
+                  <GridContainer>
+                    {otherPosts.map((post) => {
+                      return (
+                        <BlogPostCard
+                          key={post.id}
+                          slug={post.slug}
+                          coverImage={post.coverImage.url}
+                          title={post.title}
+                          exerpt={post.exerpt}
+                        />
+                      );
+                    })}
+                  </GridContainer>
+                  <Swiper
+                    spaceBetween={15}
+                    slidesPerView={1}
+                    navigation={true}
+                    modules={[Navigation]}
+                    loop={true}
+                  >
+                    {otherPosts.map((post) => {
+                      return (
+                        <SwiperSlide key={post.id}>
+                          <BlogPostCard
+                            slug={post.slug}
+                            coverImage={post.coverImage.url}
+                            title={post.title}
+                            exerpt={post.exerpt}
+                          />
+                        </SwiperSlide>
+                      );
+                    })}
+                  </Swiper>
+
+                  <Button href="/blog" text="ver todos" />
+                </ResponsiveSwiperContainer>
               </>
             }
           />
