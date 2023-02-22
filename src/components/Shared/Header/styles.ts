@@ -30,7 +30,7 @@ export const MenuContainer = styled.div`
     }
 
     @media only screen and (max-width: 992px) {
-      aspect-ratio: 130/90;
+      aspect-ratio: 130/50;
       max-width: 130px;
     }
   }
@@ -128,6 +128,10 @@ export const SubHeader = styled.div`
   position: relative;
   z-index: 2;
   text-transform: lowercase;
+
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const SubMenuContainer = styled.ul`

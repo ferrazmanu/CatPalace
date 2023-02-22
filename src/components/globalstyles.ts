@@ -38,6 +38,7 @@ const GlobalStyle = createGlobalStyle`
 
   main{
     min-height: 55vh;
+    padding: 30px 0;
   }
 
   .swiper{

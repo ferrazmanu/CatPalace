@@ -31,6 +31,10 @@ export const ImageProduct = styled.a`
   img {
     object-fit: contain;
   }
+
+  @media only screen and (max-width: 768px) {
+    min-height: 160px;
+  }
 `;
 
 export const Content = styled.div`

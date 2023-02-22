@@ -37,7 +37,7 @@ export function Footer() {
           </Link>
 
           <div className="menu">
-            <ul className="box-links">
+            <ul className="box-links mapa">
               <li>Mapa do site</li>
               {siteMapLinks.map((link) => {
                 return (
@@ -47,7 +47,7 @@ export function Footer() {
                 );
               })}
             </ul>
-            <ul className="box-links">
+            <ul className="box-links categorias">
               <li>Categorias</li>
               {categoriesLinks.map((link) => {
                 return (
@@ -72,7 +72,7 @@ export function Footer() {
                 );
               })}
             </ul>
-            <ul className="box-links">
+            <ul className="box-links contato">
               <li>Fale Conosco</li>
               {contactLinks.map((link) => {
                 return (

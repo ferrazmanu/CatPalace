@@ -15,8 +15,9 @@ export default function Home({ posts, products, banners }) {
         <meta name="description" content="Aqui, seu pet é realeza!" />
         <link rel="icon" href="/assets/static/favicon.ico" />
       </Head>
+      <Banner banners={banners} />
+
       <main>
-        <Banner banners={banners} />
         <Container>
           <ProductsSection products={products} />
           <BlogPostsSection posts={posts} />

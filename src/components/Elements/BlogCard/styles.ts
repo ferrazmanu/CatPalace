@@ -25,6 +25,10 @@ export const ImagePost = styled.a`
     border-radius: 10px;
     overflow: hidden;
   }
+
+  @media only screen and (max-width: 768px) {
+    height: 160px;
+  }
 `;
 
 export const Content = styled.div`

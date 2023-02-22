@@ -89,6 +89,18 @@ export const MenuContainer = styled.div`
   @media only screen and (max-width: 1024px) {
     flex-direction: column;
   }
+
+  @media only screen and (max-width: 768px) {
+    .menu {
+      gap: 15px;
+      flex-direction: column;
+    }
+
+    .box-links.mapa,
+    .box-links.categorias {
+      display: none;
+    }
+  }
 `;
 
 export const Copyright = styled.div`

@@ -26,4 +26,11 @@ export const ResponsiveSwiperContainer = styled.div`
       margin: 0 auto;
     }
   }
+
+  @media only screen and (max-width: 768px) {
+    .swiper-button-next,
+    .swiper-button-prev {
+      display: none;
+    }
+  }
 `;
