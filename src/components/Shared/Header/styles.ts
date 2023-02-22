@@ -18,11 +18,20 @@ export const MenuContainer = styled.div`
   align-items: center;
 
   .logo {
+    aspect-ratio: 210/90;
     max-width: 210px;
     width: 100%;
+    position: relative;
 
     img {
+      width: 100%;
+      height: 100%;
       object-fit: contain;
+    }
+
+    @media only screen and (max-width: 992px) {
+      aspect-ratio: 130/90;
+      max-width: 130px;
     }
   }
 
@@ -70,11 +79,11 @@ export const MenuContainer = styled.div`
       }
 
       &.open {
-        transform: translateX(100%);
+        transform: translateX(0%);
       }
 
-      &.close {
-        transform: translateX(0%);
+      &.closed {
+        transform: translateX(100%);
       }
     }
   }

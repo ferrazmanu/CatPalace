@@ -2,6 +2,7 @@ import type { AppProps } from "next/app";
 import GlobalStyle from "@/components/globalstyles";
 import { Header } from "@/components/Shared/Header";
 import Theme from "@/components/Shared/Theme";
+import { Footer } from "@/components/Shared/Footer";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -26,6 +27,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <GlobalStyle />
         <Header />
         <Component {...pageProps} />
+        <Footer />
       </Theme>
     </>
   );

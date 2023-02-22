@@ -7,7 +7,7 @@ export const Card = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: clamp(1.375rem, 1.56vw, 1.875rem);
-  max-width: 420px;
+  max-width: 480px;
 `;
 
 export const ImagePost = styled.a`

@@ -2,8 +2,8 @@ import Head from "next/head";
 import { Container } from "@/components/sharedstyles";
 
 import { GetHomePosts, GetHomeProducts } from "lib/data";
-import { ProductsSection } from "@/components/Sections/Home/ProductsSection";
-import { BlogPostsSection } from "@/components/Sections/Home/BlogSection";
+import { ProductsSection } from "@/components/Sections/ProductsSection";
+import { BlogPostsSection } from "@/components/Sections/BlogSection";
 import { GetServerSideProps, GetStaticProps } from "next";
 
 export default function Home({ posts, products }) {

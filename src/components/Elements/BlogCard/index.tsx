@@ -13,20 +13,18 @@ interface Props {
 
 export function BlogPostCard({ slug, title, exerpt, coverImage }: Props) {
   return (
-    <>
-      <S.Card>
-        <S.ImagePost href={`/blog/post/${slug}`}>
-          <Image src={coverImage} fill alt={title} />
-        </S.ImagePost>
-        <S.Content>
-          <Link className="post-name" href={`/blog/post/${slug}`}>
-            {title}
-          </Link>
-          <S.Exerpt>{exerpt}</S.Exerpt>
-        </S.Content>
+    <S.Card className="card">
+      <S.ImagePost href={`/blog/post/${slug}`}>
+        <Image src={coverImage} fill alt={title} />
+      </S.ImagePost>
+      <S.Content>
+        <Link className="post-name" href={`/blog/post/${slug}`}>
+          {title}
+        </Link>
+        <S.Exerpt>{exerpt}</S.Exerpt>
+      </S.Content>
 
-        <Button text="ler mais" href={`/blog/post/${slug}`} />
-      </S.Card>
-    </>
+      <Button text="ler mais" href={`/blog/post/${slug}`} />
+    </S.Card>
   );
 }

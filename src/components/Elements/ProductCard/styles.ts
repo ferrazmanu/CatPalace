@@ -10,7 +10,7 @@ export const Card = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: ${({ theme }) => theme.spacing._30};
-  max-width: 420px;
+  max-width: 480px;
 
   .button {
     max-width: 100% !important;

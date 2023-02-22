@@ -36,6 +36,10 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${({ theme }) => theme.fonts.primary_regular};
   }
 
+  .swiper{
+    width: 100%;
+  }
+
   @font-face {
     font-family: Berkshire;
     src: url('/assets/fonts/BerkshireSwashRegular.ttf') format('truetype');

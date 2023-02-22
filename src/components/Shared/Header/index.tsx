@@ -12,10 +12,10 @@ export function Header() {
   const [openMenu, setOpenMenu] = useState(false);
 
   const handleOpenMenu = () => {
-    if (openMenu === true) {
-      setOpenMenu(false);
-    } else {
+    if (openMenu === false) {
       setOpenMenu(true);
+    } else {
+      setOpenMenu(false);
     }
   };
 
@@ -27,8 +27,7 @@ export function Header() {
             <Link href="/" className="logo">
               <Image
                 src="/assets/static/logo-horizontal.png"
-                width={210}
-                height={90}
+                fill
                 alt="Logo com um gatinho feliz de coroa"
                 priority={true}
               />
