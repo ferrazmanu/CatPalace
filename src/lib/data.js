@@ -20,6 +20,25 @@ export async function GetHomeBanners() {
   return data.banners;
 }
 
+export async function GetHomePromotions() {
+  const GET_HOME_PROMOTIONS = gql`
+    {
+      promotions {
+        id
+        link
+        title
+        image {
+          url
+        }
+      }
+    }
+  `;
+
+  const data = await api_endpoint.request(GET_HOME_PROMOTIONS);
+
+  return data.promotions;
+}
+
 export async function GetHomePosts() {
   const GET_HOME_POSTS = gql`
     {
