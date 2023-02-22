@@ -49,12 +49,12 @@ export function ProductsSection({ products }: Props) {
             slidesPerView={1}
             navigation={true}
             modules={[Navigation]}
+            loop={true}
           >
             {products.map((product) => {
               return (
-                <SwiperSlide>
+                <SwiperSlide key={product.id}>
                   <ProductCard
-                    key={product.id}
                     slug={product.slug}
                     imageUrl={product.images[0].url}
                     name={product.name}

@@ -7,15 +7,16 @@ import { GetAllProducts, GetAllProductsBySlug } from "@/lib/data";
 export default function Product({ product }) {
   return (
     <>
-      <Container>
-        <Head>
-          <title>CatPalace</title>
-          <meta name="description" content="Aqui, seu pet é realeza!" />
-          <link rel="icon" href="/assets/static/favicon.ico" />
-        </Head>
-
-        <div>{product[0].name}</div>
-      </Container>
+      <Head>
+        <title>CatPalace</title>
+        <meta name="description" content="Aqui, seu pet é realeza!" />
+        <link rel="icon" href="/assets/static/favicon.ico" />
+      </Head>
+      <main>
+        <Container>
+          <div>{product[0].name}</div>
+        </Container>
+      </main>
     </>
   );
 }

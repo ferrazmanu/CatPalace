@@ -50,12 +50,12 @@ export function BlogPostsSection({ posts }: Props) {
             slidesPerView={1}
             navigation={true}
             modules={[Navigation]}
+            loop={true}
           >
             {posts.map((post) => {
               return (
-                <SwiperSlide>
+                <SwiperSlide key={post.id}>
                   <BlogPostCard
-                    key={post.id}
                     slug={post.slug}
                     coverImage={post.coverImage.url}
                     title={post.title}

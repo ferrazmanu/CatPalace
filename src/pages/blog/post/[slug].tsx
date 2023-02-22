@@ -21,59 +21,64 @@ export default function Post({ post, otherPosts }) {
 
   return (
     <>
-      <Container>
-        <Head>
-          <title>CatPalace</title>
-          <meta name="description" content="Aqui, seu pet é realeza!" />
-          <link rel="icon" href="/assets/static/favicon.ico" />
-        </Head>
+      <Head>
+        <title>CatPalace</title>
+        <meta name="description" content="Aqui, seu pet é realeza!" />
+        <link rel="icon" href="/assets/static/favicon.ico" />
+      </Head>
+      <main>
+        <Container>
+          <Breadcrumb breadcrumb={breadcrumb} />
 
-        <Breadcrumb breadcrumb={breadcrumb} />
+          {post && (
+            <S.PostContainer>
+              <S.Post>
+                <S.ImageContainer>
+                  <Image
+                    src={post[0].coverImage.url}
+                    fill
+                    alt={post[0].title}
+                  />
+                </S.ImageContainer>
+                <S.Title>
+                  <div className="title">
+                    <h2>{post[0].title}</h2>
+                  </div>
+                  <div className="author">Por: {post[0].author.name}</div>
+                </S.Title>
 
-        {post && (
-          <S.PostContainer>
-            <S.Post>
-              <S.ImageContainer>
-                <Image src={post[0].coverImage.url} fill alt={post[0].title} />
-              </S.ImageContainer>
-              <S.Title>
-                <div className="title">
-                  <h2>{post[0].title}</h2>
-                </div>
-                <div className="author">Por: {post[0].author.name}</div>
-              </S.Title>
+                <S.Text>
+                  <p>{post[0].content.text}</p>
+                </S.Text>
 
-              <S.Text>
-                <p>{post[0].content.text}</p>
-              </S.Text>
+                <S.Date>Publicado em: {formatToPTBR(post[0].date)}</S.Date>
+              </S.Post>
+            </S.PostContainer>
+          )}
 
-              <S.Date>Publicado em: {formatToPTBR(post[0].date)}</S.Date>
-            </S.Post>
-          </S.PostContainer>
-        )}
-
-        <SectionContainer
-          sectionTitle={"Outros Posts"}
-          className="outros"
-          children={
-            <>
-              <GridContainer>
-                {otherPosts.map((post) => {
-                  return (
-                    <BlogPostCard
-                      key={post.id}
-                      slug={post.slug}
-                      coverImage={post.coverImage.url}
-                      title={post.title}
-                      exerpt={post.exerpt}
-                    />
-                  );
-                })}
-              </GridContainer>
-            </>
-          }
-        />
-      </Container>
+          <SectionContainer
+            sectionTitle={"Outros Posts"}
+            className="outros"
+            children={
+              <>
+                <GridContainer>
+                  {otherPosts.map((post) => {
+                    return (
+                      <BlogPostCard
+                        key={post.id}
+                        slug={post.slug}
+                        coverImage={post.coverImage.url}
+                        title={post.title}
+                        exerpt={post.exerpt}
+                      />
+                    );
+                  })}
+                </GridContainer>
+              </>
+            }
+          />
+        </Container>
+      </main>
     </>
   );
 }

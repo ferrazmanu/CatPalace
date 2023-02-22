@@ -36,8 +36,13 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${({ theme }) => theme.fonts.primary_regular};
   }
 
+  main{
+    min-height: 55vh;
+  }
+
   .swiper{
     width: 100%;
+    height: 100%;
   }
 
   @font-face {

@@ -1,6 +1,25 @@
 import { gql } from "graphql-request";
 import { api_endpoint } from "pages/api";
 
+export async function GetHomeBanners() {
+  const GET_HOME_BANNERS = gql`
+    {
+      banners {
+        id
+        alt
+        bannerImage {
+          url
+        }
+        link
+      }
+    }
+  `;
+
+  const data = await api_endpoint.request(GET_HOME_BANNERS);
+
+  return data.banners;
+}
+
 export async function GetHomePosts() {
   const GET_HOME_POSTS = gql`
     {
