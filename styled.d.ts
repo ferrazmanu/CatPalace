@@ -22,6 +22,7 @@ declare module "styled-components" {
     };
     spacing: {
       _30: string;
+      _60: string;
     };
     fonts: {
       primary_regular: string;

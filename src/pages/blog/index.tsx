@@ -4,13 +4,11 @@ import Head from "next/head";
 
 import { Breadcrumb } from "@/components/Elements/Breadcrumb";
 import { SearchBar } from "@/components/Elements/SearchBar";
-import { Container } from "@/components/sharedstyles";
+import { Container, TopContainer } from "@/components/sharedstyles";
 import { GridContainer } from "@/components/Containers/GridContainer";
 import { BlogPostCard } from "@/components/Elements/BlogCard";
 
 import { GetAllPosts } from "@/lib/data";
-
-import * as S from "@/styles/blogStyles";
 
 export default function Blog({ posts }) {
   const breadcrumb = [
@@ -29,10 +27,10 @@ export default function Blog({ posts }) {
       </Head>
       <main>
         <Container>
-          <S.TopContainer>
+          <TopContainer>
             <Breadcrumb breadcrumb={breadcrumb} />
             <SearchBar onChange={(event) => setQuery(event.target.value)} />
-          </S.TopContainer>
+          </TopContainer>
 
           <GridContainer responsive={true}>
             {posts
@@ -48,6 +46,7 @@ export default function Blog({ posts }) {
               .map((post) => {
                 return (
                   <BlogPostCard
+                    key={post.id}
                     slug={post.slug}
                     coverImage={post.coverImage.url}
                     title={post.title}

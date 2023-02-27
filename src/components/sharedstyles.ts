@@ -52,4 +52,12 @@ const ResponsiveSwiperContainer = styled.div`
   }
 `;
 
-export { Container, ResponsiveSwiperContainer };
+const TopContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: center;
+`;
+
+export { Container, ResponsiveSwiperContainer, TopContainer };

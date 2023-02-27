@@ -21,6 +21,7 @@ const theme: DefaultTheme = {
   },
   spacing: {
     _30: "clamp(1.375rem, 1.56vw, 1.875rem)",
+    _60: "clamp(1.875rem, 3.13vw, 3.75rem)",
   },
   fonts: {
     primary_regular: "Oswald-Regular",

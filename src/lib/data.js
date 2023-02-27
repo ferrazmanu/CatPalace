@@ -104,20 +104,17 @@ export async function GetAllProducts() {
   const GET_ALL_PRODUCTS = gql`
     {
       products {
-        description
+        id
+        price
         slug
         name
-        oldPrice
-        price
-        specifications {
-          text
-        }
-        images {
+        images(first: 1) {
           url
         }
       }
     }
   `;
+
   const data = await api_endpoint.request(GET_ALL_PRODUCTS);
   return data.products;
 }
@@ -139,7 +136,6 @@ export async function GetHomeBanners() {
   `;
 
   const data = await api_endpoint.request(GET_HOME_BANNERS);
-
   return data.banners;
 }
 
@@ -158,7 +154,6 @@ export async function GetHomePromotions() {
   `;
 
   const data = await api_endpoint.request(GET_HOME_PROMOTIONS);
-
   return data.promotions;
 }
 
@@ -178,7 +173,6 @@ export async function GetHomePosts() {
   `;
 
   const data = await api_endpoint.request(GET_HOME_POSTS);
-
   return data.posts;
 }
 
@@ -198,7 +192,6 @@ export async function GetHomeProducts() {
   `;
 
   const data = await api_endpoint.request(GET_HOME_PRODUCTS);
-
   return data.products;
 }
 
