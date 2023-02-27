@@ -1,11 +1,16 @@
 import { SearchIcon } from "@/components/Icons";
 import * as S from "./styles";
 
-export function SearchBar() {
+export function SearchBar({ onChange }) {
   return (
     <>
       <S.SearchBar>
-        <input type="text" name="search" placeholder="Pesquisar..." />
+        <input
+          type="text"
+          name="search"
+          placeholder="Pesquisar..."
+          onChange={onChange}
+        />
         <button type="submit">
           <SearchIcon width="22px" height="22px" />
         </button>

@@ -13,5 +13,9 @@ export const Grid = styled.div<GridProps>`
       : "repeat(3, 1fr)"};
   gap: ${({ theme }) => theme.spacing._30};
   justify-content: center;
-  justify-items: center;
+  justify-items: ${(props) => (props.responsive ? "start" : "center")};
+
+  @media only screen and (max-width: 768px) {
+    justify-items: center;
+  }
 `;

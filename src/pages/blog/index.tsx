@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { GetStaticProps } from "next";
 import Head from "next/head";
 
@@ -17,7 +18,7 @@ export default function Blog({ posts }) {
     { url: "/blog", text: "Blog" },
   ];
 
-  console.log(posts);
+  const [query, setQuery] = useState("");
 
   return (
     <>
@@ -30,20 +31,30 @@ export default function Blog({ posts }) {
         <Container>
           <S.TopContainer>
             <Breadcrumb breadcrumb={breadcrumb} />
-            <SearchBar />
+            <SearchBar onChange={(event) => setQuery(event.target.value)} />
           </S.TopContainer>
 
           <GridContainer responsive={true}>
-            {posts.map((post) => {
-              return (
-                <BlogPostCard
-                  slug={post.slug}
-                  coverImage={post.coverImage.url}
-                  title={post.title}
-                  exerpt={post.exerpt}
-                />
-              );
-            })}
+            {posts
+              .filter((post) => {
+                if (query === "") {
+                  return post;
+                } else if (
+                  post.title.toLowerCase().includes(query.toLocaleLowerCase())
+                ) {
+                  return post;
+                }
+              })
+              .map((post) => {
+                return (
+                  <BlogPostCard
+                    slug={post.slug}
+                    coverImage={post.coverImage.url}
+                    title={post.title}
+                    exerpt={post.exerpt}
+                  />
+                );
+              })}
           </GridContainer>
         </Container>
       </main>
