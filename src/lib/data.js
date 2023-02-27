@@ -1,6 +1,129 @@
 import { gql } from "graphql-request";
 import { api_endpoint } from "pages/api";
 
+// ALL
+
+export async function GetProductsBySlug() {
+  const GET_PRODUCTS_SLUG = gql`
+    {
+      products {
+        slug
+      }
+    }
+  `;
+
+  const data = await api_endpoint.request(GET_PRODUCTS_SLUG);
+
+  return data.products;
+}
+
+export async function GetProducts(slug) {
+  const GET_PRODUCTS = gql`
+    query GetProducts($slug: String!) {
+      products(where: { slug: $slug }) {
+        description
+        slug
+        name
+        oldPrice
+        price
+        specifications {
+          text
+        }
+        images {
+          url
+        }
+      }
+    }
+  `;
+  const variables = { slug };
+  const data = await api_endpoint.request(GET_PRODUCTS, variables);
+  return data.products;
+}
+
+export async function GetPostsSlug() {
+  const GET_POSTS_SLUG = gql`
+    query GetPostsBySlug {
+      posts {
+        slug
+      }
+    }
+  `;
+
+  const data = await api_endpoint.request(GET_POSTS_SLUG);
+
+  return data.posts;
+}
+
+export async function GetPosts(slug) {
+  const GET_POSTS = gql`
+    query GetPosts($slug: String!) {
+      posts(where: { slug: $slug }) {
+        slug
+        title
+        id
+        date
+        author {
+          ... on Author {
+            name
+          }
+        }
+        coverImage {
+          url
+        }
+        content {
+          text
+        }
+      }
+    }
+  `;
+  const variables = { slug };
+  const data = await api_endpoint.request(GET_POSTS, variables);
+  return data.posts;
+}
+
+export async function GetAllPosts() {
+  const GET_ALL_POSTS = gql`
+    {
+      posts {
+        id
+        slug
+        title
+        exerpt
+        coverImage {
+          url
+        }
+      }
+    }
+  `;
+
+  const data = await api_endpoint.request(GET_ALL_POSTS);
+  return data.posts;
+}
+
+export async function GetAllProducts() {
+  const GET_ALL_PRODUCTS = gql`
+    {
+      products {
+        description
+        slug
+        name
+        oldPrice
+        price
+        specifications {
+          text
+        }
+        images {
+          url
+        }
+      }
+    }
+  `;
+  const data = await api_endpoint.request(GET_ALL_PRODUCTS);
+  return data.products;
+}
+
+// HOME
+
 export async function GetHomeBanners() {
   const GET_HOME_BANNERS = gql`
     {
@@ -79,83 +202,7 @@ export async function GetHomeProducts() {
   return data.products;
 }
 
-export async function GetAllProductsBySlug() {
-  const GET_ALL_PRODUCTS_SLUG = gql`
-    {
-      products {
-        slug
-      }
-    }
-  `;
-
-  const data = await api_endpoint.request(GET_ALL_PRODUCTS_SLUG);
-
-  return data.products;
-}
-
-export async function GetAllProducts(slug) {
-  const GET_ALL_PRODUCTS = gql`
-    query GetAllProducts($slug: String!) {
-      products(where: { slug: $slug }) {
-        description
-        slug
-        name
-        oldPrice
-        price
-        specifications {
-          text
-        }
-        images {
-          url
-        }
-      }
-    }
-  `;
-  const variables = { slug };
-  const data = await api_endpoint.request(GET_ALL_PRODUCTS, variables);
-  return data.products;
-}
-
-export async function GetAllPostsSlug() {
-  const GET_ALL_POSTS_SLUG = gql`
-    query GetAllPostsBySlug {
-      posts {
-        slug
-      }
-    }
-  `;
-
-  const data = await api_endpoint.request(GET_ALL_POSTS_SLUG);
-
-  return data.posts;
-}
-
-export async function GetAllPosts(slug) {
-  const GET_ALL_POSTS = gql`
-    query GetAllPosts($slug: String!) {
-      posts(where: { slug: $slug }) {
-        slug
-        title
-        id
-        date
-        author {
-          ... on Author {
-            name
-          }
-        }
-        coverImage {
-          url
-        }
-        content {
-          text
-        }
-      }
-    }
-  `;
-  const variables = { slug };
-  const data = await api_endpoint.request(GET_ALL_POSTS, variables);
-  return data.posts;
-}
+// OTHER
 
 export async function GetOtherPosts(slug) {
   const OTHER_POSTS = gql`

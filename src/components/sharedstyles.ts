@@ -6,6 +6,7 @@ const Container = styled.div`
   flex-direction: column;
   max-width: 80%;
   margin: 0 auto;
+  gap: ${({ theme }) => theme.spacing._30};
 
   @media only screen and (max-width: 1024px) {
     max-width: 90%;

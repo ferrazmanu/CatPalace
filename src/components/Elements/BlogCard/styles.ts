@@ -8,6 +8,10 @@ export const Card = styled.div`
   justify-content: space-between;
   gap: clamp(1.375rem, 1.56vw, 1.875rem);
   max-width: 480px;
+
+  .button {
+    max-width: 265px;
+  }
 `;
 
 export const ImagePost = styled.a`

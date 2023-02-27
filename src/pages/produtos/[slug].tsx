@@ -2,7 +2,7 @@ import Head from "next/head";
 
 import { Container } from "@/components/sharedstyles";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { GetAllProducts, GetAllProductsBySlug } from "@/lib/data";
+import { GetProducts, GetProductsBySlug } from "@/lib/data";
 
 export default function Product({ product }) {
   return (
@@ -22,7 +22,7 @@ export default function Product({ product }) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await GetAllProductsBySlug();
+  const res = await GetProductsBySlug();
 
   const paths = res.map((product) => {
     return {
@@ -37,7 +37,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const product = await GetAllProducts(params.slug);
+  const product = await GetProducts(params.slug);
 
   return {
     props: { product },

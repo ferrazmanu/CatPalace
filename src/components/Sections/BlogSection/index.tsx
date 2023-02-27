@@ -32,7 +32,7 @@ export function BlogPostsSection({ posts }: Props) {
       sectionTitle={"Blog"}
       children={
         <ResponsiveSwiperContainer>
-          <GridContainer>
+          <GridContainer responsive={false}>
             {posts.map((post) => {
               return (
                 <BlogPostCard

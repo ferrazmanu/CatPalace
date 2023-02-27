@@ -4,7 +4,7 @@ import Head from "next/head";
 
 import * as S from "styles/postStyles";
 import { formatToPTBR } from "utils/format";
-import { GetAllPosts, GetAllPostsSlug, GetOtherPosts } from "@/lib/data";
+import { GetPosts, GetPostsSlug, GetOtherPosts } from "@/lib/data";
 
 import { Breadcrumb } from "@/components/Elements/Breadcrumb";
 import {
@@ -19,7 +19,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Button } from "@/components/Elements/Button";
 
 export default function Post({ post, otherPosts }) {
   const breadcrumb = [
@@ -71,7 +70,7 @@ export default function Post({ post, otherPosts }) {
             children={
               <>
                 <ResponsiveSwiperContainer>
-                  <GridContainer>
+                  <GridContainer responsive={false}>
                     {otherPosts.map((post) => {
                       return (
                         <BlogPostCard
@@ -104,8 +103,6 @@ export default function Post({ post, otherPosts }) {
                       );
                     })}
                   </Swiper>
-
-                  <Button href="/blog" text="ver todos" />
                 </ResponsiveSwiperContainer>
               </>
             }
@@ -117,7 +114,7 @@ export default function Post({ post, otherPosts }) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await GetAllPostsSlug();
+  const res = await GetPostsSlug();
 
   const paths = res.map((post) => {
     return {
@@ -132,7 +129,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = await GetAllPosts(params.slug);
+  const post = await GetPosts(params.slug);
   const otherPosts = await GetOtherPosts(params.slug);
 
   return {

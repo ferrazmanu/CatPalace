@@ -30,7 +30,7 @@ export function ProductsSection({ products }: Props) {
       sectionTitle={"Produtos"}
       children={
         <ResponsiveSwiperContainer>
-          <GridContainer>
+          <GridContainer responsive={false}>
             {products.map((product) => {
               return (
                 <ProductCard

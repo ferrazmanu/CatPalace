@@ -12,6 +12,7 @@ export const Button = styled.a`
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+  line-height: 1;
 
   @media only screen and (max-width: 1024px) {
     height: 44px;

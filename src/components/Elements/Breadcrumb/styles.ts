@@ -3,14 +3,19 @@ import styled from "styled-components";
 export const Breadcrumb = styled.nav`
   display: flex;
   gap: 15px;
-  padding-top: 2.08vw;
+  font-size: ${({ theme }) => theme.fontSizes.medium_24};
 
   a {
     display: flex;
     gap: 15px;
+    color: ${({ theme }) => theme.colors.primary};
 
     &:not(:last-child)::after {
       content: ">";
+    }
+
+    &:last-child {
+      color: ${({ theme }) => theme.colors.secondary};
     }
   }
 
