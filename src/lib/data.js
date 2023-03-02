@@ -217,3 +217,25 @@ export async function GetOtherPosts(slug) {
 
   return data.posts;
 }
+
+// ABOUT
+
+export async function GetEmployees() {
+  const GET_EMPLOYEES = gql`
+    {
+      employees {
+        description
+        id
+        name
+        picture {
+          url
+        }
+        role
+      }
+    }
+  `;
+
+  const data = await api_endpoint.request(GET_EMPLOYEES);
+
+  return data.employees;
+}

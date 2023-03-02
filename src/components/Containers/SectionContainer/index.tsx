@@ -14,7 +14,10 @@ export function SectionContainer({
   sectionTitle,
 }: Props) {
   return (
-    <S.Section id={id} className={className}>
+    <S.Section
+      id={id}
+      className={`${className ? className : ""} section-container`}
+    >
       {sectionTitle && <S.SectionTitle>{sectionTitle}</S.SectionTitle>}
       {children}
     </S.Section>
