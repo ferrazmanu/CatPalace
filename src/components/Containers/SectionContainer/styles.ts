@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Section = styled.section`
   width: 100%;
-  padding: 2.78vw 0;
+  padding: 1vw 0;
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing._30};
