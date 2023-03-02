@@ -48,6 +48,9 @@ export default function Sobre({ employees }) {
                             alt={employee.name}
                             fill
                           />
+                          <div className="description">
+                            <p>{employee.description}</p>
+                          </div>
                         </S.Photo>
                         <S.Info>
                           <div className="name">{employee.name}</div>

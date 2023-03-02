@@ -41,12 +41,42 @@ export const Photo = styled.div`
   position: relative;
   height: 100%;
   aspect-ratio: 315/330;
+  overflow: hidden;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
+  }
+
+  .description {
+    position: absolute;
+    height: 100%;
+    background-color: rgba(197, 186, 194, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 5px;
+    transform: translateY(102%);
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+
+    p {
+      font-size: 18px;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 12;
+      line-clamp: 12;
+      -webkit-box-orient: vertical;
+    }
+  }
+
+  &:hover {
+    .description {
+      opacity: 1;
+      transform: translateY(0px);
+    }
   }
 `;
 
