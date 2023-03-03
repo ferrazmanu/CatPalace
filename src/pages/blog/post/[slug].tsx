@@ -56,9 +56,11 @@ export default function Post({ post, otherPosts }) {
                   <div className="author">Por: {post[0].author.name}</div>
                 </S.Title>
 
-                <S.Text>
-                  <p>{post[0].content.text}</p>
-                </S.Text>
+                <S.Text
+                  dangerouslySetInnerHTML={{
+                    __html: post[0].content.html,
+                  }}
+                />
 
                 <S.Date>Publicado em: {formatToPTBR(post[0].date)}</S.Date>
               </S.Post>

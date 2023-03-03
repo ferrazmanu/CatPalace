@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 export const Product = styled.div`
+  gap: ${({ theme }) => theme.spacing._30};
+  display: flex;
+  flex-direction: column;
+
   .product-name {
     h2 {
       font-size: ${({ theme }) => theme.fontSizes.big_48};
@@ -151,4 +155,16 @@ export const ProductDescription = styled.div`
   }
 `;
 
-export const ProductDetails = styled.div``;
+export const ProductDetails = styled.div`
+  gap: ${({ theme }) => theme.spacing._30};
+  display: flex;
+  flex-direction: column;
+
+  details {
+    p,
+    ul,
+    li {
+      font-size: ${({ theme }) => theme.fontSizes.medium_24};
+    }
+  }
+`;

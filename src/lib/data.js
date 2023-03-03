@@ -27,7 +27,7 @@ export async function GetProducts(slug) {
         oldPrice
         price
         specifications {
-          text
+          html
         }
         images {
           url
@@ -71,7 +71,7 @@ export async function GetPosts(slug) {
           url
         }
         content {
-          text
+          html
         }
       }
     }
@@ -216,6 +216,27 @@ export async function GetOtherPosts(slug) {
   const data = await api_endpoint.request(OTHER_POSTS, variables);
 
   return data.posts;
+}
+
+export async function GetOtherProducts(slug) {
+  const OTHER_PRODUCTS = gql`
+    query GetOtherProducts($slug: String!) {
+      products(where: { NOT: { slug: $slug } }) {
+        id
+        price
+        slug
+        name
+        images(first: 1) {
+          url
+        }
+      }
+    }
+  `;
+
+  const variables = { slug };
+  const data = await api_endpoint.request(OTHER_PRODUCTS, variables);
+
+  return data.products;
 }
 
 // ABOUT

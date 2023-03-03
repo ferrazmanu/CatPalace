@@ -12,6 +12,7 @@ export const Details = styled.details`
     font-size: ${({ theme }) => theme.fontSizes.medium_30};
     list-style: none;
     padding-bottom: 10px;
+    margin-bottom: 8px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.5);
     cursor: pointer;
     display: flex;

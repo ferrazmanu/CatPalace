@@ -9,7 +9,8 @@ import { ProductCard } from "@/components/Elements/ProductCard";
 import { GetAllProducts } from "@/lib/data";
 
 import * as S from "@/styles/productsStyles";
-import { Details } from "@/components/Elements/CategoryDetails";
+import { Details } from "@/components/Elements/Details";
+import Link from "next/link";
 
 export default function Products({ products }) {
   const breadcrumb = [
@@ -33,7 +34,16 @@ export default function Products({ products }) {
           <S.ContentHolder>
             <S.Categories>
               <h3>Categorias</h3>
-              <Details />
+              <Details
+                summary={"Acessórios"}
+                children={
+                  <ul>
+                    <li>
+                      <Link href={""}>Canecas</Link>
+                    </li>
+                  </ul>
+                }
+              />
             </S.Categories>
 
             <GridContainer responsive={true}>

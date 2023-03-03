@@ -7,11 +7,18 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper";
 
-import { Container } from "@/components/sharedstyles";
+import {
+  Container,
+  ResponsiveSwiperContainer,
+} from "@/components/sharedstyles";
 import { Breadcrumb } from "@/components/Elements/Breadcrumb";
 import { Button } from "@/components/Elements/Button";
+import { Details } from "@/components/Elements/Details";
+import { SectionContainer } from "@/components/Containers/SectionContainer";
+import { GridContainer } from "@/components/Containers/GridContainer";
+import { ProductCard } from "@/components/Elements/ProductCard";
 
-import { GetProducts, GetProductsBySlug } from "@/lib/data";
+import { GetOtherProducts, GetProducts, GetProductsBySlug } from "@/lib/data";
 
 import * as S from "@/styles/productStyles";
 import "swiper/css";
@@ -19,7 +26,7 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
-export default function Product({ product }) {
+export default function Product({ product, otherProducts }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   const breadcrumb = [
@@ -129,8 +136,68 @@ export default function Product({ product }) {
               </S.ProductDescription>
             </S.ProductSummary>
 
-            <S.ProductDetails></S.ProductDetails>
+            <S.ProductDetails>
+              <Details
+                summary={"Detalhes"}
+                children={<p>{product[0].description}</p>}
+              />
+              <Details
+                summary={"Especificações"}
+                children={
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: product[0].specifications.html,
+                    }}
+                  />
+                }
+              />
+            </S.ProductDetails>
           </S.Product>
+
+          <SectionContainer
+            sectionTitle={"Outros Produtos"}
+            className="outros"
+            children={
+              <>
+                <ResponsiveSwiperContainer>
+                  <GridContainer responsive={false}>
+                    {otherProducts.map((product) => {
+                      return (
+                        <ProductCard
+                          key={product.id}
+                          slug={product.slug}
+                          imageUrl={product.images[0].url}
+                          name={product.name}
+                          price={product.price}
+                        />
+                      );
+                    })}
+                  </GridContainer>
+                  <Swiper
+                    spaceBetween={15}
+                    slidesPerView={1}
+                    navigation={true}
+                    modules={[Navigation]}
+                    loop={true}
+                  >
+                    {otherProducts.map((product) => {
+                      return (
+                        <SwiperSlide key={product.id}>
+                          <ProductCard
+                            key={product.id}
+                            slug={product.slug}
+                            imageUrl={product.images[0].url}
+                            name={product.name}
+                            price={product.price}
+                          />
+                        </SwiperSlide>
+                      );
+                    })}
+                  </Swiper>
+                </ResponsiveSwiperContainer>
+              </>
+            }
+          />
         </Container>
       </main>
     </>
@@ -154,9 +221,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const product = await GetProducts(params.slug);
+  const otherProducts = await GetOtherProducts(params.slug);
 
   return {
-    props: { product },
+    props: { product, otherProducts },
     revalidate: 10,
   };
 };
