@@ -26,11 +26,21 @@ export function Promotions({ promotions }: Props) {
       children={
         <S.Promotion>
           <Swiper
-            spaceBetween={30}
-            slidesPerView={2}
+            spaceBetween={10}
+            slidesPerView={1}
             autoplay={{
               delay: 6000,
               disableOnInteraction: false,
+            }}
+            breakpoints={{
+              0: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+              },
+              1024: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+              },
             }}
             modules={[Autoplay]}
             loop={true}
