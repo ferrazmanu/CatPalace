@@ -27,9 +27,10 @@ export const ImageProduct = styled.a`
   padding: 5px;
   min-height: 230px;
   position: relative;
+  overflow: hidden;
 
   img {
-    object-fit: contain;
+    object-fit: cover;
   }
 
   @media only screen and (max-width: 768px) {

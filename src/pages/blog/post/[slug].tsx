@@ -2,7 +2,6 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
 import Head from "next/head";
 
-import * as S from "styles/postStyles";
 import { formatToPTBR } from "utils/format";
 import { GetPosts, GetPostsSlug, GetOtherPosts } from "@/lib/data";
 
@@ -17,6 +16,8 @@ import { SectionContainer } from "@/components/Containers/SectionContainer";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
+
+import * as S from "styles/postStyles";
 import "swiper/css";
 import "swiper/css/navigation";
 
