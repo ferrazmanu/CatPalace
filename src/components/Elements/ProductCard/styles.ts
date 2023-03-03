@@ -49,6 +49,10 @@ export const Content = styled.div`
     text-align: center;
     display: flex;
     line-height: 1;
+
+    @media only screen and (max-width: 1024px) {
+      font-size: ${({ theme }) => theme.fontSizes.medium_30};
+    }
   }
 `;
 
@@ -58,4 +62,8 @@ export const Price = styled.div`
   align-items: center;
   justify-content: center;
   font-size: ${({ theme }) => theme.fontSizes.medium_30};
+
+  @media only screen and (max-width: 1024px) {
+    font-size: ${({ theme }) => theme.fontSizes.medium_24};
+  }
 `;

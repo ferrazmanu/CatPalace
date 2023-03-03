@@ -21,6 +21,7 @@ export const Section = styled.section`
     @media only screen and (max-width: 1024px) {
       h2 {
         text-align: center;
+        font-size: ${({ theme }) => theme.fontSizes.medium_32};
       }
     }
   }
@@ -30,4 +31,9 @@ export const SectionTitle = styled.h2`
   font-family: ${({ theme }) => theme.fonts.secondary_regular};
   font-size: ${({ theme }) => theme.fontSizes.big_60};
   text-align: center;
+
+  @media only screen and (max-width: 1024px) {
+    text-align: center;
+    font-size: ${({ theme }) => theme.fontSizes.big_48};
+  }
 `;

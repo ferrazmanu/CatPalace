@@ -21,7 +21,7 @@ export const Breadcrumb = styled.nav`
 
   @media only screen and (max-width: 1024px) {
     gap: 5px;
-
+    font-size: ${({ theme }) => theme.fontSizes.small_18};
     a {
       gap: 5px;
     }

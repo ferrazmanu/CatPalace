@@ -34,8 +34,18 @@ export const Details = styled.details`
     }
   }
 
-  ul {
+  ul,
+  p,
+  li {
     padding-top: 10px;
     font-size: ${({ theme }) => theme.fontSizes.medium_24};
+  }
+
+  @media only screen and (max-width: 1024px) {
+    p,
+    ul,
+    li {
+      font-size: ${({ theme }) => theme.fontSizes.small_18};
+    }
   }
 `;

@@ -10,6 +10,7 @@ export const Product = styled.div`
       font-size: ${({ theme }) => theme.fontSizes.big_48};
       font-family: ${({ theme }) => theme.fonts.primary_medium};
       font-weight: 500;
+      line-height: 1;
     }
   }
 
@@ -30,6 +31,28 @@ export const Product = styled.div`
     font-size: ${({ theme }) => theme.fontSizes.medium_24};
     text-decoration: underline;
   }
+
+  @media only screen and (max-width: 1024px) {
+    .product-name {
+      h2 {
+        font-size: ${({ theme }) => theme.fontSizes.medium_36};
+      }
+    }
+
+    .price {
+      .previous-price {
+        font-size: ${({ theme }) => theme.fontSizes.small_18};
+      }
+
+      .current-price {
+        font-size: ${({ theme }) => theme.fontSizes.medium_32};
+      }
+    }
+
+    .to-details {
+      font-size: ${({ theme }) => theme.fontSizes.small_18};
+    }
+  }
 `;
 
 export const ProductSummary = styled.div`
@@ -48,9 +71,14 @@ export const SwiperContainer = styled.div`
   height: fit-content;
   gap: 10px;
 
-  .swiper {
+  .mySwiper2 {
     .swiper-slide {
       height: 500px;
+    }
+  }
+
+  .swiper {
+    .swiper-slide {
       position: relative;
       background-color: #fff;
       border-radius: 10px;
@@ -87,6 +115,16 @@ export const SwiperContainer = styled.div`
 
   @media only screen and (max-width: 1024px) {
     width: 100%;
+
+    .mySwiper2 {
+      .swiper-slide {
+        height: 300px;
+      }
+    }
+
+    .swiper-thumbs {
+      height: 60px;
+    }
   }
 `;
 
@@ -159,12 +197,4 @@ export const ProductDetails = styled.div`
   gap: ${({ theme }) => theme.spacing._30};
   display: flex;
   flex-direction: column;
-
-  details {
-    p,
-    ul,
-    li {
-      font-size: ${({ theme }) => theme.fontSizes.medium_24};
-    }
-  }
 `;

@@ -16,5 +16,6 @@ export const Button = styled.a`
 
   @media only screen and (max-width: 1024px) {
     height: 44px;
+    font-size: ${({ theme }) => theme.fontSizes.small_18};
   }
 `;

@@ -47,6 +47,10 @@ export const Content = styled.div`
     text-align: center;
     display: flex;
     line-height: 1;
+
+    @media only screen and (max-width: 1024px) {
+      font-size: ${({ theme }) => theme.fontSizes.medium_30};
+    }
   }
 `;
 
@@ -59,4 +63,8 @@ export const Exerpt = styled.p`
   line-clamp: 2;
   -webkit-box-orient: vertical;
   font-size: ${({ theme }) => theme.fontSizes.medium_24};
+
+  @media only screen and (max-width: 1024px) {
+    font-size: ${({ theme }) => theme.fontSizes.small_18};
+  }
 `;
