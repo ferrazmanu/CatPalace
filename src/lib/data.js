@@ -260,3 +260,24 @@ export async function GetEmployees() {
 
   return data.employees;
 }
+
+// CATEGORIES
+
+export async function GetCategories() {
+  const GET_CATEGORIES = gql`
+    {
+      categories {
+        name
+        slug
+        subcategories {
+          name
+          slug
+        }
+      }
+    }
+  `;
+
+  const data = await api_endpoint.request(GET_CATEGORIES);
+
+  return data.categories;
+}

@@ -41,7 +41,7 @@ export default function Sobre({ employees }) {
                 <S.GridFuncionarios>
                   {employees.map((employee) => {
                     return (
-                      <S.EmployeeBox>
+                      <S.EmployeeBox key={employee.id}>
                         <S.Photo>
                           <Image
                             src={employee.picture.url}

@@ -6,7 +6,7 @@ import * as S from "./styles";
 
 import { Container } from "../../sharedstyles";
 import { CloseIcon } from "@/components/Icons";
-import { menuLinks, subMenuLinks } from "./menuLinks";
+import { menuLinks } from "../menuLinks";
 
 export function Header() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -60,19 +60,6 @@ export function Header() {
           </S.MenuContainer>
         </Container>
       </S.Header>
-      <S.SubHeader>
-        <Container>
-          <S.SubMenuContainer>
-            {subMenuLinks.map((links) => {
-              return (
-                <li key={links.id}>
-                  <Link href={links.slug}>{links.title}</Link>
-                </li>
-              );
-            })}
-          </S.SubMenuContainer>
-        </Container>
-      </S.SubHeader>
     </>
   );
 }

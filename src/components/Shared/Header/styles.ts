@@ -117,26 +117,3 @@ export const MenuContainer = styled.div`
     align-self: flex-end;
   }
 `;
-
-export const SubHeader = styled.div`
-  width: 100%;
-  background-color: ${({ theme }) => theme.colors.tertiary};
-  color: ${({ theme }) => theme.colors.secondary};
-  font-family: Berkshire;
-  padding: 15px 0;
-  box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.1);
-  position: relative;
-  z-index: 2;
-  text-transform: lowercase;
-
-  @media only screen and (max-width: 768px) {
-    display: none;
-  }
-`;
-
-export const SubMenuContainer = styled.ul`
-  display: flex;
-  justify-content: space-between;
-  gap: ${({ theme }) => theme.spacing._30};
-  font-size: ${({ theme }) => theme.fontSizes.medium_24};
-`;

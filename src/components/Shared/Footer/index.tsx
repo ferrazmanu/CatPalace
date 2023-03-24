@@ -5,12 +5,8 @@ import { useState } from "react";
 import * as S from "./styles";
 
 import { Container } from "../../sharedstyles";
-import {
-  siteMapLinks,
-  categoriesLinks,
-  socialLinks,
-  contactLinks,
-} from "./menuLinks";
+import { socialLinks, contactLinks } from "./menuLinks";
+import { menuLinks } from "../menuLinks";
 
 export function Footer() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -39,17 +35,7 @@ export function Footer() {
           <div className="menu">
             <ul className="box-links mapa">
               <li>Mapa do site</li>
-              {siteMapLinks.map((link) => {
-                return (
-                  <li key={link.id}>
-                    <Link href={link.slug}>{link.title}</Link>
-                  </li>
-                );
-              })}
-            </ul>
-            <ul className="box-links categorias">
-              <li>Categorias</li>
-              {categoriesLinks.map((link) => {
+              {menuLinks.map((link) => {
                 return (
                   <li key={link.id}>
                     <Link href={link.slug}>{link.title}</Link>

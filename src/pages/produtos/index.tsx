@@ -6,13 +6,13 @@ import { Container, TopContainer } from "@/components/sharedstyles";
 import { GridContainer } from "@/components/Containers/GridContainer";
 import { ProductCard } from "@/components/Elements/ProductCard";
 
-import { GetAllProducts } from "@/lib/data";
+import { GetAllProducts, GetCategories } from "@/lib/data";
 
 import * as S from "@/styles/productsStyles";
 import { Details } from "@/components/Elements/Details";
 import Link from "next/link";
 
-export default function Products({ products }) {
+export default function Products({ products, categories }) {
   const breadcrumb = [
     { url: "/", text: "Início" },
     { url: "/produtos", text: "Produtos" },
@@ -34,16 +34,25 @@ export default function Products({ products }) {
           <S.ContentHolder>
             <S.Categories>
               <h3>Categorias</h3>
-              <Details
-                summary={"Acessórios"}
-                children={
-                  <ul>
-                    <li>
-                      <Link href={""}>Canecas</Link>
-                    </li>
-                  </ul>
-                }
-              />
+              {categories.map((category) => {
+                return (
+                  <Details
+                    key={category.name}
+                    summary={category.name}
+                    children={
+                      <ul>
+                        {category.subcategories.map((subcategory) => {
+                          return (
+                            <li key={subcategory.name}>
+                              <Link href={""}>{subcategory.name}</Link>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    }
+                  />
+                );
+              })}
             </S.Categories>
 
             <GridContainer responsive={true}>
@@ -68,9 +77,10 @@ export default function Products({ products }) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const products = (await GetAllProducts()) || [];
+  const categories = (await GetCategories()) || [];
 
   return {
-    props: { products },
+    props: { products, categories },
     revalidate: 10,
   };
 };

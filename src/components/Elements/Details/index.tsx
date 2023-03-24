@@ -9,7 +9,7 @@ interface Props {
 
 export function Details({ summary, children, className }: Props) {
   return (
-    <S.Details className={className} open>
+    <S.Details className={className}>
       <summary>{summary}</summary>
       {children}
     </S.Details>

@@ -38,7 +38,7 @@ export default function Blog({ posts }) {
                 if (query === "") {
                   return post;
                 } else if (
-                  post.title.toLowerCase().includes(query.toLocaleLowerCase())
+                  post.title.toLowerCase().includes(query.toLowerCase())
                 ) {
                   return post;
                 }
