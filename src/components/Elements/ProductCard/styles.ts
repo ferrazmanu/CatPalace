@@ -11,6 +11,7 @@ export const Card = styled.div`
   justify-content: space-between;
   gap: ${({ theme }) => theme.spacing._30};
   max-width: 480px;
+  max-height: 500px;
 
   .button {
     max-width: 100% !important;

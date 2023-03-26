@@ -3,10 +3,10 @@ import { Container } from "@/components/sharedstyles";
 import { SectionContainer } from "@/components/Containers/SectionContainer";
 import * as S from "@/styles/sobreStyles";
 import { GetStaticProps } from "next";
-import { GetEmployees } from "@/lib/data";
+import { GetAboutText, GetEmployees } from "@/lib/data";
 import Image from "next/image";
 
-export default function Sobre({ employees }) {
+export default function Sobre({ employees, text }) {
   return (
     <>
       <Head>
@@ -18,22 +18,18 @@ export default function Sobre({ employees }) {
       <main>
         <S.Sobre>
           <Container>
-            <SectionContainer
-              sectionTitle="Sobre"
-              children={
-                <p>
-                  Nulla id convallis arcu. Nunc pretium vel eros vitae aliquet.
-                  Etiam eget nisi a mauris egestas rhoncus. Nulla venenatis
-                  tortor a consectetur convallis. Donec tempor, nisl ac finibus
-                  tempor, ligula quam porta sem, in fermentum nisi mi dignissim
-                  erat. Aenean vitae lectus elementum, placerat ipsum et, tempor
-                  felis. Cras auctor et dui et iaculis. Sed hendrerit odio et
-                  justo elementum, at efficitur magna fermentum. Proin in enim
-                  justo. Proin quis mauris mattis, gravida nibh in, luctus urna.
-                  Quisque facilisis tellus id ipsum consequat iaculis.
-                </p>
-              }
-            />
+            {text.content && (
+              <SectionContainer
+                sectionTitle={text.title}
+                children={
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: text.content.html,
+                    }}
+                  />
+                }
+              />
+            )}
             <SectionContainer
               sectionTitle="Mural de Funcionários"
               className="mural-funcionarios"
@@ -71,9 +67,10 @@ export default function Sobre({ employees }) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const employees = (await GetEmployees()) || [];
+  const text = (await GetAboutText()) || [];
 
   return {
-    props: { employees },
+    props: { employees, text },
     revalidate: 10,
   };
 };

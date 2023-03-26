@@ -240,6 +240,22 @@ export async function GetOtherProducts(slug) {
 }
 
 // ABOUT
+export async function GetAboutText() {
+  const GET_ABOUT_TEXT = gql`
+    {
+      page(where: { slug: "sobre" }) {
+        content {
+          html
+        }
+        title
+      }
+    }
+  `;
+
+  const data = await api_endpoint.request(GET_ABOUT_TEXT);
+
+  return data.page;
+}
 
 export async function GetEmployees() {
   const GET_EMPLOYEES = gql`
