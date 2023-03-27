@@ -8,7 +8,7 @@ export const Product = styled.div`
   .product-name {
     h2 {
       font-size: ${({ theme }) => theme.fontSizes.big_48};
-      font-family: ${({ theme }) => theme.fonts.primary_medium};
+      font-family: ${({ theme }) => theme.fonts.primary_regular};
       font-weight: 500;
       line-height: 1;
     }
@@ -23,7 +23,7 @@ export const Product = styled.div`
 
     .current-price {
       font-size: ${({ theme }) => theme.fontSizes.medium_36};
-      font-family: ${({ theme }) => theme.fonts.primary_medium};
+      font-family: ${({ theme }) => theme.fonts.primary_regular};
     }
   }
 

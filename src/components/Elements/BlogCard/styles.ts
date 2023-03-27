@@ -7,7 +7,7 @@ export const Card = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: clamp(1.375rem, 1.56vw, 1.875rem);
-  max-width: 480px;
+  max-width: 420px;
 
   .button {
     max-width: 265px;
@@ -43,7 +43,7 @@ export const Content = styled.div`
 
   .post-name {
     font-size: ${({ theme }) => theme.fontSizes.medium_32};
-    font-family: ${({ theme }) => theme.fonts.primary_medium};
+    font-family: ${({ theme }) => theme.fonts.primary_regular};
     text-align: center;
     display: flex;
     line-height: 1;

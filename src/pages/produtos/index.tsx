@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Head from "next/head";
 import { GetStaticProps } from "next";
 
@@ -17,6 +18,16 @@ export default function Products({ products, categories }) {
     { url: "/", text: "Início" },
     { url: "/produtos", text: "Produtos" },
   ];
+  const [productsArray, setProductsArray] = useState(products);
+
+  const handleCategoryChange = (subcategoryName, e) => {
+    e.preventDefault();
+
+    setProductsArray(
+      products.filter((produto) => produto.subcategory.name === subcategoryName)
+    );
+    console.log(productsArray);
+  };
 
   return (
     <>
@@ -44,7 +55,14 @@ export default function Products({ products, categories }) {
                         {category.subcategories.map((subcategory) => {
                           return (
                             <li key={subcategory.name}>
-                              <Link href={""}>{subcategory.name}</Link>
+                              <Link
+                                href="#"
+                                onClick={(e) =>
+                                  handleCategoryChange(subcategory.name, e)
+                                }
+                              >
+                                {subcategory.name}
+                              </Link>
                             </li>
                           );
                         })}
@@ -56,17 +74,23 @@ export default function Products({ products, categories }) {
             </S.Categories>
 
             <GridContainer responsive={true}>
-              {products.map((product) => {
-                return (
-                  <ProductCard
-                    key={product.id}
-                    slug={product.slug}
-                    imageUrl={product.images[0].url}
-                    name={product.name}
-                    price={product.price}
-                  />
-                );
-              })}
+              {productsArray && productsArray.length > 0 ? (
+                productsArray.map((product) => {
+                  return (
+                    <ProductCard
+                      key={product.id}
+                      slug={product.slug}
+                      imageUrl={product.images[0].url}
+                      name={product.name}
+                      price={product.price}
+                    />
+                  );
+                })
+              ) : (
+                <S.MessageContainer>
+                  Por enquanto, não há produtos nesta categoria :(
+                </S.MessageContainer>
+              )}
             </GridContainer>
           </S.ContentHolder>
         </Container>

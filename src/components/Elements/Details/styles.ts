@@ -10,6 +10,7 @@ export const Details = styled.details`
 
   summary {
     font-size: ${({ theme }) => theme.fontSizes.medium_30};
+    font-family: ${({ theme }) => theme.fonts.primary_regular};
     list-style: none;
     padding-bottom: 10px;
     margin-bottom: 8px;

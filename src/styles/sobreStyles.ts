@@ -69,6 +69,7 @@ export const Photo = styled.div`
       -webkit-line-clamp: 12;
       line-clamp: 12;
       -webkit-box-orient: vertical;
+      font-family: ${({ theme }) => theme.fonts.primary_regular};
     }
   }
 

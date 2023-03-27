@@ -111,6 +111,12 @@ export async function GetAllProducts() {
         images(first: 1) {
           url
         }
+        subcategory {
+          name
+        }
+        categories {
+          name
+        }
       }
     }
   `;
@@ -179,7 +185,7 @@ export async function GetHomePosts() {
 export async function GetHomeProducts() {
   const GET_HOME_PRODUCTS = gql`
     {
-      products(first: 6) {
+      products(first: 3) {
         id
         price
         slug

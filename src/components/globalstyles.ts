@@ -33,11 +33,11 @@ const GlobalStyle = createGlobalStyle`
     background-repeat: repeat;
     background-position: center center;
     background-size: contain;
-    font-family: ${({ theme }) => theme.fonts.primary_regular};
+    font-family: ${({ theme }) => theme.fonts.primary_light};
   }
 
   main{
-    min-height: 55vh;
+    min-height: 65vh;
     padding: 30px 0;
   }
 

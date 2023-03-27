@@ -10,7 +10,7 @@ export const Footer = styled.footer`
   position: relative;
   z-index: 1;
   border-top: 8px solid ${({ theme }) => theme.colors.secondary};
-  font-family: ${({ theme }) => theme.fonts.primary_regular};
+  font-family: ${({ theme }) => theme.fonts.primary_light};
 `;
 
 export const MenuContainer = styled.div`
@@ -74,7 +74,7 @@ export const MenuContainer = styled.div`
         &:first-child {
           text-transform: uppercase;
           margin-bottom: 8px;
-          font-family: ${({ theme }) => theme.fonts.primary_medium};
+          font-family: ${({ theme }) => theme.fonts.primary_regular};
         }
       }
 
@@ -119,6 +119,7 @@ export const MenuContainer = styled.div`
 export const Copyright = styled.div`
   color: rgba(0, 0, 0, 0.6);
   font-size: ${({ theme }) => theme.fontSizes.small_12};
+  font-family: ${({ theme }) => theme.fonts.primary_regular};
   text-align: center;
   margin-top: 3.7vh;
 `;

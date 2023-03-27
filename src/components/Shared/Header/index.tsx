@@ -5,7 +5,7 @@ import { useState } from "react";
 import * as S from "./styles";
 
 import { Container } from "../../sharedstyles";
-import { CloseIcon } from "@/components/Icons";
+import { CartIcon, CloseIcon } from "@/components/Icons";
 import { menuLinks } from "../menuLinks";
 
 export function Header() {
@@ -45,7 +45,9 @@ export function Header() {
                 );
               })}
               <li>
-                <Link href="">carrinho</Link>
+                <Link href="">
+                  <CartIcon color="#936287" />
+                </Link>
               </li>
             </ul>
             <button
