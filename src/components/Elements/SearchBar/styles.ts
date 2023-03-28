@@ -27,4 +27,10 @@ export const SearchBar = styled.div`
     right: 0;
     padding: 0;
   }
+
+  @media only screen and (max-width: 992px) {
+    input {
+      font-size: ${({ theme }) => theme.fontSizes.small_18};
+    }
+  }
 `;

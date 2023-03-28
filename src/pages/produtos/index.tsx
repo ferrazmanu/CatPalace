@@ -12,21 +12,33 @@ import { GetAllProducts, GetCategories } from "@/lib/data";
 import * as S from "@/styles/productsStyles";
 import { Details } from "@/components/Elements/Details";
 import Link from "next/link";
+import { CloseIcon, FilterIcon } from "@/components/Icons";
 
 export default function Products({ products, categories }) {
+  const [productsArray, setProductsArray] = useState(products);
+  const [openFilter, setOpenFilter] = useState(false);
+
   const breadcrumb = [
     { url: "/", text: "Início" },
     { url: "/produtos", text: "Produtos" },
   ];
-  const [productsArray, setProductsArray] = useState(products);
 
   const handleCategoryChange = (subcategoryName, e) => {
     e.preventDefault();
+    handleOpenFilter();
 
     setProductsArray(
       products.filter((produto) => produto.subcategory.name === subcategoryName)
     );
     console.log(productsArray);
+  };
+
+  const handleOpenFilter = () => {
+    if (openFilter === false) {
+      setOpenFilter(true);
+    } else {
+      setOpenFilter(false);
+    }
   };
 
   return (
@@ -43,35 +55,49 @@ export default function Products({ products, categories }) {
           </TopContainer>
 
           <S.ContentHolder>
-            <S.Categories>
+            <S.CategoriesContainer>
               <h3>Categorias</h3>
-              {categories.map((category) => {
-                return (
-                  <Details
-                    key={category.name}
-                    summary={category.name}
-                    children={
-                      <ul>
-                        {category.subcategories.map((subcategory) => {
-                          return (
-                            <li key={subcategory.name}>
-                              <Link
-                                href="#"
-                                onClick={(e) =>
-                                  handleCategoryChange(subcategory.name, e)
-                                }
-                              >
-                                {subcategory.name}
-                              </Link>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    }
-                  />
-                );
-              })}
-            </S.Categories>
+
+              <S.FilterMobile onClick={handleOpenFilter}>
+                Filter <FilterIcon />
+              </S.FilterMobile>
+
+              <S.Categories open={openFilter}>
+                <button
+                  type="button"
+                  className="close"
+                  onClick={handleOpenFilter}
+                >
+                  <CloseIcon color="#000" />
+                </button>
+                {categories.map((category) => {
+                  return (
+                    <Details
+                      key={category.name}
+                      summary={category.name}
+                      children={
+                        <ul>
+                          {category.subcategories.map((subcategory) => {
+                            return (
+                              <li key={subcategory.name}>
+                                <Link
+                                  href="#"
+                                  onClick={(e) =>
+                                    handleCategoryChange(subcategory.name, e)
+                                  }
+                                >
+                                  {subcategory.name}
+                                </Link>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      }
+                    />
+                  );
+                })}
+              </S.Categories>
+            </S.CategoriesContainer>
 
             <GridContainer responsive={true}>
               {productsArray && productsArray.length > 0 ? (

@@ -33,14 +33,16 @@ export function Header() {
               />
             </Link>
 
-            <ul className={`menu ${openMenu ? "open" : "closed"}`}>
+            <S.MenuList open={openMenu}>
               <button type="button" className="close" onClick={handleOpenMenu}>
                 <CloseIcon />
               </button>
               {menuLinks.map((links) => {
                 return (
                   <li key={links.id}>
-                    <Link href={links.slug}>{links.title}</Link>
+                    <Link href={links.slug} onClick={handleOpenMenu}>
+                      {links.title}
+                    </Link>
                   </li>
                 );
               })}
@@ -49,7 +51,7 @@ export function Header() {
                   <CartIcon color="#936287" />
                 </Link>
               </li>
-            </ul>
+            </S.MenuList>
             <button
               type="button"
               className="hamburguer-menu"
