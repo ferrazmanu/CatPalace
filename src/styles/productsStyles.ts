@@ -88,6 +88,7 @@ export const FilterMobile = styled.div`
   display: none;
   font-size: ${({ theme }) => theme.fontSizes.medium_24};
   font-family: ${({ theme }) => theme.fonts.primary_regular};
+  cursor: pointer;
 
   @media only screen and (max-width: 1024px) {
     display: flex;
