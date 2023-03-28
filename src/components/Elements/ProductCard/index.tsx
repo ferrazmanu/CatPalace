@@ -13,6 +13,8 @@ interface Props {
 }
 
 export function ProductCard({ slug, name, price, imageUrl }: Props) {
+  const addToCart = () => {};
+
   return (
     <S.Card className="card">
       <S.ImageProduct href={`/produtos/${slug}`}>
@@ -28,7 +30,7 @@ export function ProductCard({ slug, name, price, imageUrl }: Props) {
         </S.Price>
       </S.Content>
 
-      <Button text="adicionar ao carrinho" href={slug} />
+      <Button text="adicionar ao carrinho" href={slug} onClick={addToCart} />
     </S.Card>
   );
 }

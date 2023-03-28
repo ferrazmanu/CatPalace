@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface MenuListProps {
+  open: boolean;
+}
+
 export const Header = styled.header`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.tertiary};
@@ -64,10 +68,6 @@ export const MenuContainer = styled.div`
     align-self: flex-end;
   }
 `;
-
-interface MenuListProps {
-  open: boolean;
-}
 
 export const MenuList = styled.div<MenuListProps>`
   max-width: fit-content;
