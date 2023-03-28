@@ -3,6 +3,7 @@ import { SectionContainer } from "@/components/Containers/SectionContainer";
 import { BlogPostCard } from "@/components/Elements/BlogCard";
 import { Button } from "@/components/Elements/Button";
 import { ResponsiveSwiperContainer } from "@/components/sharedstyles";
+import { PostsProps } from "@/common/types";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -10,23 +11,7 @@ import "swiper/css/navigation";
 
 import { Navigation } from "swiper";
 
-interface Props {
-  posts: BlogPosts[];
-}
-
-interface CoverImage {
-  url: string;
-}
-
-interface BlogPosts {
-  id: string;
-  slug: string;
-  coverImage: CoverImage;
-  title: string;
-  exerpt: string;
-}
-
-export function BlogPostsSection({ posts }: Props) {
+export function BlogPostsSection({ posts }: PostsProps) {
   return (
     <SectionContainer
       sectionTitle={"Blog"}

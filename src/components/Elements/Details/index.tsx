@@ -1,13 +1,7 @@
-import Link from "next/link";
+import { DetailsProps } from "@/common/types";
 import * as S from "./styles";
 
-interface Props {
-  children: React.ReactNode;
-  className?: string;
-  summary: string;
-}
-
-export function Details({ summary, children, className }: Props) {
+export function Details({ summary, children, className }: DetailsProps) {
   return (
     <S.Details className={className}>
       <summary>{summary}</summary>

@@ -1,29 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { BannersProps } from "@/common/types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import "swiper/css";
 
 import * as S from "./styles";
 
-interface Props {
-  banners: Banner[];
-}
-
-interface Images {
-  url: string;
-}
-
-interface Banner {
-  id: string;
-  url: string;
-  link: string;
-  bannerImage: Images[];
-  alt?: string;
-}
-
-export function Banner({ banners }: Props) {
+export function Banner({ banners }: BannersProps) {
   return (
     <S.Banner>
       <Swiper

@@ -7,19 +7,9 @@ import "swiper/css";
 
 import * as S from "./styles";
 import { SectionContainer } from "@/components/Containers/SectionContainer";
+import { PromotionsProps } from "@/common/types";
 
-interface Props {
-  promotions: Promotion[];
-}
-
-interface Promotion {
-  id: string;
-  link: string;
-  image: { url: string };
-  title: string;
-}
-
-export function Promotions({ promotions }: Props) {
+export function Promotions({ promotions }: PromotionsProps) {
   return (
     <SectionContainer
       sectionTitle={""}

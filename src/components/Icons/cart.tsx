@@ -1,4 +1,4 @@
-import { IconProps } from "./iconTypes";
+import { IconProps } from "@/common/types";
 
 export const CartIcon = ({ width, height, color }: IconProps) => {
   return (

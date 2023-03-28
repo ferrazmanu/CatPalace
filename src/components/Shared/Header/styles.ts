@@ -1,8 +1,5 @@
+import { StylesProps } from "@/common/types";
 import styled from "styled-components";
-
-interface MenuListProps {
-  open: boolean;
-}
 
 export const Header = styled.header`
   width: 100%;
@@ -69,7 +66,7 @@ export const MenuContainer = styled.div`
   }
 `;
 
-export const MenuList = styled.div<MenuListProps>`
+export const MenuList = styled.div<StylesProps>`
   max-width: fit-content;
   width: 100%;
   display: flex;

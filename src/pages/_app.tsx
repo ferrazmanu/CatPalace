@@ -10,16 +10,16 @@ export default function App({ Component, pageProps }: AppProps) {
       {/* Google tag (gtag.js) */}
       <script
         async
-        src="https://www.googletagmanager.com/gtag/js?id=G-FZD65B8WFY"
+        src="https://www.googletagmanager.com/gtag/js?id=G-XYZ57V4X6P"
       ></script>
       <script
         dangerouslySetInnerHTML={{
           __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-
-              gtag('config', 'G-FZD65B8WFY');
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-XYZ57V4X6P');
               `,
         }}
       />

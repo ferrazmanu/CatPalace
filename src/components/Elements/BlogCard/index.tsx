@@ -4,14 +4,9 @@ import Link from "next/link";
 import * as S from "./styles";
 import { Button } from "../Button";
 
-interface Props {
-  slug: string;
-  coverImage: string;
-  title: string;
-  exerpt: string;
-}
+import { PostProps } from "@/common/types";
 
-export function BlogPostCard({ slug, title, exerpt, coverImage }: Props) {
+export function BlogPostCard({ slug, title, exerpt, coverImage }: PostProps) {
   return (
     <S.Card className="card">
       <S.ImagePost href={`/blog/post/${slug}`}>

@@ -3,28 +3,14 @@ import { SectionContainer } from "@/components/Containers/SectionContainer";
 import { Button } from "@/components/Elements/Button";
 import { ProductCard } from "@/components/Elements/ProductCard";
 import { ResponsiveSwiperContainer } from "@/components/sharedstyles";
+import { ProductsProps } from "@/common/types";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 
-interface Props {
-  products: Product[];
-}
-interface Images {
-  url: string;
-}
-
-interface Product {
-  id: string;
-  slug: string;
-  images: Images[];
-  name: string;
-  price: string;
-}
-
-export function ProductsSection({ products }: Props) {
+export function ProductsSection({ products }: ProductsProps) {
   return (
     <SectionContainer
       sectionTitle={"Produtos"}

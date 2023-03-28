@@ -1,18 +1,12 @@
+import { SectionContainerProps } from "@/common/types";
 import * as S from "./styles";
-
-interface Props {
-  id?: string;
-  sectionTitle?: string;
-  className?: string;
-  children: React.ReactNode;
-}
 
 export function SectionContainer({
   children,
   id,
   className,
   sectionTitle,
-}: Props) {
+}: SectionContainerProps) {
   return (
     <S.Section
       id={id}

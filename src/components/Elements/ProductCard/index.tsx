@@ -4,15 +4,9 @@ import Link from "next/link";
 import * as S from "./styles";
 import { Button } from "../Button";
 import { PriceTagIcon } from "@/components/Icons";
+import { ProductProps } from "@/common/types";
 
-interface Props {
-  slug: string;
-  name: string;
-  price: string;
-  imageUrl: string;
-}
-
-export function ProductCard({ slug, name, price, imageUrl }: Props) {
+export function ProductCard({ slug, name, price, imageUrl }: ProductProps) {
   const addToCart = () => {};
 
   return (

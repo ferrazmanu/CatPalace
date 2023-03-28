@@ -1,4 +1,4 @@
-import { IconProps } from "./iconTypes";
+import { IconProps } from "@/common/types";
 
 export const ArrowDownIcon = ({ width, height, color }: IconProps) => {
   return (

@@ -1,10 +1,7 @@
+import { StylesProps } from "@/common/types";
 import styled from "styled-components";
 
-interface CartProps {
-  open: boolean;
-}
-
-export const Cart = styled.div<CartProps>`
+export const Cart = styled.div<StylesProps>`
   position: fixed;
   right: 0;
   top: 0;
