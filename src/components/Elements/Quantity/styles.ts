@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Quantity = styled.div`
   border-radius: 27px;
-  border: solid 2px ${({ theme }) => theme.colors.primary};
+  border: solid 1px ${({ theme }) => theme.colors.primary};
   max-width: 151px;
   width: 100%;
   height: 54px;

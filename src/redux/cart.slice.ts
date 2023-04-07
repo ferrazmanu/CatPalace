@@ -2,13 +2,16 @@ import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { CartItem, Product } from "@/common/types";
 import { RootState } from "./store";
+import { useSelector } from "react-redux";
 
 export interface CartState {
   cartItems: CartItem[];
+  isCartOpen: boolean;
 }
 
 const initialState: CartState = {
   cartItems: [],
+  isCartOpen: false,
 };
 
 const cartSlice = createSlice({
@@ -50,16 +53,24 @@ const cartSlice = createSlice({
       );
       state.cartItems.splice(index, 1);
     },
+    handleCartShow: (state) => {
+      if (state.isCartOpen === false) {
+        state.isCartOpen = true;
+      } else {
+        state.isCartOpen = false;
+      }
+    },
   },
 });
 
 export const cartReducer = cartSlice.reducer;
 
-const cartItems = (state: RootState) => state.cart.cartItems;
+export const cartItems = (state: RootState) => state.cart.cartItems;
 
 export const {
   addToCart,
   incrementQuantity,
   decrementQuantity,
   removeFromCart,
+  handleCartShow,
 } = cartSlice.actions;

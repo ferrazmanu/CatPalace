@@ -5,8 +5,9 @@ import * as S from "./styles";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/redux/store";
 import { formatCurrency } from "utils/format";
+import { handleCartShow } from "@/redux/cart.slice";
 
-export function Cart({ open, handleOpenCart }) {
+export function Cart({ open }) {
   const dispatch = useDispatch();
 
   const cart = useSelector((state: RootState) => state.cart);
@@ -21,7 +22,11 @@ export function Cart({ open, handleOpenCart }) {
   return (
     <>
       <S.Cart open={open}>
-        <button type="button" className="close-cart" onClick={handleOpenCart}>
+        <button
+          type="button"
+          className="close-cart"
+          onClick={() => dispatch(handleCartShow())}
+        >
           <CloseIcon />
         </button>
 

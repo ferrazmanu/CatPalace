@@ -9,25 +9,22 @@ import { CartIcon, CloseIcon } from "@/components/Icons";
 import { menuLinks } from "../menuLinks";
 import { Cart } from "../Cart";
 
+import { useDispatch, useSelector } from "react-redux";
+import { handleCartShow } from "@/redux/cart.slice";
+import { RootState } from "@/redux/store";
+
 export function Header() {
+  const dispatch = useDispatch();
+  const cartShowState = useSelector(
+    (state: RootState) => state.cart.isCartOpen
+  );
   const [openMenu, setOpenMenu] = useState(false);
-  const [openCart, setOpenCart] = useState(false);
 
   const handleOpenMenu = () => {
     if (openMenu === false) {
       setOpenMenu(true);
     } else {
       setOpenMenu(false);
-    }
-  };
-
-  const handleOpenCart = (e) => {
-    e.preventDefault();
-    if (openCart === false) {
-      setOpenCart(true);
-      console.log("abri");
-    } else {
-      setOpenCart(false);
     }
   };
 
@@ -59,13 +56,13 @@ export function Header() {
                 );
               })}
               <li>
-                <Link href="#" onClick={(e) => handleOpenCart(e)}>
+                <Link href="#" onClick={() => dispatch(handleCartShow())}>
                   <CartIcon color="#936287" />
                 </Link>
               </li>
             </S.MenuList>
 
-            <Cart open={openCart} handleOpenCart={handleOpenCart} />
+            <Cart open={cartShowState} />
 
             <button
               type="button"

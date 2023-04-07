@@ -78,6 +78,12 @@ export const SwiperContainer = styled.div`
     }
   }
 
+  .mySwiper {
+    .swiper-slide {
+      cursor: pointer;
+    }
+  }
+
   .swiper {
     .swiper-slide {
       position: relative;

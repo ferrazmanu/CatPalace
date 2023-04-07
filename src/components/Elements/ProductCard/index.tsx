@@ -6,8 +6,8 @@ import { Button } from "../Button";
 import { PriceTagIcon } from "@/components/Icons";
 import { Product } from "@/common/types";
 
-import { useDispatch } from "react-redux";
-import { addToCart } from "@/redux/cart.slice";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, handleCartShow } from "@/redux/cart.slice";
 
 export function ProductCard({ id, slug, image, name, price }: Product) {
   const dispatch = useDispatch();
@@ -18,6 +18,11 @@ export function ProductCard({ id, slug, image, name, price }: Product) {
     image,
     name,
     price,
+  };
+
+  const addProduct = () => {
+    dispatch(addToCart(product));
+    dispatch(handleCartShow());
   };
 
   return (
@@ -38,7 +43,7 @@ export function ProductCard({ id, slug, image, name, price }: Product) {
       <Button
         text="adicionar ao carrinho"
         type="button"
-        onClick={() => dispatch(addToCart(product))}
+        onClick={() => addProduct()}
       />
     </S.Card>
   );
