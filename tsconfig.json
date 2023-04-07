@@ -20,7 +20,8 @@
       "@/components/*": ["components/*"],
       "@/lib/*": ["lib/*"],
       "@/styles/*": ["styles/*"],
-      "@/common/*": ["common/*"]
+      "@/common/*": ["common/*"],
+      "@/redux/*": ["redux/*"]
     },
     "noImplicitAny": false
   },

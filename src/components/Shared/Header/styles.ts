@@ -8,7 +8,6 @@ export const Header = styled.header`
   font-family: Berkshire;
   padding: 15px 0;
   box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.1);
-  text-transform: lowercase;
   position: relative;
   z-index: 5;
 `;
@@ -74,6 +73,7 @@ export const MenuList = styled.div<StylesProps>`
   align-items: center;
   gap: ${({ theme }) => theme.spacing._30};
   font-size: ${({ theme }) => theme.fontSizes.medium_30};
+  text-transform: lowercase;
 
   li {
     display: flex;

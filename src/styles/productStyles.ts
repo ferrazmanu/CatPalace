@@ -30,6 +30,7 @@ export const Product = styled.div`
   .to-details {
     font-size: ${({ theme }) => theme.fontSizes.medium_24};
     text-decoration: underline;
+    width: fit-content;
   }
 
   @media only screen and (max-width: 1024px) {
@@ -143,34 +144,6 @@ export const ProductDescription = styled.div`
   flex-direction: column;
   justify-content: space-between;
   gap: ${({ theme }) => theme.spacing._30};
-
-  .quantity {
-    border-radius: 27px;
-    border: solid 2px ${({ theme }) => theme.colors.primary};
-    max-width: 151px;
-    width: 100%;
-    height: 54px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    overflow: hidden;
-    font-size: ${({ theme }) => theme.fontSizes.medium_24};
-
-    .plus,
-    .minus {
-      background-color: rgba(0, 0, 0, 0.2);
-      width: 30%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
-
-    .qty {
-      font-size: ${({ theme }) => theme.fontSizes.small_18};
-    }
-  }
 
   .buy-buttons {
     display: flex;

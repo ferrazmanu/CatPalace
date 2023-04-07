@@ -13,6 +13,7 @@ export const Button = styled.a`
   justify-content: center;
   margin: 0 auto;
   line-height: 1;
+  cursor: pointer;
 
   @media only screen and (max-width: 1024px) {
     height: 44px;

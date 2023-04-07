@@ -17,7 +17,12 @@ import { Details } from "@/components/Elements/Details";
 import { SectionContainer } from "@/components/Containers/SectionContainer";
 import { GridContainer } from "@/components/Containers/GridContainer";
 import { ProductCard } from "@/components/Elements/ProductCard";
-
+import { Quantity } from "@/components/Elements/Quantity";
+import {
+  decrementQuantity,
+  incrementQuantity,
+  removeFromCart,
+} from "@/redux/cart.slice";
 import { GetOtherProducts, GetProducts, GetProductsBySlug } from "@/lib/data";
 
 import * as S from "@/styles/productStyles";
@@ -25,8 +30,12 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/redux/cart.slice";
 
 export default function Product({ product, otherProducts }) {
+  const dispatch = useDispatch();
+
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   const breadcrumb = [
@@ -119,24 +128,28 @@ export default function Product({ product, otherProducts }) {
                   <div className="current-price">R$ {product[0].price}</div>
                 </div>
 
-                <Link href={""} className="to-details">
+                <Link href="#detalhes" className="to-details">
                   Ir para detalhes do produto
                 </Link>
 
-                <div className="quantity">
-                  <span className="minus">-</span>
-                  <span className="qty">1</span>
-                  <span className="plus">+</span>
-                </div>
+                <Quantity
+                  incrementQuantity={() => dispatch(incrementQuantity(product))}
+                  decrementQuantity={() => dispatch(decrementQuantity(product))}
+                  qty={product.qty}
+                />
 
                 <div className="buy-buttons">
-                  <Button href={""} text={"comprar"} />
-                  <Button href={""} text={"adicionar ao carrinho"} />
+                  <Button text={"comprar"} type="button" />
+                  <Button
+                    text={"adicionar ao carrinho"}
+                    onClick={() => dispatch(addToCart(product))}
+                    type="button"
+                  />
                 </div>
               </S.ProductDescription>
             </S.ProductSummary>
 
-            <S.ProductDetails>
+            <S.ProductDetails id="detalhes">
               <Details
                 summary={"Detalhes"}
                 children={<p>{product[0].description}</p>}
@@ -166,9 +179,11 @@ export default function Product({ product, otherProducts }) {
                         <ProductCard
                           key={product.id}
                           slug={product.slug}
-                          imageUrl={product.images[0].url}
+                          image={product.images[0].url}
                           name={product.name}
                           price={product.price}
+                          id={product.id}
+                          qty={product.qty}
                         />
                       );
                     })}
@@ -186,9 +201,11 @@ export default function Product({ product, otherProducts }) {
                           <ProductCard
                             key={product.id}
                             slug={product.slug}
-                            imageUrl={product.images[0].url}
+                            image={product.images[0].url}
                             name={product.name}
                             price={product.price}
+                            id={product.id}
+                            qty={product.qty}
                           />
                         </SwiperSlide>
                       );

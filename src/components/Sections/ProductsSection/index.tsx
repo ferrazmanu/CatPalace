@@ -20,9 +20,10 @@ export function ProductsSection({ products }: ProductsProps) {
             {products.map((product) => {
               return (
                 <ProductCard
+                  id={product.id}
+                  image={product.images[0].url}
                   key={product.id}
                   slug={product.slug}
-                  imageUrl={product.images[0].url}
                   name={product.name}
                   price={product.price}
                 />
@@ -40,8 +41,10 @@ export function ProductsSection({ products }: ProductsProps) {
               return (
                 <SwiperSlide key={product.id}>
                   <ProductCard
+                    id={product.id}
+                    image={product.images[0].url}
+                    key={product.id}
                     slug={product.slug}
-                    imageUrl={product.images[0].url}
                     name={product.name}
                     price={product.price}
                   />

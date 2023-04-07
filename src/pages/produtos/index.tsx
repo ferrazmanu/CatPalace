@@ -105,10 +105,12 @@ export default function Products({ products, categories }) {
                   return (
                     <ProductCard
                       key={product.id}
+                      id={product.id}
                       slug={product.slug}
-                      imageUrl={product.images[0].url}
+                      image={product.images[0].url}
                       name={product.name}
                       price={product.price}
+                      qty={product.qty}
                     />
                   );
                 })

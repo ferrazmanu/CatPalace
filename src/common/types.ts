@@ -1,12 +1,26 @@
 import { MouseEventHandler } from "react";
 
-export interface ProductProps {
+export interface ProductsProps {
+  products: Product[];
+}
+export interface Product {
+  id: string;
   slug: string;
+  images?: Images[];
+  image: string;
   name: string;
-  price: string;
-  imageUrl: string;
+  price: number;
+  qty?: number;
 }
 
+export interface CartItem {
+  product: Product;
+  qty: number;
+}
+
+export interface Images {
+  url: string;
+}
 export interface GridContainerProps {
   responsive: boolean;
   children: React.ReactNode;
@@ -25,7 +39,7 @@ export interface PostProps {
 }
 
 export interface ButtonProps {
-  href: string;
+  href?: string;
   text: string;
   type?: string;
   onClick?: MouseEventHandler<HTMLAnchorElement>;
@@ -46,11 +60,6 @@ export interface IconProps {
 export interface BannersProps {
   banners: Banner[];
 }
-
-export interface Images {
-  url: string;
-}
-
 export interface Banner {
   id: string;
   url: string;
@@ -73,18 +82,6 @@ export interface BlogPost {
   coverImage: CoverImage;
   title: string;
   exerpt: string;
-}
-
-export interface ProductsProps {
-  products: Product[];
-}
-
-export interface Product {
-  id: string;
-  slug: string;
-  images: Images[];
-  name: string;
-  price: string;
 }
 
 export interface PromotionsProps {

@@ -1,6 +1,5 @@
 import { ButtonProps } from "@/common/types";
-import { MouseEventHandler } from "react";
-import * as S from "./styled";
+import * as S from "./styles";
 
 export function Button({ href, text, type, onClick }: ButtonProps) {
   return (
