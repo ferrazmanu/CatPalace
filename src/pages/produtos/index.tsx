@@ -30,7 +30,6 @@ export default function Products({ products, categories }) {
     setProductsArray(
       products.filter((produto) => produto.subcategory.name === subcategoryName)
     );
-    console.log(productsArray);
   };
 
   const handleOpenFilter = () => {

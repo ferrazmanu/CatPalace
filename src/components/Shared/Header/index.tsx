@@ -17,8 +17,6 @@ export function Header() {
   const dispatch = useDispatch();
   const cart = useSelector((state: RootState) => state.cart);
 
-  console.log(cart);
-
   const [openMenu, setOpenMenu] = useState(false);
 
   const handleOpenMenu = () => {
