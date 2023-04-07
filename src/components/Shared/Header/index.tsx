@@ -15,9 +15,10 @@ import { RootState } from "@/redux/store";
 
 export function Header() {
   const dispatch = useDispatch();
-  const cartShowState = useSelector(
-    (state: RootState) => state.cart.isCartOpen
-  );
+  const cart = useSelector((state: RootState) => state.cart);
+
+  console.log(cart);
+
   const [openMenu, setOpenMenu] = useState(false);
 
   const handleOpenMenu = () => {
@@ -55,14 +56,15 @@ export function Header() {
                   </li>
                 );
               })}
-              <li>
+              <li className="cart">
                 <Link href="#" onClick={() => dispatch(handleCartShow())}>
                   <CartIcon color="#936287" />
                 </Link>
+                <span className="cart-qty">{cart.cartItems.length}</span>
               </li>
             </S.MenuList>
 
-            <Cart open={cartShowState} />
+            <Cart open={cart.isCartOpen} />
 
             <button
               type="button"

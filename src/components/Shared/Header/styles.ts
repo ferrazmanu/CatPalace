@@ -89,6 +89,27 @@ export const MenuList = styled.div<StylesProps>`
     }
   }
 
+  li.cart {
+    position: relative;
+
+    .cart-qty {
+      position: absolute;
+      display: flex;
+      right: -5px;
+      top: 2px;
+      font-size: 14px;
+      background-color: #fff;
+      border: 1px solid #926386;
+      border-radius: 50%;
+      width: 15px;
+      height: 15px;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      aspect-ratio: 1;
+    }
+  }
+
   @media only screen and (max-width: 992px) {
     position: fixed;
     right: 0;
