@@ -14,7 +14,8 @@ export function Cart({ open }) {
 
   const getTotalPrice = () => {
     return cart.cartItems.reduce(
-      (accumulator, item) => accumulator + item.qty * item.product.price,
+      (accumulator, item) =>
+        accumulator + item.product.qty * item.product.price,
       0
     );
   };
@@ -46,7 +47,7 @@ export function Cart({ open }) {
                     slug={item.product.slug}
                     name={item.product.name}
                     price={item.product.price}
-                    qty={1}
+                    qty={item.product.qty}
                   />
                 );
               })}

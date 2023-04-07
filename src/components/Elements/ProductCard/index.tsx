@@ -6,7 +6,7 @@ import { Button } from "../Button";
 import { PriceTagIcon } from "@/components/Icons";
 import { Product } from "@/common/types";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addToCart, handleCartShow } from "@/redux/cart.slice";
 
 export function ProductCard({ id, slug, image, name, price }: Product) {

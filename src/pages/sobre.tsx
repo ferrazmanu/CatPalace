@@ -31,7 +31,7 @@ export default function Sobre({ employees, text }) {
               />
             )}
             <SectionContainer
-              sectionTitle="Mural de Funcionários"
+              sectionTitle="Integrantes do Palácio"
               className="mural-funcionarios"
               children={
                 <S.GridFuncionarios>

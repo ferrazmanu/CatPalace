@@ -12,6 +12,7 @@ import {
 } from "@/redux/cart.slice";
 import { Quantity } from "@/components/Elements/Quantity";
 import { TrashIcon } from "@/components/Icons";
+import { formatCurrency } from "utils/format";
 
 export function CartItem({ id, slug, image, name, price, qty }: Product) {
   const dispatch = useDispatch();
@@ -36,7 +37,7 @@ export function CartItem({ id, slug, image, name, price, qty }: Product) {
             <Link className="product-name" href={`/produtos/${slug}`}>
               {name}
             </Link>
-            <S.Price>R${qty * price}</S.Price>
+            <S.Price>R$ {formatCurrency(qty * price)}</S.Price>
           </S.Info>
           <S.Actions>
             <Quantity

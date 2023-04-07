@@ -135,7 +135,7 @@ export default function Product({ product, otherProducts }) {
                 <Quantity
                   incrementQuantity={() => dispatch(incrementQuantity(product))}
                   decrementQuantity={() => dispatch(decrementQuantity(product))}
-                  qty={product.qty}
+                  qty={1}
                 />
 
                 <div className="buy-buttons">

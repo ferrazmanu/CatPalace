@@ -9,11 +9,12 @@ export const Grid = styled.div<GridProps>`
   display: grid;
   grid-template-columns: ${(props) =>
     props.responsive
-      ? "repeat(auto-fit, minmax(340px, 1fr))"
+      ? "repeat(auto-fit, minmax(330px, 1fr))"
       : "repeat(3, 1fr)"};
   gap: ${({ theme }) => theme.spacing._30};
   justify-content: center;
   justify-items: ${(props) => (props.responsive ? "start" : "center")};
+  height: fit-content;
 
   @media only screen and (max-width: 768px) {
     justify-items: center;
