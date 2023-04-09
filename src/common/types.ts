@@ -42,6 +42,15 @@ export interface ButtonProps {
   text: string;
   type?: string;
   onClick?: MouseEventHandler<HTMLAnchorElement>;
+  background?: string;
+  color?: string;
+  border?: string;
+}
+
+export interface ButtonStylesProps {
+  background?: string;
+  color?: string;
+  border?: string;
 }
 
 export interface DetailsProps {

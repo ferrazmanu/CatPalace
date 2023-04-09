@@ -60,6 +60,9 @@ const cartSlice = createSlice({
         state.isCartOpen = false;
       }
     },
+    closeCart: (state) => {
+      state.isCartOpen = false;
+    },
   },
 });
 
@@ -67,10 +70,15 @@ export const cartReducer = cartSlice.reducer;
 
 export const cartItems = (state: RootState) => state.cart.cartItems;
 
+export const totalCartQuantity = createSelector(cartItems, (items) =>
+  items.reduce((total, item) => total + item.product.qty, 0)
+);
+
 export const {
   addToCart,
   incrementQuantity,
   decrementQuantity,
   removeFromCart,
   handleCartShow,
+  closeCart,
 } = cartSlice.actions;

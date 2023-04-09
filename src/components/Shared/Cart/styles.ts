@@ -20,6 +20,7 @@ export const Cart = styled.div<StylesProps>`
   ${(props) =>
     props.open ? "transform: translateX(0%)" : "transform: translateX(100%)"};
   gap: 20px;
+  z-index: 10;
 
   .close-cart {
     display: flex;
@@ -36,6 +37,12 @@ export const CartItemsContainer = styled.div`
   gap: 20px;
   height: 100%;
   justify-content: space-between;
+
+  .bottom-cart {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 `;
 
 export const Items = styled.div`
@@ -54,7 +61,8 @@ export const Total = styled.div`
   font-weight: 500;
   font-size: ${({ theme }) => theme.fontSizes.medium_24};
   border-top: 0.5px solid ${({ theme }) => theme.colors.secondary};
-  padding-top: 5px;
+  border-bottom: 0.5px solid ${({ theme }) => theme.colors.secondary};
+  padding: 10px 0;
   display: flex;
   justify-content: space-between;
   gap: 10px;

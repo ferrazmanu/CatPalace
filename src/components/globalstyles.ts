@@ -39,6 +39,11 @@ const GlobalStyle = createGlobalStyle`
   main{
     min-height: 65vh;
     padding: 30px 0;
+    margin-top: 120px;
+
+    @media only screen and (max-width: 992px) {
+      margin-top: 80px;
+    }
   }
 
   .swiper{

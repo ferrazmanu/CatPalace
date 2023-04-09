@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/redux/store";
 import { formatCurrency } from "utils/format";
 import { handleCartShow } from "@/redux/cart.slice";
+import { Button } from "@/components/Elements/Button";
 
 export function Cart({ open }) {
   const dispatch = useDispatch();
@@ -52,10 +53,18 @@ export function Cart({ open }) {
                 );
               })}
             </S.Items>
-            <S.Total>
-              Total:
-              <div>R$ {formatCurrency(getTotalPrice())}</div>
-            </S.Total>
+            <div className="bottom-cart">
+              <S.Total>
+                Total:
+                <div>R$ {formatCurrency(getTotalPrice())}</div>
+              </S.Total>
+              <Button
+                text={"Finalizar pedido"}
+                background="#936287"
+                color="#fff"
+                border="none"
+              />
+            </div>
           </S.CartItemsContainer>
         )}
       </S.Cart>

@@ -125,12 +125,9 @@ export const SwiperContainer = styled.div`
 
     .mySwiper2 {
       .swiper-slide {
-        height: 300px;
+        min-height: 300px;
+        max-height: 40vh;
       }
-    }
-
-    .swiper-thumbs {
-      height: 60px;
     }
   }
 `;

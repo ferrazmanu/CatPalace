@@ -20,6 +20,7 @@ import { ProductCard } from "@/components/Elements/ProductCard";
 import { Quantity } from "@/components/Elements/Quantity";
 import {
   decrementQuantity,
+  handleCartShow,
   incrementQuantity,
   removeFromCart,
 } from "@/redux/cart.slice";
@@ -35,7 +36,6 @@ import { addToCart } from "@/redux/cart.slice";
 
 export default function Product({ product, otherProducts }) {
   const dispatch = useDispatch();
-
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   const breadcrumb = [
@@ -43,6 +43,19 @@ export default function Product({ product, otherProducts }) {
     { url: "/produtos", text: "Produtos" },
     { url: `${product[0].slug}`, text: `${product[0].name}` },
   ];
+
+  const cartProduct = {
+    id: product[0].id,
+    slug: product[0].slug,
+    image: product[0].images[0].url,
+    name: product[0].name,
+    price: product[0].price,
+  };
+
+  const addProduct = () => {
+    dispatch(addToCart(cartProduct));
+    dispatch(handleCartShow());
+  };
 
   return (
     <>
@@ -67,7 +80,7 @@ export default function Product({ product, otherProducts }) {
                   <div className="current-price">R$ {product[0].price}</div>
                 </div>
 
-                <Link href={""} className="to-details">
+                <Link href="#detalhes" className="to-details">
                   Ir para detalhes do produto
                 </Link>
               </S.Mobile>
@@ -132,17 +145,24 @@ export default function Product({ product, otherProducts }) {
                   Ir para detalhes do produto
                 </Link>
 
-                <Quantity
-                  incrementQuantity={() => dispatch(incrementQuantity(product))}
-                  decrementQuantity={() => dispatch(decrementQuantity(product))}
-                  qty={1}
-                />
+                {/* aqui lembrar que precisa ter variação de cor e quantidade, ai sim pega os dados e 
+                manda pro carrinho */}
+
+                {/* <Quantity
+                  incrementQuantity={() =>
+                    dispatch(incrementQuantity(cartProduct))
+                  }
+                  decrementQuantity={() =>
+                    dispatch(decrementQuantity(cartProduct))
+                  }
+                  qty={qty}
+                /> */}
 
                 <div className="buy-buttons">
                   <Button text={"comprar"} type="button" />
                   <Button
                     text={"adicionar ao carrinho"}
-                    onClick={() => dispatch(addToCart(product))}
+                    onClick={() => addProduct()}
                     type="button"
                   />
                 </div>

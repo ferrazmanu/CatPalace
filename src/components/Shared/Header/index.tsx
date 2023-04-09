@@ -10,12 +10,17 @@ import { menuLinks } from "../menuLinks";
 import { Cart } from "../Cart";
 
 import { useDispatch, useSelector } from "react-redux";
-import { handleCartShow } from "@/redux/cart.slice";
+import {
+  handleCartShow,
+  closeCart,
+  totalCartQuantity,
+} from "@/redux/cart.slice";
 import { RootState } from "@/redux/store";
 
 export function Header() {
   const dispatch = useDispatch();
   const cart = useSelector((state: RootState) => state.cart);
+  const quantity = useSelector(totalCartQuantity);
 
   const [openMenu, setOpenMenu] = useState(false);
 
@@ -25,6 +30,11 @@ export function Header() {
     } else {
       setOpenMenu(false);
     }
+  };
+
+  const handleClose = () => {
+    setOpenMenu(false);
+    dispatch(closeCart());
   };
 
   return (
@@ -41,6 +51,10 @@ export function Header() {
               />
             </Link>
 
+            <S.Overlay
+              open={openMenu || cart.isCartOpen}
+              onClick={handleClose}
+            ></S.Overlay>
             <S.MenuList open={openMenu}>
               <button type="button" className="close" onClick={handleOpenMenu}>
                 <CloseIcon />
@@ -58,21 +72,30 @@ export function Header() {
                 <Link href="#" onClick={() => dispatch(handleCartShow())}>
                   <CartIcon color="#936287" />
                 </Link>
-                <span className="cart-qty">{cart.cartItems.length}</span>
+                <span className="cart-qty">{quantity}</span>
               </li>
             </S.MenuList>
 
             <Cart open={cart.isCartOpen} />
 
-            <button
-              type="button"
-              className="hamburguer-menu"
-              onClick={handleOpenMenu}
-            >
-              <div></div>
-              <div></div>
-              <div></div>
-            </button>
+            <div className="mobile-display">
+              <div className="cart" onClick={() => dispatch(handleCartShow())}>
+                <Link href="#">
+                  <CartIcon color="#936287" />
+                </Link>
+                <span className="cart-qty">{quantity}</span>
+              </div>
+
+              <button
+                type="button"
+                className="hamburguer-menu"
+                onClick={handleOpenMenu}
+              >
+                <div></div>
+                <div></div>
+                <div></div>
+              </button>
+            </div>
           </S.MenuContainer>
         </Container>
       </S.Header>

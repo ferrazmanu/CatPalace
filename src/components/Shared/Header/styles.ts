@@ -8,8 +8,13 @@ export const Header = styled.header`
   font-family: Berkshire;
   padding: 15px 0;
   box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.1);
-  position: relative;
+  position: fixed;
   z-index: 5;
+  top: 0;
+
+  @media only screen and (max-width: 992px) {
+    padding: 5px 0;
+  }
 `;
 
 export const MenuContainer = styled.div`
@@ -63,6 +68,41 @@ export const MenuContainer = styled.div`
   .close {
     align-self: flex-end;
   }
+
+  .cart {
+    position: relative;
+    cursor: pointer;
+
+    .cart-qty {
+      position: absolute;
+      display: flex;
+      right: -5px;
+      top: 2px;
+      font-size: 13px;
+      background-color: #fff;
+      border: 1px solid #926386;
+      border-radius: 50%;
+      width: 15px;
+      height: 15px;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      aspect-ratio: 1;
+    }
+  }
+
+  .mobile-display {
+    max-width: 90px;
+    width: 100%;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+    @media only screen and (max-width: 992px) {
+      display: flex;
+    }
+  }
 `;
 
 export const MenuList = styled.div<StylesProps>`
@@ -74,6 +114,7 @@ export const MenuList = styled.div<StylesProps>`
   gap: ${({ theme }) => theme.spacing._30};
   font-size: ${({ theme }) => theme.fontSizes.medium_30};
   text-transform: lowercase;
+  z-index: 10;
 
   li {
     display: flex;
@@ -86,27 +127,6 @@ export const MenuList = styled.div<StylesProps>`
       height: 5px;
       background-color: ${({ theme }) => theme.colors.secondary};
       border-radius: 50%;
-    }
-  }
-
-  li.cart {
-    position: relative;
-
-    .cart-qty {
-      position: absolute;
-      display: flex;
-      right: -5px;
-      top: 2px;
-      font-size: 14px;
-      background-color: #fff;
-      border: 1px solid #926386;
-      border-radius: 50%;
-      width: 15px;
-      height: 15px;
-      align-items: center;
-      justify-content: center;
-      line-height: 1;
-      aspect-ratio: 1;
     }
   }
 
@@ -133,5 +153,19 @@ export const MenuList = styled.div<StylesProps>`
         display: none;
       }
     }
+
+    .cart {
+      display: none;
+    }
   }
+`;
+
+export const Overlay = styled.div<StylesProps>`
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  background-color: rgba(0, 0, 0, 0.5);
+  ${(props) => (props.open ? "display: block;" : "display: none;")}
 `;
