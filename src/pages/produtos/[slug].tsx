@@ -174,16 +174,18 @@ export default function Product({ product, otherProducts }) {
                 summary={"Detalhes"}
                 children={<p>{product[0].description}</p>}
               />
-              <Details
-                summary={"Especificações"}
-                children={
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: product[0].specifications.html,
-                    }}
-                  />
-                }
-              />
+              {product[0].specifications && (
+                <Details
+                  summary={"Especificações"}
+                  children={
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: product[0].specifications.html,
+                      }}
+                    />
+                  }
+                />
+              )}
             </S.ProductDetails>
           </S.Product>
 
