@@ -5,7 +5,7 @@ import * as S from "./styles";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/redux/store";
 import { formatCurrency } from "utils/format";
-import { handleCartShow } from "@/redux/cart.slice";
+import { handleCartShow, clearCart } from "@/redux/cart.slice";
 import { Button } from "@/components/Elements/Button";
 
 export function Cart({ open }) {
@@ -21,7 +21,33 @@ export function Cart({ open }) {
   };
 
   const sendOrder = () => {
-    console.log(cart.cartItems);
+    const number = "+5543991940137";
+    const message = cart.cartItems;
+
+    let formattedMessage = `
+      Olá, *CatPalace*! Gostaria de realizar o pedido dos seguintes itens da loja:
+
+      ${message
+        .map(
+          (item) =>
+            `${item.qty}x ${item.name} - R$${formatCurrency(
+              item.price * item.qty
+            )}`
+        )
+        .join("\n")}
+        
+      *Valor total do pedido*: R$${formatCurrency(getTotalPrice())}
+    `
+      .replace(/^\s+/gm, "")
+      .replace(/\n/g, "\n \n");
+
+    let url = `https://web.whatsapp.com/send?phone=${number}`;
+    url += `&text=${encodeURI(formattedMessage)}&app_absent=0`;
+
+    window.open(url);
+
+    dispatch(clearCart());
+    formattedMessage = "";
   };
 
   return (

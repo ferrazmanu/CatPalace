@@ -52,6 +52,9 @@ const cartSlice = createSlice({
       );
       state.cartItems.splice(index, 1);
     },
+    clearCart: (state) => {
+      state.cartItems = [];
+    },
     handleCartShow: (state) => {
       if (state.isCartOpen === false) {
         state.isCartOpen = true;
@@ -78,6 +81,7 @@ export const {
   incrementQuantity,
   decrementQuantity,
   removeFromCart,
+  clearCart,
   handleCartShow,
   closeCart,
 } = cartSlice.actions;

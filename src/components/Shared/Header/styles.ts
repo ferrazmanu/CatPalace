@@ -82,13 +82,14 @@ export const MenuContainer = styled.div`
       top: 2px;
       font-size: 13px;
       background-color: #fff;
-      border: 1px solid #926386;
+      border: 1px solid ${({ theme }) => theme.colors.secondary};
       border-radius: 50%;
       width: 15px;
       height: 15px;
       align-items: center;
       justify-content: center;
       line-height: 1;
+      color: ${({ theme }) => theme.colors.secondary};
       aspect-ratio: 1;
     }
   }

@@ -8,6 +8,7 @@ import { Product } from "@/common/types";
 
 import { useDispatch } from "react-redux";
 import { addToCart, handleCartShow } from "@/redux/cart.slice";
+import { formatCurrency } from "utils/format";
 
 export function ProductCard({ id, slug, image, name, price }: Product) {
   const dispatch = useDispatch();
@@ -36,7 +37,7 @@ export function ProductCard({ id, slug, image, name, price }: Product) {
         </Link>
         <S.Price>
           <PriceTagIcon width="28px" height="28px" color="#000" />
-          <span>R$ {price}</span>
+          <span>R$ {formatCurrency(price)}</span>
         </S.Price>
       </S.Content>
 

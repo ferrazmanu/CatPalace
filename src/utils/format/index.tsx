@@ -6,7 +6,6 @@ export const formatToPTBR = (date) => {
 };
 
 export const formatCurrency = (price) => {
-  const realBRLocale = Intl.NumberFormat("pt-BR");
-
-  return realBRLocale.format(price);
+  const formattedNumber = price.toFixed(2).replace(".", ",");
+  return formattedNumber;
 };
