@@ -15,10 +15,13 @@ export function Cart({ open }) {
 
   const getTotalPrice = () => {
     return cart.cartItems.reduce(
-      (accumulator, item) =>
-        accumulator + item.product.qty * item.product.price,
+      (accumulator, item) => accumulator + item.qty * item.price,
       0
     );
+  };
+
+  const sendOrder = () => {
+    console.log(cart.cartItems);
   };
 
   return (
@@ -42,13 +45,13 @@ export function Cart({ open }) {
               {cart.cartItems.map((item) => {
                 return (
                   <CartItem
-                    key={item.product.id}
-                    id={item.product.id}
-                    image={item.product.image}
-                    slug={item.product.slug}
-                    name={item.product.name}
-                    price={item.product.price}
-                    qty={item.product.qty}
+                    key={item.id}
+                    id={item.id}
+                    image={item.image}
+                    slug={item.slug}
+                    name={item.name}
+                    price={item.price}
+                    qty={item.qty}
                   />
                 );
               })}
@@ -63,6 +66,7 @@ export function Cart({ open }) {
                 background="#936287"
                 color="#fff"
                 border="none"
+                onClick={() => sendOrder()}
               />
             </div>
           </S.CartItemsContainer>

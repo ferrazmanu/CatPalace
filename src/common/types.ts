@@ -13,10 +13,6 @@ export interface Product {
   qty?: number;
 }
 
-export interface CartItem {
-  product: Product;
-}
-
 export interface Images {
   url: string;
 }

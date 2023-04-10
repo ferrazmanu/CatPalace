@@ -1,11 +1,11 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { CartItem, Product } from "@/common/types";
+import { Product } from "@/common/types";
 import { RootState } from "./store";
 import { useSelector } from "react-redux";
 
 export interface CartState {
-  cartItems: CartItem[];
+  cartItems: Product[];
   isCartOpen: boolean;
 }
 
@@ -20,36 +20,36 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action: PayloadAction<Product>) => {
       const itemExists = state.cartItems.find(
-        (item) => item.product.id === action.payload.id
+        (item) => item.id === action.payload.id
       );
       if (itemExists) {
-        itemExists.product.qty++;
+        itemExists.qty++;
       } else {
-        state.cartItems.push({ product: { ...action.payload, qty: 1 } });
+        state.cartItems.push({ ...action.payload, qty: 1 });
       }
     },
     incrementQuantity: (state, action: PayloadAction<Product>) => {
       const item = state.cartItems.find(
-        (item) => item.product.id === action.payload.id
+        (item) => item.id === action.payload.id
       );
-      item.product.qty++;
+      item.qty++;
     },
     decrementQuantity: (state, action: PayloadAction<Product>) => {
       const item = state.cartItems.find(
-        (item) => item.product.id === action.payload.id
+        (item) => item.id === action.payload.id
       );
-      if (item.product.qty === 1) {
+      if (item.qty === 1) {
         const index = state.cartItems.findIndex(
-          (item) => item.product.id === action.payload.id
+          (item) => item.id === action.payload.id
         );
         state.cartItems.splice(index, 1);
       } else {
-        item.product.qty--;
+        item.qty--;
       }
     },
     removeFromCart: (state, action: PayloadAction<Product>) => {
       const index = state.cartItems.findIndex(
-        (item) => item.product.id === action.payload.id
+        (item) => item.id === action.payload.id
       );
       state.cartItems.splice(index, 1);
     },
@@ -71,7 +71,7 @@ export const cartReducer = cartSlice.reducer;
 export const cartItems = (state: RootState) => state.cart.cartItems;
 
 export const totalCartQuantity = createSelector(cartItems, (items) =>
-  items.reduce((total, item) => total + item.product.qty, 0)
+  items.reduce((total, item) => total + item.qty, 0)
 );
 
 export const {
