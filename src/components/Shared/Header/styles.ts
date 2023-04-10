@@ -71,6 +71,8 @@ export const MenuContainer = styled.div`
 
   .cart {
     position: relative;
+    background-color: transparent;
+    border: none;
     cursor: pointer;
 
     .cart-qty {
@@ -121,7 +123,7 @@ export const MenuList = styled.div<StylesProps>`
     gap: ${({ theme }) => theme.spacing._30};
     align-items: center;
 
-    &:not(:last-child)::after {
+    &::after {
       content: "";
       width: 5px;
       height: 5px;
@@ -149,7 +151,7 @@ export const MenuList = styled.div<StylesProps>`
         : "transform: translateX(100%);"}
 
     li {
-      &:not(:last-child)::after {
+      &::after {
         display: none;
       }
     }

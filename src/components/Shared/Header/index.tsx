@@ -68,23 +68,27 @@ export function Header() {
                   </li>
                 );
               })}
-              <li className="cart">
-                <Link href="#" onClick={() => dispatch(handleCartShow())}>
-                  <CartIcon color="#936287" />
-                </Link>
+              <button
+                className="cart"
+                type="button"
+                onClick={() => dispatch(handleCartShow())}
+              >
+                <CartIcon color="#936287" />
                 <span className="cart-qty">{quantity}</span>
-              </li>
+              </button>
             </S.MenuList>
 
             <Cart open={cart.isCartOpen} />
 
             <div className="mobile-display">
-              <div className="cart" onClick={() => dispatch(handleCartShow())}>
-                <Link href="#">
-                  <CartIcon color="#936287" />
-                </Link>
+              <button
+                className="cart"
+                type="button"
+                onClick={() => dispatch(handleCartShow())}
+              >
+                <CartIcon color="#936287" />
                 <span className="cart-qty">{quantity}</span>
-              </div>
+              </button>
 
               <button
                 type="button"
