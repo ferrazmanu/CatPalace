@@ -2,7 +2,6 @@ import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { Product } from "@/common/types";
 import { RootState } from "./store";
-import { useSelector } from "react-redux";
 
 export interface CartState {
   cartItems: Product[];

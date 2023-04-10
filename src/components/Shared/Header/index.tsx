@@ -62,9 +62,7 @@ export function Header() {
               {menuLinks.map((links) => {
                 return (
                   <li key={links.id}>
-                    <Link href={links.slug} onClick={handleOpenMenu}>
-                      {links.title}
-                    </Link>
+                    <Link href={links.slug}>{links.title}</Link>
                   </li>
                 );
               })}
