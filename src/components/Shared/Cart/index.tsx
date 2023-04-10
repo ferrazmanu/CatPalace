@@ -41,8 +41,8 @@ export function Cart({ open }) {
       .replace(/^\s+/gm, "")
       .replace(/\n/g, "\n \n");
 
-    let url = `https://web.whatsapp.com/send?phone=${number}`;
-    url += `&text=${encodeURI(formattedMessage)}&app_absent=0`;
+    let url = `https://api.whatsapp.com/send?phone=${number}`;
+    url += `&text=${encodeURI(formattedMessage)}`;
 
     window.open(url);
 
