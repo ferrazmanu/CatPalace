@@ -20,8 +20,12 @@ import { Navigation } from "swiper";
 import * as S from "styles/postStyles";
 import "swiper/css";
 import "swiper/css/navigation";
+import { Loading } from "@/components/Elements/Loading";
+import { useRouter } from "next/router";
 
 export default function Post({ post, otherPosts }) {
+  const router = useRouter();
+
   const breadcrumb = [
     { url: "/", text: "Início" },
     { url: "/blog", text: "Blog" },
@@ -52,77 +56,83 @@ export default function Post({ post, otherPosts }) {
         }}
       />
       <main>
-        <Container>
-          <Breadcrumb breadcrumb={breadcrumb} />
+        {router.isFallback ? (
+          <Container>
+            <Loading />
+          </Container>
+        ) : (
+          <Container>
+            <Breadcrumb breadcrumb={breadcrumb} />
 
-          {post && (
-            <S.PostContainer>
-              <S.Post>
-                <S.ImageContainer>
-                  <Image src={post.coverImage.url} fill alt={post.title} />
-                </S.ImageContainer>
-                <S.Title>
-                  <div className="title">
-                    <h2>{post.title}</h2>
-                  </div>
-                  <div className="author">Por: {post.author.name}</div>
-                </S.Title>
+            {post && (
+              <S.PostContainer>
+                <S.Post>
+                  <S.ImageContainer>
+                    <Image src={post.coverImage.url} fill alt={post.title} />
+                  </S.ImageContainer>
+                  <S.Title>
+                    <div className="title">
+                      <h2>{post.title}</h2>
+                    </div>
+                    <div className="author">Por: {post.author.name}</div>
+                  </S.Title>
 
-                <S.Text
-                  dangerouslySetInnerHTML={{
-                    __html: post.content.html,
-                  }}
-                />
+                  <S.Text
+                    dangerouslySetInnerHTML={{
+                      __html: post.content.html,
+                    }}
+                  />
 
-                <S.Date>Publicado em: {formatToPTBR(post.date)}</S.Date>
-              </S.Post>
-            </S.PostContainer>
-          )}
+                  <S.Date>Publicado em: {formatToPTBR(post.date)}</S.Date>
+                </S.Post>
+              </S.PostContainer>
+            )}
 
-          <SectionContainer
-            sectionTitle={"Outros Posts"}
-            className="outros"
-            children={
-              <>
-                <ResponsiveSwiperContainer>
-                  <GridContainer responsive={false}>
-                    {otherPosts.map((post) => {
-                      return (
-                        <BlogPostCard
-                          key={post.id}
-                          slug={post.slug}
-                          coverImage={post.coverImage.url}
-                          title={post.title}
-                          exerpt={post.exerpt}
-                        />
-                      );
-                    })}
-                  </GridContainer>
-                  <Swiper
-                    spaceBetween={15}
-                    slidesPerView={1}
-                    navigation={true}
-                    modules={[Navigation]}
-                    loop={true}
-                  >
-                    {otherPosts.map((post) => {
-                      return (
-                        <SwiperSlide key={post.id}>
+            <SectionContainer
+              sectionTitle={"Outros Posts"}
+              className="outros"
+              children={
+                <>
+                  <ResponsiveSwiperContainer>
+                    <GridContainer responsive={false}>
+                      {otherPosts.map((post) => {
+                        return (
                           <BlogPostCard
+                            key={post.id}
                             slug={post.slug}
                             coverImage={post.coverImage.url}
                             title={post.title}
                             exerpt={post.exerpt}
                           />
-                        </SwiperSlide>
-                      );
-                    })}
-                  </Swiper>
-                </ResponsiveSwiperContainer>
-              </>
-            }
-          />
-        </Container>
+                        );
+                      })}
+                    </GridContainer>
+                    <Swiper
+                      spaceBetween={15}
+                      slidesPerView={1}
+                      navigation={true}
+                      modules={[Navigation]}
+                      loop={true}
+                    >
+                      {otherPosts.map((post) => {
+                        return (
+                          <SwiperSlide key={post.id}>
+                            <BlogPostCard
+                              slug={post.slug}
+                              coverImage={post.coverImage.url}
+                              title={post.title}
+                              exerpt={post.exerpt}
+                            />
+                          </SwiperSlide>
+                        );
+                      })}
+                    </Swiper>
+                  </ResponsiveSwiperContainer>
+                </>
+              }
+            />
+          </Container>
+        )}
       </main>
     </>
   );
@@ -139,7 +149,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: paths,
-    fallback: false,
+    fallback: true,
   };
 };
 

@@ -41,7 +41,7 @@ export default function Home({ posts, products, banners, promotions }) {
 
       <main>
         <Container>
-          <Promotions promotions={promotions} />
+          {promotions.length !== 0 && <Promotions promotions={promotions} />}
           <ProductsSection products={products} />
           <BlogPostsSection posts={posts} />
         </Container>

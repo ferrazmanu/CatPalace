@@ -156,7 +156,7 @@ export async function GetHomeBanners() {
 export async function GetHomePromotions() {
   const GET_HOME_PROMOTIONS = gql`
     {
-      promotions {
+      promotions(stage: PUBLISHED) {
         id
         link
         title

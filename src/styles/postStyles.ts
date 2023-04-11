@@ -40,7 +40,6 @@ export const Title = styled.div`
   .title {
     h2 {
       font-size: ${({ theme }) => theme.fontSizes.big_48};
-      font-weight: 400;
     }
   }
 

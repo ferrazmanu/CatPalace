@@ -13,10 +13,12 @@ import * as S from "@/styles/productsStyles";
 import { Details } from "@/components/Elements/Details";
 import Link from "next/link";
 import { CloseIcon, FilterIcon } from "@/components/Icons";
+import { Loading } from "@/components/Elements/Loading";
 
 export default function Products({ products, categories }) {
   const [productsArray, setProductsArray] = useState(products);
   const [openFilter, setOpenFilter] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const breadcrumb = [
     { url: "/", text: "Início" },
@@ -25,6 +27,7 @@ export default function Products({ products, categories }) {
 
   const handleCategoryChange = (subcategoryName, e) => {
     e.preventDefault();
+    setLoading(true);
     handleOpenFilter();
 
     if (subcategoryName === "todos") {
@@ -36,6 +39,8 @@ export default function Products({ products, categories }) {
         )
       );
     }
+
+    setLoading(false);
   };
 
   const handleOpenFilter = () => {
@@ -129,27 +134,31 @@ export default function Products({ products, categories }) {
               </S.Categories>
             </S.CategoriesContainer>
 
-            <GridContainer responsive={true}>
-              {productsArray && productsArray.length > 0 ? (
-                productsArray.map((product) => {
-                  return (
-                    <ProductCard
-                      key={product.id}
-                      id={product.id}
-                      slug={product.slug}
-                      image={product.images[0].url}
-                      name={product.name}
-                      price={product.price}
-                      qty={product.qty}
-                    />
-                  );
-                })
-              ) : (
-                <S.MessageContainer>
-                  Por enquanto, não há produtos nesta categoria :(
-                </S.MessageContainer>
-              )}
-            </GridContainer>
+            {loading ? (
+              <Loading />
+            ) : (
+              <GridContainer responsive={true}>
+                {productsArray && productsArray.length > 0 ? (
+                  productsArray.map((product) => {
+                    return (
+                      <ProductCard
+                        key={product.id}
+                        id={product.id}
+                        slug={product.slug}
+                        image={product.images[0].url}
+                        name={product.name}
+                        price={product.price}
+                        qty={product.qty}
+                      />
+                    );
+                  })
+                ) : (
+                  <S.MessageContainer>
+                    Por enquanto, não há produtos nesta categoria :(
+                  </S.MessageContainer>
+                )}
+              </GridContainer>
+            )}
           </S.ContentHolder>
         </Container>
       </main>
