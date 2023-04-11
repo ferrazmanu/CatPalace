@@ -10,7 +10,7 @@ export default function Sobre({ employees, text }) {
   return (
     <>
       <Head>
-        <title>CatPalace</title>
+        <title>Sobre | CatPalace</title>
         <meta name="description" content="Aqui, seu pet é realeza!" />
         <link rel="icon" href="/assets/static/favicon.ico" />
       </Head>

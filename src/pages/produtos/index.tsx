@@ -49,7 +49,7 @@ export default function Products({ products, categories }) {
   return (
     <>
       <Head>
-        <title>CatPalace</title>
+        <title>Produtos | CatPalace</title>
         <meta name="description" content="Aqui, seu pet é realeza!" />
         <link rel="icon" href="/assets/static/favicon.ico" />
       </Head>

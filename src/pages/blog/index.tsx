@@ -21,7 +21,7 @@ export default function Blog({ posts }) {
   return (
     <>
       <Head>
-        <title>CatPalace</title>
+        <title>Blog | CatPalace</title>
         <meta name="description" content="Aqui, seu pet é realeza!" />
         <link rel="icon" href="/assets/static/favicon.ico" />
       </Head>

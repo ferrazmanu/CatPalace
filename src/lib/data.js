@@ -20,7 +20,7 @@ export async function GetProductsBySlug() {
 export async function GetProducts(slug) {
   const GET_PRODUCTS = gql`
     query GetProducts($slug: String!) {
-      products(where: { slug: $slug }) {
+      product(where: { slug: $slug }) {
         description
         slug
         name
@@ -32,12 +32,16 @@ export async function GetProducts(slug) {
         images {
           url
         }
+        seo {
+          title
+          description
+        }
       }
     }
   `;
   const variables = { slug };
   const data = await api_endpoint.request(GET_PRODUCTS, variables);
-  return data.products;
+  return data.product;
 }
 
 export async function GetPostsSlug() {
@@ -57,7 +61,7 @@ export async function GetPostsSlug() {
 export async function GetPosts(slug) {
   const GET_POSTS = gql`
     query GetPosts($slug: String!) {
-      posts(where: { slug: $slug }) {
+      post(where: { slug: $slug }) {
         slug
         title
         id
@@ -73,12 +77,16 @@ export async function GetPosts(slug) {
         content {
           html
         }
+        seo {
+          title
+          description
+        }
       }
     }
   `;
   const variables = { slug };
   const data = await api_endpoint.request(GET_POSTS, variables);
-  return data.posts;
+  return data.post;
 }
 
 export async function GetAllPosts() {

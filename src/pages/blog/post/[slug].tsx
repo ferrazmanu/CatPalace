@@ -25,14 +25,14 @@ export default function Post({ post, otherPosts }) {
   const breadcrumb = [
     { url: "/", text: "Início" },
     { url: "/blog", text: "Blog" },
-    { url: `${post[0].slug}`, text: `${post[0].title}` },
+    { url: `${post.slug}`, text: `${post.title}` },
   ];
 
   return (
     <>
       <Head>
-        <title>CatPalace</title>
-        <meta name="description" content="Aqui, seu pet é realeza!" />
+        <title>{post.seo.title}</title>
+        <meta name="description" content={post.seo.description} />
         <link rel="icon" href="/assets/static/favicon.ico" />
       </Head>
       {/* Google tag (gtag.js) */}
@@ -59,26 +59,22 @@ export default function Post({ post, otherPosts }) {
             <S.PostContainer>
               <S.Post>
                 <S.ImageContainer>
-                  <Image
-                    src={post[0].coverImage.url}
-                    fill
-                    alt={post[0].title}
-                  />
+                  <Image src={post.coverImage.url} fill alt={post.title} />
                 </S.ImageContainer>
                 <S.Title>
                   <div className="title">
-                    <h2>{post[0].title}</h2>
+                    <h2>{post.title}</h2>
                   </div>
-                  <div className="author">Por: {post[0].author.name}</div>
+                  <div className="author">Por: {post.author.name}</div>
                 </S.Title>
 
                 <S.Text
                   dangerouslySetInnerHTML={{
-                    __html: post[0].content.html,
+                    __html: post.content.html,
                   }}
                 />
 
-                <S.Date>Publicado em: {formatToPTBR(post[0].date)}</S.Date>
+                <S.Date>Publicado em: {formatToPTBR(post.date)}</S.Date>
               </S.Post>
             </S.PostContainer>
           )}
@@ -148,6 +144,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  console.log(params);
+
   const post = await GetPosts(params.slug);
   const otherPosts = await GetOtherPosts(params.slug);
 

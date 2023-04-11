@@ -41,15 +41,15 @@ export default function Product({ product, otherProducts }) {
   const breadcrumb = [
     { url: "/", text: "Início" },
     { url: "/produtos", text: "Produtos" },
-    { url: `${product[0].slug}`, text: `${product[0].name}` },
+    { url: `${product.slug}`, text: `${product.name}` },
   ];
 
   const cartProduct = {
-    id: product[0].id,
-    slug: product[0].slug,
-    image: product[0].images[0].url,
-    name: product[0].name,
-    price: product[0].price,
+    id: product.id,
+    slug: product.slug,
+    image: product.images[0].url,
+    name: product.name,
+    price: product.price,
   };
 
   const addProduct = () => {
@@ -60,8 +60,8 @@ export default function Product({ product, otherProducts }) {
   return (
     <>
       <Head>
-        <title>CatPalace</title>
-        <meta name="description" content="Aqui, seu pet é realeza!" />
+        <title>{product.seo.title}</title>
+        <meta name="description" content={product.seo.decription} />
         <link rel="icon" href="/assets/static/favicon.ico" />
       </Head>
       {/* Google tag (gtag.js) */}
@@ -88,12 +88,12 @@ export default function Product({ product, otherProducts }) {
             <S.ProductSummary>
               <S.Mobile>
                 <div className="product-name">
-                  <h2>{product[0].name}</h2>
+                  <h2>{product.name}</h2>
                 </div>
 
                 <div className="price">
-                  <div className="previous-price">R$ {product[0].oldPrice}</div>
-                  <div className="current-price">R$ {product[0].price}</div>
+                  <div className="previous-price">R$ {product.oldPrice}</div>
+                  <div className="current-price">R$ {product.price}</div>
                 </div>
 
                 <Link href="#detalhes" className="to-details">
@@ -117,10 +117,10 @@ export default function Product({ product, otherProducts }) {
                       modules={[FreeMode, Navigation, Thumbs]}
                       className="mySwiper2"
                     >
-                      {product[0].images.map((image) => {
+                      {product.images.map((image) => {
                         return (
                           <SwiperSlide key={image.url}>
-                            <Image src={image.url} alt={product[0].name} fill />
+                            <Image src={image.url} alt={product.name} fill />
                           </SwiperSlide>
                         );
                       })}
@@ -135,10 +135,10 @@ export default function Product({ product, otherProducts }) {
                       modules={[FreeMode, Navigation, Thumbs]}
                       className="mySwiper"
                     >
-                      {product[0].images.map((image) => {
+                      {product.images.map((image) => {
                         return (
                           <SwiperSlide key={image.url}>
-                            <Image src={image.url} alt={product[0].name} fill />
+                            <Image src={image.url} alt={product.name} fill />
                           </SwiperSlide>
                         );
                       })}
@@ -149,12 +149,12 @@ export default function Product({ product, otherProducts }) {
 
               <S.ProductDescription>
                 <div className="product-name">
-                  <h2>{product[0].name}</h2>
+                  <h2>{product.name}</h2>
                 </div>
 
                 <div className="price">
-                  <div className="previous-price">R$ {product[0].oldPrice}</div>
-                  <div className="current-price">R$ {product[0].price}</div>
+                  <div className="previous-price">R$ {product.oldPrice}</div>
+                  <div className="current-price">R$ {product.price}</div>
                 </div>
 
                 <Link href="#detalhes" className="to-details">
@@ -188,15 +188,15 @@ export default function Product({ product, otherProducts }) {
             <S.ProductDetails id="detalhes">
               <Details
                 summary={"Detalhes"}
-                children={<p>{product[0].description}</p>}
+                children={<p>{product.description}</p>}
               />
-              {product[0].specifications && (
+              {product.specifications && (
                 <Details
                   summary={"Especificações"}
                   children={
                     <div
                       dangerouslySetInnerHTML={{
-                        __html: product[0].specifications.html,
+                        __html: product.specifications.html,
                       }}
                     />
                   }

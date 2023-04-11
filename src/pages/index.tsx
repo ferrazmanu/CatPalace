@@ -17,8 +17,8 @@ export default function Home({ posts, products, banners, promotions }) {
   return (
     <>
       <Head>
-        <title>CatPalace</title>
-        <meta name="description" content="Aqui, seu pet é realeza!" />
+        <title>CatPalace | Aqui, seu gato é realeza</title>
+        <meta name="description" content="Aqui, seu gato é realeza!" />
         <link rel="icon" href="/assets/static/favicon.ico" />
       </Head>
       {/* Google tag (gtag.js) */}
