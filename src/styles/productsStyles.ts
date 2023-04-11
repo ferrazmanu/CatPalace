@@ -28,6 +28,21 @@ export const Categories = styled.div<CategoriesProps>`
   flex-direction: column;
   gap: 20px;
 
+  .todos {
+    font-size: ${({ theme }) => theme.fontSizes.medium_30};
+    font-family: ${({ theme }) => theme.fonts.primary_regular};
+    list-style: none;
+    padding-bottom: 10px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: relative;
+  }
+
   @media only screen and (max-width: 1024px) {
     position: fixed;
     right: 0;
@@ -43,7 +58,8 @@ export const Categories = styled.div<CategoriesProps>`
     transition: 0.3s ease-in-out;
     z-index: 10;
     ${(props) =>
-      props.open ? "transform: translateX(0%)" : "transform: translateX(100%)"}
+      props.open ? "transform: translateX(0%)" : "transform: translateX(100%)"};
+    overflow: auto;
   }
 
   .close {

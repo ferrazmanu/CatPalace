@@ -27,9 +27,15 @@ export default function Products({ products, categories }) {
     e.preventDefault();
     handleOpenFilter();
 
-    setProductsArray(
-      products.filter((produto) => produto.subcategory.name === subcategoryName)
-    );
+    if (subcategoryName === "todos") {
+      setProductsArray(products);
+    } else {
+      setProductsArray(
+        products.filter(
+          (produto) => produto.subcategory.name === subcategoryName
+        )
+      );
+    }
   };
 
   const handleOpenFilter = () => {
@@ -69,6 +75,15 @@ export default function Products({ products, categories }) {
                 >
                   <CloseIcon color="#000" />
                 </button>
+
+                <div className="todos">
+                  <Link
+                    href="#"
+                    onClick={(e) => handleCategoryChange("todos", e)}
+                  >
+                    Todos
+                  </Link>
+                </div>
                 {categories.map((category) => {
                   return (
                     <Details
