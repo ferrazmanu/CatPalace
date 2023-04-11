@@ -10,22 +10,6 @@ import store from "../redux/store";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
-      {/* Google tag (gtag.js) */}
-      <script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-XYZ57V4X6P"
-      ></script>
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', 'G-XYZ57V4X6P');
-              `,
-        }}
-      />
       <Theme>
         <GlobalStyle />
         <Header />

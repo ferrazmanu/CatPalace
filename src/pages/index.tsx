@@ -21,6 +21,22 @@ export default function Home({ posts, products, banners, promotions }) {
         <meta name="description" content="Aqui, seu pet é realeza!" />
         <link rel="icon" href="/assets/static/favicon.ico" />
       </Head>
+      {/* Google tag (gtag.js) */}
+      <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-XYZ57V4X6P"
+      ></script>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-XYZ57V4X6P');
+              `,
+        }}
+      />
       <Banner banners={banners} />
 
       <main>
