@@ -53,6 +53,7 @@ export const MenuContainer = styled.div`
 
       li {
         text-transform: lowercase;
+        position: relative;
 
         a {
           display: flex;
@@ -75,6 +76,24 @@ export const MenuContainer = styled.div`
           text-transform: uppercase;
           margin-bottom: 8px;
           font-family: ${({ theme }) => theme.fonts.primary_regular};
+        }
+
+        &::after {
+          position: absolute;
+          transition: 0.3s;
+          content: "";
+          width: 0;
+          left: 0;
+          bottom: 0;
+          height: 1px;
+          background: #000;
+        }
+
+        &:hover {
+          &:after {
+            width: 100%;
+            left: 0;
+          }
         }
       }
 

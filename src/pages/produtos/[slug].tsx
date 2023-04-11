@@ -277,16 +277,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
       params: { slug: product.slug },
     };
   });
-
   return {
     paths: paths,
-    fallback: true,
+    fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const product = await GetProducts(params.slug);
-  const otherProducts = await GetOtherProducts(params.slug);
+  const product = await (GetProducts(params.slug) || []);
+  const otherProducts = await (GetOtherProducts(params.slug) || []);
 
   return {
     props: { product, otherProducts },

@@ -45,6 +45,10 @@ const GlobalStyle = createGlobalStyle`
     margin:0;
   }
 
+  img{
+    transition: .3s ease-in-out;
+  }
+
   body{
     background-color: ${({ theme }) => theme.colors.tertiary};
     background-image: url('/assets/static/BG.png');

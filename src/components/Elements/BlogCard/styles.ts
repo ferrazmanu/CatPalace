@@ -12,6 +12,17 @@ export const Card = styled.div`
   .button {
     max-width: 265px;
   }
+
+  &:hover {
+    .post-name,
+    p {
+      text-decoration: underline;
+    }
+
+    img {
+      transform: scale(1.1);
+    }
+  }
 `;
 
 export const ImagePost = styled.a`
@@ -23,11 +34,11 @@ export const ImagePost = styled.a`
   padding: 5px;
   height: 230px;
   position: relative;
+  overflow: hidden;
 
   img {
     object-fit: cover;
     border-radius: 10px;
-    overflow: hidden;
   }
 
   @media only screen and (max-width: 768px) {

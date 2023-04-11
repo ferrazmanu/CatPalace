@@ -35,7 +35,7 @@ export function ProductCard({ id, slug, image, name, price }: Product) {
         <Link className="product-name" href={`/produtos/${slug}`}>
           {name}
         </Link>
-        <S.Price>
+        <S.Price className="price">
           <PriceTagIcon width="28px" height="28px" color="#000" />
           <span>R$ {formatCurrency(price)}</span>
         </S.Price>

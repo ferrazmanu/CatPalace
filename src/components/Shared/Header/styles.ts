@@ -74,6 +74,7 @@ export const MenuContainer = styled.div`
     background-color: transparent;
     border: none;
     cursor: pointer;
+    transition: ease-in-out 0.2s;
 
     .cart-qty {
       position: absolute;
@@ -91,6 +92,10 @@ export const MenuContainer = styled.div`
       line-height: 1;
       color: ${({ theme }) => theme.colors.secondary};
       aspect-ratio: 1;
+    }
+
+    &:hover {
+      transform: scale(1.1);
     }
   }
 
@@ -115,7 +120,7 @@ export const MenuList = styled.div<StylesProps>`
   justify-content: space-between;
   align-items: center;
   gap: ${({ theme }) => theme.spacing._30};
-  font-size: ${({ theme }) => theme.fontSizes.medium_30};
+  font-size: ${({ theme }) => theme.fontSizes.medium_24};
   text-transform: lowercase;
   z-index: 10;
 
@@ -123,6 +128,7 @@ export const MenuList = styled.div<StylesProps>`
     display: flex;
     gap: ${({ theme }) => theme.spacing._30};
     align-items: center;
+    transition: ease-in-out 0.2s;
 
     &::after {
       content: "";
@@ -130,6 +136,10 @@ export const MenuList = styled.div<StylesProps>`
       height: 5px;
       background-color: ${({ theme }) => theme.colors.secondary};
       border-radius: 50%;
+    }
+
+    &:hover {
+      transform: scale(1.1);
     }
   }
 

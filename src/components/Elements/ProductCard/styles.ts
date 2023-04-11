@@ -16,6 +16,16 @@ export const Card = styled.div`
   .button {
     max-width: 100% !important;
   }
+
+  &:hover {
+    .product-name {
+      text-decoration: underline;
+    }
+
+    img {
+      transform: scale(1.1);
+    }
+  }
 `;
 
 export const ImageProduct = styled.a`

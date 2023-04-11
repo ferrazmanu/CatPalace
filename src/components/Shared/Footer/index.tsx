@@ -9,16 +9,6 @@ import { socialLinks, contactLinks } from "./menuLinks";
 import { menuLinks } from "../menuLinks";
 
 export function Footer() {
-  const [openMenu, setOpenMenu] = useState(false);
-
-  const handleOpenMenu = () => {
-    if (openMenu === true) {
-      setOpenMenu(false);
-    } else {
-      setOpenMenu(true);
-    }
-  };
-
   return (
     <S.Footer>
       <Container>

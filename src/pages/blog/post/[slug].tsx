@@ -149,13 +149,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: paths,
-    fallback: true,
+    fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = await GetPosts(params.slug);
-  const otherPosts = await GetOtherPosts(params.slug);
+  const post = await (GetPosts(params.slug) || []);
+  const otherPosts = await (GetOtherPosts(params.slug) || []);
 
   return {
     props: { post, otherPosts },
