@@ -35,6 +35,7 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/cart.slice";
+import { formatCurrency } from "utils/format";
 
 export default function Product({ product, otherProducts }) {
   const dispatch = useDispatch();
@@ -59,6 +60,26 @@ export default function Product({ product, otherProducts }) {
   const addProduct = () => {
     dispatch(addToCart(cartProduct));
     dispatch(handleCartShow());
+  };
+
+  const sendOrder = () => {
+    const number = "+5543991940137";
+
+    let formattedMessage = `
+      Olá, *CatPalace*! Gostaria de realizar o pedido dos seguintes itens da loja:
+
+      ${`1x ${cartProduct.name} - R$${formatCurrency(cartProduct.price)}`}
+        
+      *Valor total do pedido*: R$${formatCurrency(product.price)}
+    `
+      .replace(/^\s+/gm, "")
+      .replace(/\n/g, "\n \n");
+
+    let url = `https://api.whatsapp.com/send?phone=${number}`;
+    url += `&text=${encodeURI(formattedMessage)}`;
+
+    window.open(url);
+    formattedMessage = "";
   };
 
   return (
@@ -171,20 +192,24 @@ export default function Product({ product, otherProducts }) {
                   </Link>
 
                   {/* aqui lembrar que precisa ter variação de cor e quantidade, ai sim pega os dados e 
-      manda pro carrinho */}
+                    manda pro carrinho */}
 
                   {/* <Quantity
-        incrementQuantity={() =>
-          dispatch(incrementQuantity(cartProduct))
-        }
-        decrementQuantity={() =>
-          dispatch(decrementQuantity(cartProduct))
-        }
-        qty={qty}
-      /> */}
+                      incrementQuantity={() =>
+                        dispatch(incrementQuantity(cartProduct))
+                      }
+                      decrementQuantity={() =>
+                        dispatch(decrementQuantity(cartProduct))
+                      }
+                      qty={qty}
+                    /> */}
 
                   <div className="buy-buttons">
-                    <Button text={"comprar"} type="button" />
+                    <Button
+                      text={"comprar"}
+                      type="button"
+                      onClick={() => sendOrder()}
+                    />
                     <Button
                       text={"adicionar ao carrinho"}
                       onClick={() => addProduct()}
