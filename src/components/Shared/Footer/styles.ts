@@ -86,7 +86,7 @@ export const MenuContainer = styled.div`
           font-family: ${({ theme }) => theme.fonts.primary_regular};
         }
 
-        &::after {
+        &:not(:first-child)::after {
           position: absolute;
           transition: 0.3s;
           content: "";
@@ -98,7 +98,7 @@ export const MenuContainer = styled.div`
         }
 
         &:hover {
-          &:after {
+          &:not(:first-child)::after {
             width: 100%;
             left: 0;
           }
