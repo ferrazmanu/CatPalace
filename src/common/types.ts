@@ -68,7 +68,8 @@ export interface Banner {
   id: string;
   url: string;
   link: string;
-  bannerImage: Images[];
+  bannerDesktop: Images[];
+  bannerMobile: Images;
   alt?: string;
 }
 

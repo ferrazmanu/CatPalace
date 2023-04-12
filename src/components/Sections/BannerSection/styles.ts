@@ -11,6 +11,22 @@ export const Banner = styled.div`
     object-fit: cover;
   }
 
+  .swiper-slide.mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 992px) {
+    aspect-ratio: 750/436;
+
+    .swiper-slide.desktop {
+      display: none;
+    }
+
+    .swiper-slide.mobile {
+      display: block;
+    }
+  }
+
   @media only screen and (max-width: 992px) {
     margin-bottom: -80px;
     margin-top: 80px;

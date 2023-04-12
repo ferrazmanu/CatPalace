@@ -139,12 +139,16 @@ export async function GetHomeBanners() {
   const GET_HOME_BANNERS = gql`
     {
       banners {
-        id
-        alt
-        bannerImage {
+        bannerDesktop {
+          url
+          id
+        }
+        bannerMobile {
           url
         }
+        alt
         link
+        id
       }
     }
   `;

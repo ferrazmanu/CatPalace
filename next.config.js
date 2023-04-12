@@ -7,6 +7,7 @@ const nextConfig = {
   },
   images: {
     domains: ["media.graphassets.com"],
+    deviceSizes: [640, 1024, 1200, 1920],
   },
 };
 
