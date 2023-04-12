@@ -62,8 +62,8 @@ export function Footer() {
       <S.Copyright>
         <Container>
           <p>
-            Copyright © 2023 CatPalace.com.br TODOS OS DIREITOS RESERVADOS.
-            CatPalace Comércio de Artigos de Petshop Ltda / 00.000.000/0000-00
+            {/* Copyright © 2023 CatPalace.com.br TODOS OS DIREITOS RESERVADOS. */}
+            CatPalace Comércio de Artigos de Petshop / 50.239.957/0001-63
           </p>
         </Container>
       </S.Copyright>
