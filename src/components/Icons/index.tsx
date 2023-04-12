@@ -6,3 +6,4 @@ export { ArrowUpIcon } from "./arrowUp";
 export { ArrowDownIcon } from "./arrowDown";
 export { FilterIcon } from "./filter";
 export { TrashIcon } from "./trash";
+export { WhatsappIcon } from "./whatsapp";

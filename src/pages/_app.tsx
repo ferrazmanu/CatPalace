@@ -6,6 +6,7 @@ import { Footer } from "@/components/Shared/Footer";
 
 import { Provider } from "react-redux";
 import store from "../redux/store";
+import { WhatsappButton } from "@/components/Elements/WhatsappButton";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -15,6 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <Header />
         <Component {...pageProps} />
         <Footer />
+        <WhatsappButton />
       </Theme>
     </Provider>
   );

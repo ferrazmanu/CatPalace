@@ -31,7 +31,7 @@ export function Footer() {
               {socialLinks.map((link) => {
                 return (
                   <li key={link.id}>
-                    <Link href={link.slug}>
+                    <Link href={link.slug} target="_blank">
                       <div className="icon">
                         <Image src={link.icon} fill alt={link.title} />
                       </div>
@@ -46,7 +46,7 @@ export function Footer() {
               {contactLinks.map((link) => {
                 return (
                   <li key={link.id}>
-                    <Link href={link.slug}>
+                    <Link href={link.slug} target="_blank">
                       <div className="icon">
                         <Image src={link.icon} fill alt={link.title} />
                       </div>
