@@ -8,7 +8,6 @@ export const Cart = styled.div<StylesProps>`
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.tertiary};
-  min-height: 100vh;
   height: 100%;
   justify-content: flex-start;
   min-width: 20%;
@@ -45,7 +44,7 @@ export const CartItemsContainer = styled.div`
   gap: 20px;
   justify-content: space-between;
   min-height: 86%;
-  height: 1090%;
+  height: 100%;
 
   .bottom-cart {
     display: flex;
