@@ -45,6 +45,7 @@ export const CartItemsContainer = styled.div`
   gap: 20px;
   justify-content: space-between;
   min-height: 86%;
+  height: 1090%;
 
   .bottom-cart {
     display: flex;
