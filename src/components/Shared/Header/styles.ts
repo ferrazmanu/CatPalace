@@ -27,11 +27,13 @@ export const MenuContainer = styled.div`
     max-width: 210px;
     width: 100%;
     position: relative;
+    background-image: url("/assets/static/icons/logo-horizontal.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+    &:hover {
+      background-image: url("/assets/static/icons/logo-horizontal.gif");
     }
 
     @media only screen and (max-width: 992px) {

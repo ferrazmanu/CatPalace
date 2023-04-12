@@ -24,6 +24,14 @@ export const MenuContainer = styled.div`
     max-width: 193px;
     width: 100%;
     position: relative;
+    background-image: url("/assets/static/icons/logo-vertical.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+
+    &:hover {
+      background-image: url("/assets/static/icons/logo-vertical.gif");
+    }
 
     img {
       width: 100%;

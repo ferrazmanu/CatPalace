@@ -13,14 +13,7 @@ export function Footer() {
     <S.Footer>
       <Container>
         <S.MenuContainer>
-          <Link href="/" className="logo">
-            <Image
-              src="/assets/static/logo-vertical.png"
-              fill
-              alt="Logo com um gatinho feliz de coroa"
-              priority={true}
-            />
-          </Link>
+          <Link href="/" className="logo" />
 
           <div className="menu">
             <ul className="box-links mapa">

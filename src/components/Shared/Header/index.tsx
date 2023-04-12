@@ -42,14 +42,7 @@ export function Header() {
       <S.Header>
         <Container>
           <S.MenuContainer>
-            <Link href="/" className="logo">
-              <Image
-                src="/assets/static/logo-horizontal.png"
-                fill
-                alt="Logo com um gatinho feliz de coroa"
-                priority={true}
-              />
-            </Link>
+            <Link href="/" className="logo" />
 
             <S.Overlay
               open={openMenu || cart.isCartOpen}
