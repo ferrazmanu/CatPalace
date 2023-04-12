@@ -29,19 +29,31 @@ export const Cart = styled.div<StylesProps>`
     cursor: pointer;
     align-self: flex-end;
   }
+
+  @media only screen and (max-width: 1024px) {
+    padding: 15px;
+  }
+
+  @media only screen and (max-width: 420px) {
+    max-width: 330px;
+  }
 `;
 
 export const CartItemsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  height: 100%;
   justify-content: space-between;
+  min-height: 86%;
 
   .bottom-cart {
     display: flex;
     flex-direction: column;
     gap: 20px;
+  }
+
+  @media only screen and (max-height: 740px) {
+    min-height: 64%;
   }
 `;
 
@@ -49,6 +61,8 @@ export const Items = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  height: 100%;
+  overflow: auto;
 `;
 
 export const CartTitle = styled.h6`

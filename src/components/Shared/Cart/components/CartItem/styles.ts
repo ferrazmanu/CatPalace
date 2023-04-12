@@ -13,6 +13,12 @@ export const ItemContainer = styled.div`
     width: 100%;
     line-height: 1;
   }
+
+  @media only screen and (max-width: 420px) {
+    .product-name {
+      font-size: ${({ theme }) => theme.fontSizes.small_18};
+    }
+  }
 `;
 
 export const Info = styled.div`
@@ -44,6 +50,13 @@ export const Actions = styled.div`
     max-width: 100px;
     height: 42px;
   }
+
+  @media only screen and (max-width: 420px) {
+    .quantity {
+      max-width: 80px;
+      height: 32px;
+    }
+  }
 `;
 
 export const ImageProduct = styled.a`
@@ -62,6 +75,11 @@ export const ImageProduct = styled.a`
   img {
     object-fit: cover;
   }
+
+  @media only screen and (max-width: 420px) {
+    height: 70px;
+    max-width: 70px;
+  }
 `;
 
 export const Price = styled.div`
@@ -70,4 +88,8 @@ export const Price = styled.div`
   font-family: ${({ theme }) => theme.fonts.primary_regular};
   font-size: ${({ theme }) => theme.fontSizes.medium_24};
   white-space: nowrap;
+
+  @media only screen and (max-width: 420px) {
+    font-size: ${({ theme }) => theme.fontSizes.small_18};
+  }
 `;
