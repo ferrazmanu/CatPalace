@@ -42,7 +42,7 @@ export const Details = styled.details`
     font-size: ${({ theme }) => theme.fontSizes.medium_24};
   }
 
-  li {
+  li.product-category {
     position: relative;
     width: fit-content;
 

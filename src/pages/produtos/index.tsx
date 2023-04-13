@@ -114,7 +114,10 @@ export default function Products({ products, categories }) {
                         <ul>
                           {category.subcategories.map((subcategory) => {
                             return (
-                              <li key={subcategory.name}>
+                              <li
+                                key={subcategory.name}
+                                className="product-category"
+                              >
                                 <Link
                                   href="#"
                                   onClick={(e) =>
