@@ -23,22 +23,21 @@ export function Banner({ banners }: BannersProps) {
       >
         {banners.map((banner) => {
           return (
-            <>
-              <SwiperSlide key={banner.id} className="desktop">
-                <Link href={banner.link}>
+            <SwiperSlide key={banner.id}>
+              <Link href={banner.link}>
+                <picture>
+                  <source
+                    media="(max-width: 992px)"
+                    srcSet={banner.bannerMobile.url}
+                  />
                   <Image
                     src={banner.bannerDesktop[0].url}
                     alt={banner.alt}
                     fill
                   />
-                </Link>
-              </SwiperSlide>
-              <SwiperSlide key={banner.id} className="mobile">
-                <Link href={banner.link}>
-                  <Image src={banner.bannerMobile.url} alt={banner.alt} fill />
-                </Link>
-              </SwiperSlide>
-            </>
+                </picture>
+              </Link>
+            </SwiperSlide>
           );
         })}
       </Swiper>
