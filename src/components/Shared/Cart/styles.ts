@@ -19,7 +19,7 @@ export const Cart = styled.div<StylesProps>`
   ${(props) =>
     props.open ? "transform: translateX(0%)" : "transform: translateX(100%)"};
   gap: 20px;
-  z-index: 10;
+  z-index: 95;
 
   .close-cart {
     display: flex;

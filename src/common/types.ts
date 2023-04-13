@@ -104,3 +104,10 @@ export interface Promotion {
 export interface StylesProps {
   open: boolean;
 }
+
+export interface ModalProps {
+  modalHeader: React.ReactNode;
+  modalBody: React.ReactNode;
+  modalFooter?: React.ReactNode;
+  onClick: MouseEventHandler<HTMLButtonElement>;
+}

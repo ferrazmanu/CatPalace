@@ -9,7 +9,7 @@ export const Header = styled.header`
   padding: 15px 0;
   box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.1);
   position: fixed;
-  z-index: 5;
+  z-index: 95;
   top: 0;
 
   @media only screen and (max-width: 992px) {
@@ -181,6 +181,6 @@ export const Overlay = styled.div<StylesProps>`
   position: fixed;
   inset: 0;
   z-index: 5;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   ${(props) => (props.open ? "display: block;" : "display: none;")}
 `;

@@ -1,15 +1,21 @@
+import { useState } from "react";
+
 import { CloseIcon } from "@/components/Icons";
 import { CartItem } from "./components/CartItem";
-import * as S from "./styles";
+
+import { Button } from "@/components/Elements/Button";
+import { Modal } from "@/components/Elements/Modal";
 
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/redux/store";
 import { formatCurrency } from "utils/format";
-import { handleCartShow, clearCart } from "@/redux/cart.slice";
-import { Button } from "@/components/Elements/Button";
+import { handleCartShow, clearCart, closeCart } from "@/redux/cart.slice";
+
+import * as S from "./styles";
 
 export function Cart({ open }) {
   const dispatch = useDispatch();
+  const [showModal, setShowModal] = useState(false);
 
   const cart = useSelector((state: RootState) => state.cart);
 
@@ -47,7 +53,9 @@ export function Cart({ open }) {
     window.open(url);
 
     dispatch(clearCart());
+    dispatch(closeCart());
     formattedMessage = "";
+    setShowModal(true);
   };
 
   return (
@@ -98,6 +106,19 @@ export function Cart({ open }) {
           </S.CartItemsContainer>
         )}
       </S.Cart>
+
+      {showModal && (
+        <Modal
+          onClick={() => setShowModal(false)}
+          modalHeader={<p>Obrigada por escolher a CatPalace!</p>}
+          modalBody={
+            <p>
+              Seu pedido foi redirecionado para o whatsapp da loja,
+              certifique-se de enviá-lo para que nosso atendimento o receba.
+            </p>
+          }
+        />
+      )}
     </>
   );
 }
