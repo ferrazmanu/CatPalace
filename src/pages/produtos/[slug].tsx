@@ -223,6 +223,7 @@ export default function Product({ product, otherProducts }) {
                 <Details
                   summary={"Detalhes"}
                   children={<p>{product.description}</p>}
+                  open
                 />
                 {product.specifications && (
                   <Details
@@ -234,6 +235,7 @@ export default function Product({ product, otherProducts }) {
                         }}
                       />
                     }
+                    open
                   />
                 )}
               </S.ProductDetails>

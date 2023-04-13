@@ -53,6 +53,7 @@ export interface DetailsProps {
   children: React.ReactNode;
   className?: string;
   summary: string;
+  open?: boolean;
 }
 
 export interface IconProps {
