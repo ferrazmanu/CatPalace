@@ -130,7 +130,9 @@ export const MenuList = styled.div<StylesProps>`
     display: flex;
     gap: ${({ theme }) => theme.spacing._30};
     align-items: center;
-    transition: ease-in-out 0.2s;
+    a {
+      transition: ease-in-out 0.2s;
+    }
 
     &::after {
       content: "";
@@ -141,7 +143,9 @@ export const MenuList = styled.div<StylesProps>`
     }
 
     &:hover {
-      transform: scale(1.1);
+      a {
+        transform: scale(1.1);
+      }
     }
   }
 
