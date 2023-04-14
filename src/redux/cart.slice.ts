@@ -1,6 +1,5 @@
-import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
-
 import { Product } from "@/common/types";
+import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "./store";
 
 export interface CartState {
@@ -65,6 +64,9 @@ const cartSlice = createSlice({
     closeCart: (state) => {
       state.isCartOpen = false;
     },
+    loadCartFromCookies: (state, action: PayloadAction<Product[]>) => {
+      state.cartItems = action.payload;
+    },
   },
 });
 
@@ -84,4 +86,5 @@ export const {
   clearCart,
   handleCartShow,
   closeCart,
+  loadCartFromCookies,
 } = cartSlice.actions;

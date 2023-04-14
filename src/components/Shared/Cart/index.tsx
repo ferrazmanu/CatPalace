@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { CloseIcon } from "@/components/Icons";
 import { CartItem } from "./components/CartItem";
@@ -9,9 +9,15 @@ import { Modal } from "@/components/Elements/Modal";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/redux/store";
 import { formatCurrency } from "utils/format";
-import { handleCartShow, clearCart, closeCart } from "@/redux/cart.slice";
+import {
+  handleCartShow,
+  clearCart,
+  closeCart,
+  loadCartFromCookies,
+} from "@/redux/cart.slice";
 
 import * as S from "./styles";
+import { getCartFromCookies } from "utils/cookies";
 
 export function Cart({ open }) {
   const dispatch = useDispatch();
@@ -57,6 +63,13 @@ export function Cart({ open }) {
     formattedMessage = "";
     setShowModal(true);
   };
+
+  useEffect(() => {
+    const cartData = getCartFromCookies();
+    if (cartData) {
+      dispatch(loadCartFromCookies(cartData));
+    }
+  }, [dispatch]);
 
   return (
     <>

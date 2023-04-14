@@ -1,13 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { cartReducer } from "./cart.slice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-
-const reducer = {
-  cart: cartReducer,
-};
+import cartMiddleware from "./middleware";
 
 const store = configureStore({
-  reducer,
+  reducer: {
+    cart: cartReducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(cartMiddleware),
 });
 
 export default store;
