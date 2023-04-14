@@ -60,7 +60,6 @@ export const MenuContainer = styled.div`
       text-align: center;
 
       li {
-        text-transform: lowercase;
         position: relative;
 
         a {

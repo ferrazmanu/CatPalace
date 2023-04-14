@@ -12,7 +12,7 @@ export const Post = styled.div`
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing._30};
+  gap: 20px;
 `;
 
 export const ImageContainer = styled.div`
@@ -51,6 +51,32 @@ export const Title = styled.div`
 export const Text = styled.div`
   p {
     font-size: ${({ theme }) => theme.fontSizes.small_18};
+  }
+
+  h5 {
+    font-size: ${({ theme }) => theme.fontSizes.medium_30};
+    margin-top: 20px;
+    margin-bottom: 5px;
+  }
+
+  h6 {
+    font-size: ${({ theme }) => theme.fontSizes.medium_24};
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+
+  ul {
+    margin-left: 35px;
+
+    li {
+      list-style: circle;
+    }
+  }
+
+  &.faq {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 `;
 

@@ -5,7 +5,7 @@ import { useState } from "react";
 import * as S from "./styles";
 
 import { Container } from "../../sharedstyles";
-import { socialLinks, contactLinks } from "./menuLinks";
+import { socialLinks, contactLinks, consulteLinks } from "./menuLinks";
 import { menuLinks } from "../menuLinks";
 
 export function Footer() {
@@ -37,6 +37,16 @@ export function Footer() {
                       </div>
                       {link.title}
                     </Link>
+                  </li>
+                );
+              })}
+            </ul>
+            <ul className="box-links consulte">
+              <li>Consulte</li>
+              {consulteLinks.map((link) => {
+                return (
+                  <li key={link.id}>
+                    <Link href={link.slug}>{link.title}</Link>
                   </li>
                 );
               })}

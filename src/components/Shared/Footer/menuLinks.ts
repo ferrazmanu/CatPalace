@@ -2,7 +2,7 @@ export const socialLinks = [
   {
     id: "1",
     icon: "/assets/static/icons/facebook.png",
-    title: "Cat Palace",
+    title: "CatPalace",
     slug: "https://www.facebook.com/",
   },
   {
@@ -31,5 +31,23 @@ export const contactLinks = [
     icon: "/assets/static/icons/email.png",
     title: "store.catpalace@gmail.com",
     slug: "mailto:store.catpalace@gmail.com",
+  },
+];
+
+export const consulteLinks = [
+  {
+    id: "1",
+    title: "Termos de Uso",
+    slug: "/consulte/termos-uso",
+  },
+  {
+    id: "2",
+    title: "Políticas de Privacidade",
+    slug: "/consulte/politicas-privacidade",
+  },
+  {
+    id: "3",
+    title: "FAQ",
+    slug: "/consulte/faq",
   },
 ];

@@ -39,7 +39,7 @@ export const Details = styled.details`
   p,
   li {
     padding-top: 10px;
-    font-size: ${({ theme }) => theme.fontSizes.medium_24};
+    font-size: ${({ theme }) => theme.fontSizes.medium_24} !important;
   }
 
   li.product-category {
