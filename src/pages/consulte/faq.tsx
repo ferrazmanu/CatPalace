@@ -43,29 +43,26 @@ export default function FAQ() {
 
               <S.Text className="faq">
                 <Details
-                  open
                   summary={"Como comprar?"}
                   children={
-                    <p>
-                      É muito simples, basta você ir em produtos → selecionar
-                      uma de nossas categorias (acessórios, brinquedos, camas,
-                      comedouros, higiene ou kits) → clicar no produto desejado
-                      → selecionar a variação (cor, modelo) → uma tela com o
-                      carrinho abrirá no canto direito, (lá você pode selecionar
-                      a quantidade, excluir ou finalizar o pedido), se você
-                      quiser escolher mais produtos → basta clicar em produtos e
-                      repetir o processo → terminou de adicionar os produtos,
-                      revise se está tudo certo → clique em finalizar o pedido →
-                      um link para iniciar uma conversa no WhatsApp abrirá →
-                      clique em iniciar conversa → seu pedido será
-                      automaticamente redirecionado na conversa da nossa
-                      atendente → clique na seta para enviar a mensagem, ou
-                      aperte enter → nossa atendente irá receber o pedido e
-                      combinar os detalhes finais da sua compra (pagamento,
-                      prazo de entrega, etc.) → prontinho, você realizou a
-                      compra na melhor loja de produtos especializados em
-                      felinos de pequeno porte, agora é só aguardar!
-                    </p>
+                    <>
+                      <p>
+                        É simples, basta você ir em produtos e adicioná-los ao
+                        carrinho → no carrinho, clique em finalizar o pedido →
+                        um link para iniciar uma conversa no WhatsApp abrirá →
+                        clique em iniciar conversa → seu pedido será
+                        automaticamente redirecionado na conversa da nossa
+                        atendente → clique na seta para enviar a mensagem, ou
+                        aperte enter → nossa atendente irá receber o pedido e
+                        combinar os detalhes finais da sua compra (pagamento,
+                        prazo de entrega, etc.).
+                      </p>
+                      <p>
+                        Prontinho, você realizou a compra na melhor loja de
+                        produtos especializados em felinos de pequeno porte,
+                        agora é só aguardar!
+                      </p>
+                    </>
                   }
                 />
                 <Details
