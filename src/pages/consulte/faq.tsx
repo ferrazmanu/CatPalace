@@ -44,78 +44,111 @@ export default function FAQ() {
               <S.Text className="faq">
                 <Details
                   open
-                  summary={"Lorem ipsum sit amet"}
+                  summary={"Como comprar?"}
                   children={
                     <p>
-                      Nunc elit tortor, dictum in sapien ac, accumsan consequat
-                      nunc. Etiam tempor mi et justo tempus gravida. Donec vitae
-                      sem ac dui ultricies fringilla. Nullam ultrices, justo eu
-                      malesuada tincidunt, nulla erat tristique sem, nec
-                      interdum nulla tortor vel mi. Sed a iaculis nibh. Aliquam
-                      vehicula mattis tortor, eu egestas odio blandit et.
-                      Pellentesque imperdiet libero non quam blandit porttitor.
-                      Etiam sit amet mi massa. Pellentesque habitant morbi
-                      tristique senectus et netus et malesuada fames ac turpis
-                      egestas. Suspendisse ornare viverra augue vel consequat.
-                      Aliquam erat volutpat. Ut rutrum ligula at dolor
-                      ullamcorper auctor vitae non justo.
+                      É muito simples, basta você ir em produtos → selecionar
+                      uma de nossas categorias (acessórios, brinquedos, camas,
+                      comedouros, higiene ou kits) → clicar no produto desejado
+                      → selecionar a variação (cor, modelo) → uma tela com o
+                      carrinho abrirá no canto direito, (lá você pode selecionar
+                      a quantidade, excluir ou finalizar o pedido), se você
+                      quiser escolher mais produtos → basta clicar em produtos e
+                      repetir o processo → terminou de adicionar os produtos,
+                      revise se está tudo certo → clique em finalizar o pedido →
+                      um link para iniciar uma conversa no WhatsApp abrirá →
+                      clique em iniciar conversa → seu pedido será
+                      automaticamente redirecionado na conversa da nossa
+                      atendente → clique na seta para enviar a mensagem, ou
+                      aperte enter → nossa atendente irá receber o pedido e
+                      combinar os detalhes finais da sua compra (pagamento,
+                      prazo de entrega, etc.) → prontinho, você realizou a
+                      compra na melhor loja de produtos especializados em
+                      felinos de pequeno porte, agora é só aguardar!
                     </p>
                   }
                 />
                 <Details
-                  summary={"Lorem ipsum sit amet"}
+                  summary={"Nossa marca vende apenas produtos para gatos?"}
                   children={
                     <p>
-                      Nunc elit tortor, dictum in sapien ac, accumsan consequat
-                      nunc. Etiam tempor mi et justo tempus gravida. Donec vitae
-                      sem ac dui ultricies fringilla. Nullam ultrices, justo eu
-                      malesuada tincidunt, nulla erat tristique sem, nec
-                      interdum nulla tortor vel mi. Sed a iaculis nibh. Aliquam
-                      vehicula mattis tortor, eu egestas odio blandit et.
-                      Pellentesque imperdiet libero non quam blandit porttitor.
-                      Etiam sit amet mi massa. Pellentesque habitant morbi
-                      tristique senectus et netus et malesuada fames ac turpis
-                      egestas. Suspendisse ornare viverra augue vel consequat.
-                      Aliquam erat volutpat. Ut rutrum ligula at dolor
-                      ullamcorper auctor vitae non justo.
+                      Nossa marca é especialista em produtos para gatos, mas há
+                      comedouros, fontes, camas e alguns brinquedos que podem
+                      ser destinados a cachorros também. Além de nossas canecas
+                      e almofadas exclusivas, para deixar a casa dos humanos com
+                      muito mais estilo e a escova removedora de pelos de
+                      tecidos.
                     </p>
                   }
                 />
                 <Details
-                  summary={"Lorem ipsum sit amet"}
+                  summary={"Quais são as formas de pagamento e como efetuá-lo?"}
+                  children={
+                    <>
+                      <p>
+                        Trabalhamos com pix, ou links de pagamentos para compras
+                        no débito, crédito à vista, ou parceladas.
+                      </p>
+                      <p>
+                        Depois que você enviar o pedido para a nossa atendente
+                        através do WhatsApp, ela revisará com você e em seguida
+                        combinará a forma de pagamento.
+                      </p>
+                      <p>
+                        Via pix, ela enviará a chave para transferência. Em caso
+                        de compras no crédito, débito ou parceladas, será
+                        encaminhado um link do PagSeguro a ser preenchido com os
+                        dados da compra, após preenchido, basta clicar em
+                        finalizar a compra.
+                      </p>
+                    </>
+                  }
+                />
+                <Details
+                  summary={
+                    "Onde consigo tirar dúvidas sobre pedidos/informações de produtos/prazo de entrega?"
+                  }
                   children={
                     <p>
-                      Nunc elit tortor, dictum in sapien ac, accumsan consequat
-                      nunc. Etiam tempor mi et justo tempus gravida. Donec vitae
-                      sem ac dui ultricies fringilla. Nullam ultrices, justo eu
-                      malesuada tincidunt, nulla erat tristique sem, nec
-                      interdum nulla tortor vel mi. Sed a iaculis nibh. Aliquam
-                      vehicula mattis tortor, eu egestas odio blandit et.
-                      Pellentesque imperdiet libero non quam blandit porttitor.
-                      Etiam sit amet mi massa. Pellentesque habitant morbi
-                      tristique senectus et netus et malesuada fames ac turpis
-                      egestas. Suspendisse ornare viverra augue vel consequat.
-                      Aliquam erat volutpat. Ut rutrum ligula at dolor
-                      ullamcorper auctor vitae non justo.
+                      Para qualquer dúvida, basta entrar em contato conosco
+                      através do nosso WhatsApp (link clicável), trabalhamos de
+                      segunda a sexta das 08h30 às 18h e sábado das 08h30 às
+                      12h.
                     </p>
                   }
                 />
                 <Details
-                  summary={"Lorem ipsum sit amet"}
+                  summary={"Entrega em todo território nacional?"}
                   children={
                     <p>
-                      Nunc elit tortor, dictum in sapien ac, accumsan consequat
-                      nunc. Etiam tempor mi et justo tempus gravida. Donec vitae
-                      sem ac dui ultricies fringilla. Nullam ultrices, justo eu
-                      malesuada tincidunt, nulla erat tristique sem, nec
-                      interdum nulla tortor vel mi. Sed a iaculis nibh. Aliquam
-                      vehicula mattis tortor, eu egestas odio blandit et.
-                      Pellentesque imperdiet libero non quam blandit porttitor.
-                      Etiam sit amet mi massa. Pellentesque habitant morbi
-                      tristique senectus et netus et malesuada fames ac turpis
-                      egestas. Suspendisse ornare viverra augue vel consequat.
-                      Aliquam erat volutpat. Ut rutrum ligula at dolor
-                      ullamcorper auctor vitae non justo.
+                      Sim, enviamos para todo o Brasil. O envio para cidades
+                      fora de Londrina-PR irá apresentar uma taxa mediante ao
+                      frete.
+                    </p>
+                  }
+                />
+                <Details
+                  summary={"Possui loja física?"}
+                  children={
+                    <p>
+                      No momento ainda não temos loja física, você pode conferir
+                      os nossos produtos aqui no site, ou através do nosso
+                      Instagram (link clicável), Facebook (link clicável),
+                      TikTok (link clicável) ou pelo nosso catálogo digital no
+                      WhatsApp (link clicável).
+                    </p>
+                  }
+                />
+                <Details
+                  summary={
+                    "Onde posso sugerir melhorias/novos produtos/conteúdos a serem abordados?"
+                  }
+                  children={
+                    <p>
+                      Queremos sempre trazer o melhor para você e o seu felino,
+                      então, todos os feedbacks são muito bem-vindos. Você pode
+                      enviá-los através do nosso canal de sugestões, clicando
+                      aqui.
                     </p>
                   }
                 />
