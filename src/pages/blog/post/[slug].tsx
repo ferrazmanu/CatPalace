@@ -15,11 +15,11 @@ import { BlogPostCard } from "@/components/Elements/BlogCard";
 import { SectionContainer } from "@/components/Containers/SectionContainer";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
+import { Navigation, Pagination } from "swiper";
 
 import * as S from "styles/postStyles";
 import "swiper/css";
-import "swiper/css/navigation";
+import "swiper/css/pagination";
 import { Loading } from "@/components/Elements/Loading";
 import { useRouter } from "next/router";
 
@@ -108,11 +108,18 @@ export default function Post({ post, otherPosts }) {
                       })}
                     </GridContainer>
                     <Swiper
-                      spaceBetween={15}
-                      slidesPerView={1}
-                      navigation={true}
-                      modules={[Navigation]}
-                      loop={true}
+                      breakpoints={{
+                        0: {
+                          slidesPerView: 1,
+                          spaceBetween: 10,
+                        },
+                        576: {
+                          slidesPerView: 2,
+                          spaceBetween: 20,
+                        },
+                      }}
+                      pagination={{ clickable: true }}
+                      modules={[Pagination]}
                     >
                       {otherPosts.map((post) => {
                         return (

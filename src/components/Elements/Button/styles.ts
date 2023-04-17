@@ -21,6 +21,7 @@ export const Button = styled.a<ButtonStylesProps>`
   cursor: pointer;
   text-transform: lowercase;
   transition: 0.2s ease-in-out;
+  text-align: center;
 
   &:hover {
     box-shadow: inset 0px 0px 1px 1px #000;

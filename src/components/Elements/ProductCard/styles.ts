@@ -6,7 +6,7 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 20px;
+  padding: 15px;
   align-items: center;
   justify-content: space-between;
   gap: ${({ theme }) => theme.spacing._30};
@@ -26,6 +26,12 @@ export const Card = styled.div`
       transform: scale(1.1);
     }
   }
+
+  @media only screen and (max-width: 1024px) {
+    max-width: 100%;
+    height: 100%;
+    padding: 10px;
+  }
 `;
 
 export const ImageProduct = styled.a`
@@ -42,6 +48,10 @@ export const ImageProduct = styled.a`
 
   img {
     object-fit: cover;
+  }
+
+  @media only screen and (max-width: 1024px) {
+    min-height: 200px;
   }
 
   @media only screen and (max-width: 768px) {
@@ -63,6 +73,10 @@ export const Content = styled.div`
 
     @media only screen and (max-width: 1024px) {
       font-size: ${({ theme }) => theme.fontSizes.medium_30};
+    }
+
+    @media only screen and (max-width: 768px) {
+      font-size: ${({ theme }) => theme.fontSizes.medium_24};
     }
   }
 `;

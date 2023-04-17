@@ -7,9 +7,9 @@ import { PostsProps } from "@/common/types";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/navigation";
+import "swiper/css/pagination";
 
-import { Navigation } from "swiper";
+import { Navigation, Pagination } from "swiper";
 
 export function BlogPostsSection({ posts }: PostsProps) {
   return (
@@ -31,11 +31,18 @@ export function BlogPostsSection({ posts }: PostsProps) {
             })}
           </GridContainer>
           <Swiper
-            spaceBetween={15}
-            slidesPerView={1}
-            navigation={true}
-            modules={[Navigation]}
-            loop={true}
+            breakpoints={{
+              0: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+              },
+              576: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+            }}
+            pagination={{ clickable: true }}
+            modules={[Pagination]}
           >
             {posts.map((post) => {
               return (

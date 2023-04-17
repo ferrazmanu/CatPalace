@@ -24,11 +24,25 @@ const ResponsiveSwiperContainer = styled.div`
 
   .swiper {
     display: none;
+    flex-direction: column;
+  }
+
+  .swiper-slide {
+    height: auto;
   }
 
   .swiper-button-next,
   .swiper-button-prev {
     color: ${({ theme }) => theme.colors.secondary};
+  }
+
+  .swiper-pagination {
+    position: relative;
+    bottom: unset;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: #936287;
   }
 
   @media only screen and (max-width: 1024px) {
@@ -45,10 +59,10 @@ const ResponsiveSwiperContainer = styled.div`
   }
 
   @media only screen and (max-width: 768px) {
-    .swiper-button-next,
+    /* .swiper-button-next,
     .swiper-button-prev {
       display: none;
-    }
+    } */
   }
 `;
 

@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { GetStaticPaths, GetStaticProps } from "next";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Navigation, Thumbs } from "swiper";
+import { FreeMode, Navigation, Pagination, Thumbs } from "swiper";
 
 import {
   Container,
@@ -30,9 +30,7 @@ import { GetOtherProducts, GetProducts, GetProductsBySlug } from "@/lib/data";
 
 import * as S from "@/styles/productStyles";
 import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
+import "swiper/css/pagination";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/cart.slice";
 import { formatCurrency } from "utils/format";
@@ -263,11 +261,18 @@ export default function Product({ product, otherProducts }) {
                       })}
                     </GridContainer>
                     <Swiper
-                      spaceBetween={15}
-                      slidesPerView={1}
-                      navigation={true}
-                      modules={[Navigation]}
-                      loop={true}
+                      breakpoints={{
+                        0: {
+                          slidesPerView: 1,
+                          spaceBetween: 10,
+                        },
+                        576: {
+                          slidesPerView: 2,
+                          spaceBetween: 20,
+                        },
+                      }}
+                      pagination={{ clickable: true }}
+                      modules={[Pagination]}
                     >
                       {otherProducts.map((product) => {
                         return (

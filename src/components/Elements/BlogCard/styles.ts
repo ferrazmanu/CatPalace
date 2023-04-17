@@ -23,6 +23,12 @@ export const Card = styled.div`
       transform: scale(1.1);
     }
   }
+
+  @media only screen and (max-width: 1024px) {
+    max-width: 100%;
+    height: 100%;
+    padding: 10px;
+  }
 `;
 
 export const ImagePost = styled.a`
