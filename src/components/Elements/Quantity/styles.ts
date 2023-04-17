@@ -21,6 +21,7 @@ export const Quantity = styled.div`
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    color: #000;
   }
 
   .qty {

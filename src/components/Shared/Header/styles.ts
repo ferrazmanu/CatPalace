@@ -59,12 +59,6 @@ export const MenuContainer = styled.div`
     width: 100%;
     flex-direction: column;
     gap: 5px;
-
-    div {
-      height: 3px;
-      width: 100%;
-      background-color: ${({ theme }) => theme.colors.secondary};
-    }
   }
 
   .close {

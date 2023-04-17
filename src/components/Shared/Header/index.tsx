@@ -5,7 +5,7 @@ import { useState } from "react";
 import * as S from "./styles";
 
 import { Container } from "../../sharedstyles";
-import { CartIcon, CloseIcon } from "@/components/Icons";
+import { CartIcon, CloseIcon, HamburgerMenuIcon } from "@/components/Icons";
 import { menuLinks } from "../menuLinks";
 import { Cart } from "../Cart";
 
@@ -86,9 +86,7 @@ export function Header() {
                 className="hamburguer-menu"
                 onClick={handleOpenMenu}
               >
-                <div></div>
-                <div></div>
-                <div></div>
+                <HamburgerMenuIcon color="#936287" />
               </button>
             </div>
           </S.MenuContainer>
