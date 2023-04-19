@@ -1,3 +1,4 @@
+import { StylesProps } from "@/common/types";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -74,4 +75,14 @@ const TopContainer = styled.div`
   align-items: center;
 `;
 
-export { Container, ResponsiveSwiperContainer, TopContainer };
+const Overlay = styled.div<StylesProps>`
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  background-color: rgba(0, 0, 0, 0.6);
+  ${(props) => (props.open ? "display: block;" : "display: none;")}
+`;
+
+export { Container, ResponsiveSwiperContainer, TopContainer, Overlay };

@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import * as S from "./styles";
 
-import { Container } from "../../sharedstyles";
+import { Container, Overlay } from "../../sharedstyles";
 import { CartIcon, CloseIcon, HamburgerMenuIcon } from "@/components/Icons";
 import { menuLinks } from "../menuLinks";
 import { Cart } from "../Cart";
@@ -44,10 +44,10 @@ export function Header() {
           <S.MenuContainer>
             <Link href="/" className="logo" />
 
-            <S.Overlay
+            <Overlay
               open={openMenu || cart.isCartOpen}
               onClick={handleClose}
-            ></S.Overlay>
+            ></Overlay>
             <S.MenuList open={openMenu}>
               <button type="button" className="close" onClick={handleOpenMenu}>
                 <CloseIcon />

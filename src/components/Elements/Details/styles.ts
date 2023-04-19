@@ -22,6 +22,10 @@ export const Details = styled.details`
     width: 100%;
     position: relative;
 
+    &::-webkit-details-marker {
+      display: none;
+    }
+
     &::after {
       display: flex;
       align-items: center;

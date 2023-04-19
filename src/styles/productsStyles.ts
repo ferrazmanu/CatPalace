@@ -56,7 +56,7 @@ export const Categories = styled.div<CategoriesProps>`
     padding: 30px;
     box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.1);
     transition: 0.3s ease-in-out;
-    z-index: 10;
+    z-index: 99;
     ${(props) =>
       props.open ? "transform: translateX(0%)" : "transform: translateX(100%)"};
     overflow: auto;
@@ -68,6 +68,8 @@ export const Categories = styled.div<CategoriesProps>`
     border: none;
     cursor: pointer;
     justify-content: flex-end;
+    width: fit-content;
+    align-self: flex-end;
 
     @media only screen and (max-width: 1024px) {
       display: flex;

@@ -3,7 +3,7 @@ import Head from "next/head";
 import { GetStaticProps } from "next";
 
 import { Breadcrumb } from "@/components/Elements/Breadcrumb";
-import { Container, TopContainer } from "@/components/sharedstyles";
+import { Container, Overlay, TopContainer } from "@/components/sharedstyles";
 import { GridContainer } from "@/components/Containers/GridContainer";
 import { ProductCard } from "@/components/Elements/ProductCard";
 
@@ -84,6 +84,7 @@ export default function Products({ products, categories }) {
             <S.CategoriesContainer>
               <h3>Categorias</h3>
 
+              <Overlay open={openFilter} onClick={handleOpenFilter}></Overlay>
               <S.FilterMobile onClick={handleOpenFilter}>
                 Filter <FilterIcon />
               </S.FilterMobile>
