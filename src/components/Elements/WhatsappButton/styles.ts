@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   position: fixed;
   bottom: 30px;
   right: 30px;
-  z-index: 5;
+  z-index: 3;
   height: 48px;
   width: 48px;
   transition: all 0.3s ease;
