@@ -35,9 +35,13 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  h1, h2, h3, h4, h5, h6, p, a, summary{
+  h1, h2, h3, h4, h5, h6, summary{
     margin: 0;
     line-height: 1.1;
+  }
+
+  p, a{
+    line-height: 1.5;
   }
 
   ul, li, ol{
