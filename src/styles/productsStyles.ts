@@ -9,16 +9,19 @@ export const ContentHolder = styled.div`
   justify-content: space-between;
   gap: ${({ theme }) => theme.spacing._60};
 
-  .grid-container {
-    max-width: 70%;
+  .grid {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .selected-category {
+      font-size: ${({ theme }) => theme.fontSizes.small_18};
+    }
   }
 
   @media only screen and (max-width: 1024px) {
     flex-direction: column;
-
-    .grid-container {
-      max-width: 100%;
-    }
   }
 `;
 

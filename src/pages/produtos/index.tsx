@@ -19,18 +19,25 @@ export default function Products({ products, categories }) {
   const [productsArray, setProductsArray] = useState(products);
   const [openFilter, setOpenFilter] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("Todos");
 
   const breadcrumb = [
     { url: "/", text: "Início" },
     { url: "/produtos", text: "Produtos" },
   ];
 
-  const handleCategoryChange = (subcategoryName, e) => {
+  const handleCategoryChange = (category, subcategoryName, e) => {
     e.preventDefault();
     setLoading(true);
-    handleOpenFilter();
+    setOpenFilter(false);
 
-    if (subcategoryName === "todos") {
+    if (category) {
+      setSelectedCategory(`${category.name} > ${subcategoryName}`);
+    } else {
+      setSelectedCategory(`${subcategoryName}`);
+    }
+
+    if (subcategoryName === "Todos") {
       setProductsArray(products);
     } else {
       setProductsArray(
@@ -101,7 +108,7 @@ export default function Products({ products, categories }) {
                 <div className="todos">
                   <Link
                     href="#"
-                    onClick={(e) => handleCategoryChange("todos", e)}
+                    onClick={(e) => handleCategoryChange("", "Todos", e)}
                   >
                     Todos
                   </Link>
@@ -122,7 +129,11 @@ export default function Products({ products, categories }) {
                                 <Link
                                   href="#"
                                   onClick={(e) =>
-                                    handleCategoryChange(subcategory.name, e)
+                                    handleCategoryChange(
+                                      category,
+                                      subcategory.name,
+                                      e
+                                    )
                                   }
                                 >
                                   {subcategory.name}
@@ -141,27 +152,32 @@ export default function Products({ products, categories }) {
             {loading ? (
               <Loading />
             ) : (
-              <GridContainer responsive={true}>
-                {productsArray && productsArray.length > 0 ? (
-                  productsArray.map((product) => {
-                    return (
-                      <ProductCard
-                        key={product.id}
-                        id={product.id}
-                        slug={product.slug}
-                        image={product.images[0].url}
-                        name={product.name}
-                        price={product.price}
-                        qty={product.qty}
-                      />
-                    );
-                  })
-                ) : (
-                  <S.MessageContainer>
-                    Por enquanto, não há produtos nesta categoria :(
-                  </S.MessageContainer>
-                )}
-              </GridContainer>
+              <div className="grid">
+                <div className="selected-category">
+                  Resultados para: <strong>{selectedCategory}</strong>
+                </div>
+                <GridContainer responsive={true}>
+                  {productsArray && productsArray.length > 0 ? (
+                    productsArray.map((product) => {
+                      return (
+                        <ProductCard
+                          key={product.id}
+                          id={product.id}
+                          slug={product.slug}
+                          image={product.images[0].url}
+                          name={product.name}
+                          price={product.price}
+                          qty={product.qty}
+                        />
+                      );
+                    })
+                  ) : (
+                    <S.MessageContainer>
+                      Por enquanto, não há produtos nesta categoria :(
+                    </S.MessageContainer>
+                  )}
+                </GridContainer>
+              </div>
             )}
           </S.ContentHolder>
         </Container>
