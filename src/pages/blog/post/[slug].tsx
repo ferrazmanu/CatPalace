@@ -74,7 +74,7 @@ export default function Post({ post, otherPosts }) {
                     <div className="title">
                       <h2>{post.title}</h2>
                     </div>
-                    <div className="author">Por: {post.author.name}</div>
+                    {/* <div className="author">Por: {post.author.name}</div> */}
                   </S.Title>
 
                   <S.Text
