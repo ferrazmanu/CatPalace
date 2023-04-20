@@ -17,9 +17,9 @@ export async function GetProductsBySlug() {
   return data.products;
 }
 
-export async function GetProducts(slug) {
+export async function GetProduct(slug) {
   const GET_PRODUCTS = gql`
-    query GetProducts($slug: String!) {
+    query GetProduct($slug: String!) {
       product(where: { slug: $slug }) {
         description
         slug
@@ -35,6 +35,23 @@ export async function GetProducts(slug) {
         seo {
           title
           description
+        }
+        variants {
+          ... on ProductColorVariant {
+            id
+            colorHex
+            color
+          }
+          ... on ProductSizeVariant {
+            id
+            name
+            size
+          }
+          ... on ProductSizeColorVariant {
+            id
+            colorHex
+            color
+          }
         }
       }
     }

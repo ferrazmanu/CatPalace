@@ -26,7 +26,7 @@ import {
   incrementQuantity,
   removeFromCart,
 } from "@/redux/cart.slice";
-import { GetOtherProducts, GetProducts, GetProductsBySlug } from "@/lib/data";
+import { GetOtherProducts, GetProduct, GetProductsBySlug } from "@/lib/data";
 
 import * as S from "@/styles/productStyles";
 import "swiper/css";
@@ -79,6 +79,8 @@ export default function Product({ product, otherProducts }) {
     window.open(url);
     formattedMessage = "";
   };
+
+  console.log(product);
 
   return (
     <>
@@ -316,7 +318,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const product = await (GetProducts(params.slug) || []);
+  const product = await (GetProduct(params.slug) || []);
   const otherProducts = await (GetOtherProducts(params.slug) || []);
 
   return {
