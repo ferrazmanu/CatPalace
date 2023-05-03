@@ -145,6 +145,7 @@ export const MenuList = styled.ul<StylesProps>`
   }
 
   @media only screen and (max-width: 992px) {
+    z-index: 11;
     position: fixed;
     right: 0;
     top: 0;
