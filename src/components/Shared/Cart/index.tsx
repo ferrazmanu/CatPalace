@@ -42,9 +42,9 @@ export function Cart({ open }) {
       ${message
         .map(
           (item) =>
-            `${item.qty}x ${item.name} - R$${formatCurrency(
-              item.price * item.qty
-            )}`
+            `${item.qty}x ${item.name} - ${
+              item.colorVariant ? item.colorVariant : item.sizeVariant
+            } - R$${formatCurrency(item.price * item.qty)}`
         )
         .join("\n")}
         
@@ -57,7 +57,6 @@ export function Cart({ open }) {
     url += `&text=${encodeURI(formattedMessage)}`;
 
     window.open(url);
-
     dispatch(clearCart());
     dispatch(closeCart());
     formattedMessage = "";
@@ -99,6 +98,8 @@ export function Cart({ open }) {
                     name={item.name}
                     price={item.price}
                     qty={item.qty}
+                    colorVariant={item.colorVariant}
+                    sizeVariant={item.sizeVariant}
                   />
                 );
               })}
@@ -122,7 +123,7 @@ export function Cart({ open }) {
 
       {showModal && (
         <Modal
-          onClick={() => setShowModal(false)}
+          close={() => setShowModal(false)}
           modalHeader={<p>Obrigada por escolher a CatPalace!</p>}
           modalBody={
             <p>

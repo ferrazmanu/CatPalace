@@ -80,7 +80,7 @@ const Overlay = styled.div<StylesProps>`
   height: 100vh;
   position: fixed;
   inset: 0;
-  z-index: 5;
+  z-index: 11;
   background-color: rgba(0, 0, 0, 0.6);
   ${(props) => (props.open ? "display: block;" : "display: none;")}
 `;

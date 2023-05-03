@@ -11,7 +11,7 @@ export const Cart = styled.div<StylesProps>`
   height: 100%;
   justify-content: flex-start;
   min-width: 20%;
-  max-width: 400px;
+  max-width: 500px;
   width: 100%;
   padding: 30px;
   box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.1);

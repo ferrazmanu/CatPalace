@@ -21,6 +21,7 @@ export async function GetProduct(slug) {
   const GET_PRODUCTS = gql`
     query GetProduct($slug: String!) {
       product(where: { slug: $slug }) {
+        id
         description
         slug
         name
@@ -46,11 +47,6 @@ export async function GetProduct(slug) {
             id
             name
             size
-          }
-          ... on ProductSizeColorVariant {
-            id
-            colorHex
-            color
           }
         }
       }

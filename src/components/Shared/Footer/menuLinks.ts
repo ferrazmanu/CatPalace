@@ -23,8 +23,8 @@ export const contactLinks = [
   {
     id: "1",
     icon: "/assets/static/icons/whatsapp.png",
-    title: "(43) 99149-8444",
-    slug: "https://wa.me/5543991498444?text=Ol%C3%A1%2C%20Atendimento%20Cat%20Palace!",
+    title: "(43) 991940137",
+    slug: "https://wa.me/5543991940137?text=Ol%C3%A1%2C%20Atendimento%20Cat%20Palace!",
   },
   {
     id: "2",

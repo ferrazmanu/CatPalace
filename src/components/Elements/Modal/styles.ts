@@ -32,15 +32,22 @@ export const ContentBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  font-family: ${({ theme }) => theme.fonts.secondary_regular};
+  color: ${({ theme }) => theme.colors.secondary};
+
+  .modal-header,
+  .modal-body {
+    text-align: center;
+  }
 
   .modal-header {
     /* border-bottom: 0.5px solid ${({ theme }) => theme.colors.secondary}; */
     /* padding-bottom: 5px; */
-    font-size: ${({ theme }) => theme.fontSizes.medium_24};
+    font-size: ${({ theme }) => theme.fontSizes.medium_30};
   }
 
   .modal-body {
-    font-size: ${({ theme }) => theme.fontSizes.small_18};
+    font-size: ${({ theme }) => theme.fontSizes.medium_24};
   }
 
   @media only screen and (max-width: 1024px) {

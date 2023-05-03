@@ -4,27 +4,47 @@ export const ItemContainer = styled.div`
   display: flex;
   gap: 10px;
   align-items: center;
-
-  .product-name {
-    font-size: ${({ theme }) => theme.fontSizes.medium_24};
-    font-family: ${({ theme }) => theme.fonts.primary_regular};
-    color: ${({ theme }) => theme.colors.primary};
-    display: flex;
-    width: 100%;
-    line-height: 1;
-  }
+  font-family: ${({ theme }) => theme.fonts.primary_regular};
+  color: ${({ theme }) => theme.colors.primary};
 
   @media only screen and (max-width: 420px) {
-    .product-name {
-      font-size: ${({ theme }) => theme.fontSizes.small_18};
-    }
+    gap: 8px;
   }
 `;
 
 export const Info = styled.div`
   display: flex;
   gap: 10px;
-  width: 100%;
+  flex-direction: column;
+
+  .product-name {
+    font-size: ${({ theme }) => theme.fontSizes.medium_24};
+    display: flex;
+    width: 100%;
+    line-height: 1;
+  }
+
+  .top-info {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .variants {
+    font-size: ${({ theme }) => theme.fontSizes.small_18};
+  }
+
+  @media only screen and (max-width: 420px) {
+    gap: 5px;
+
+    .product-name {
+      font-size: ${({ theme }) => theme.fontSizes.small_18};
+    }
+
+    .top-info {
+      gap: 5px;
+    }
+  }
 `;
 
 export const Content = styled.div`
@@ -52,6 +72,8 @@ export const Actions = styled.div`
   }
 
   @media only screen and (max-width: 420px) {
+    gap: 10px;
+
     .quantity {
       max-width: 80px;
       height: 32px;
@@ -62,8 +84,8 @@ export const Actions = styled.div`
 export const ImageProduct = styled.a`
   background-color: ${({ theme }) => theme.colors.quarternary};
   width: 100%;
-  height: 100px;
-  max-width: 100px;
+  height: 130px;
+  max-width: 120px;
   border-radius: 10px;
   display: flex;
   justify-content: center;
@@ -77,8 +99,8 @@ export const ImageProduct = styled.a`
   }
 
   @media only screen and (max-width: 420px) {
-    height: 70px;
-    max-width: 70px;
+    height: 90px;
+    max-width: 90px;
   }
 `;
 

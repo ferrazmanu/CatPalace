@@ -19,6 +19,7 @@ export function Button({
       background={background}
       color={color}
       border={border}
+      aria-label={text}
     >
       {text}
     </S.Button>

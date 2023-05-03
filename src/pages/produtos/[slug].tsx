@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { MouseEvent, useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -34,12 +34,19 @@ import "swiper/css/pagination";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/cart.slice";
 import { formatCurrency } from "utils/format";
+import { Modal } from "@/components/Elements/Modal";
 
 export default function Product({ product, otherProducts }) {
   const dispatch = useDispatch();
   const router = useRouter();
 
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [colorVariant, setColorVariant] = useState("");
+  const [sizeVariant, setSizeVariant] = useState("");
+  const [activeVariant, setActiveVariant] = useState(0);
+  const [variantWarningModal, setVariantWarningModal] = useState(false);
+
+  const variant = product.variants;
 
   const breadcrumb = [
     { url: "/", text: "Início" },
@@ -53,34 +60,68 @@ export default function Product({ product, otherProducts }) {
     image: product.images[0].url,
     name: product.name,
     price: product.price,
+    colorVariant,
+    sizeVariant,
+    qty: 1,
+  };
+
+  const variantMessage = () => {
+    if (cartProduct.sizeVariant) {
+      return `Tamanho: ${sizeVariant}`;
+    }
+    if (cartProduct.colorVariant) {
+      return `Cor: ${colorVariant}`;
+    }
   };
 
   const addProduct = () => {
-    dispatch(addToCart(cartProduct));
-    dispatch(handleCartShow());
+    if (!variantMessage()) {
+      setVariantWarningModal(true);
+    } else {
+      dispatch(addToCart(cartProduct));
+      dispatch(handleCartShow());
+    }
   };
 
   const sendOrder = () => {
     const number = "+5543991940137";
 
-    let formattedMessage = `
-      Olá, *CatPalace*! Gostaria de realizar o pedido dos seguintes itens da loja:
+    if (!variantMessage()) {
+      setVariantWarningModal(true);
+    } else {
+      let formattedMessage = `
+      Olá, *CatPalace*! Gostaria de realizar o pedido do seguinte item da loja:
 
-      ${`1x ${cartProduct.name} - R$${formatCurrency(cartProduct.price)}`}
+      ${`${cartProduct.qty}x ${
+        cartProduct.name
+      } - ${variantMessage()} - R$${formatCurrency(cartProduct.price)}`}
         
       *Valor total do pedido*: R$${formatCurrency(product.price)}
     `
-      .replace(/^\s+/gm, "")
-      .replace(/\n/g, "\n \n");
+        .replace(/^\s+/gm, "")
+        .replace(/\n/g, "\n \n");
 
-    let url = `https://api.whatsapp.com/send?phone=${number}`;
-    url += `&text=${encodeURI(formattedMessage)}`;
+      let url = `https://api.whatsapp.com/send?phone=${number}`;
+      url += `&text=${encodeURI(formattedMessage)}`;
 
-    window.open(url);
-    formattedMessage = "";
+      window.open(url);
+      formattedMessage = "";
+    }
   };
 
-  console.log(product);
+  const selectVariant = (variantData, index, variantType) => {
+    if (variantType === "color") {
+      setColorVariant(variantData);
+    }
+    if (variantType === "size") {
+      setSizeVariant(variantData);
+    }
+    setActiveVariant(index);
+  };
+
+  useEffect(() => {
+    setActiveVariant(null);
+  }, []);
 
   return (
     <>
@@ -150,7 +191,12 @@ export default function Product({ product, otherProducts }) {
                         {product.images.map((image) => {
                           return (
                             <SwiperSlide key={image.url}>
-                              <Image src={image.url} alt={product.name} fill />
+                              <Image
+                                src={image.url}
+                                alt={product.name}
+                                fill
+                                sizes="100vw"
+                              />
                             </SwiperSlide>
                           );
                         })}
@@ -168,7 +214,12 @@ export default function Product({ product, otherProducts }) {
                         {product.images.map((image) => {
                           return (
                             <SwiperSlide key={image.url}>
-                              <Image src={image.url} alt={product.name} fill />
+                              <Image
+                                src={image.url}
+                                alt={product.name}
+                                fill
+                                sizes="100vw"
+                              />
                             </SwiperSlide>
                           );
                         })}
@@ -187,22 +238,47 @@ export default function Product({ product, otherProducts }) {
                     <div className="current-price">R$ {product.price}</div>
                   </div>
 
+                  <div className="variants">
+                    {variant.some((x) => x.hasOwnProperty("color")) && (
+                      <div className="color">
+                        {variant.map((variant, index) => {
+                          return (
+                            <S.Variant
+                              className="color-variant"
+                              active={index === activeVariant ? true : false}
+                              key={variant.id}
+                              color={variant.colorHex}
+                              onClick={() =>
+                                selectVariant(variant.color, index, "color")
+                              }
+                            />
+                          );
+                        })}
+                      </div>
+                    )}
+                    {variant.some((x) => x.hasOwnProperty("size")) && (
+                      <div className="size">
+                        {variant.map((variant, index) => {
+                          return (
+                            <S.Variant
+                              className="size-variant"
+                              active={index === activeVariant ? true : false}
+                              key={variant.id}
+                              onClick={() =>
+                                selectVariant(variant.size, index, "size")
+                              }
+                            >
+                              {variant.size}
+                            </S.Variant>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+
                   <Link href="#detalhes" className="to-details">
                     Ir para detalhes do produto
                   </Link>
-
-                  {/* aqui lembrar que precisa ter variação de cor e quantidade, ai sim pega os dados e 
-                    manda pro carrinho */}
-
-                  {/* <Quantity
-                      incrementQuantity={() =>
-                        dispatch(incrementQuantity(cartProduct))
-                      }
-                      decrementQuantity={() =>
-                        dispatch(decrementQuantity(cartProduct))
-                      }
-                      qty={qty}
-                    /> */}
 
                   <div className="buy-buttons">
                     <Button
@@ -299,6 +375,17 @@ export default function Product({ product, otherProducts }) {
           </Container>
         )}
       </main>
+      {variantWarningModal && (
+        <Modal
+          modalBody={
+            <p>
+              Por favor, selecione uma variação de cor ou tamanho para que o
+              pedido possa ser enviado!
+            </p>
+          }
+          close={() => setVariantWarningModal(false)}
+        />
+      )}
     </>
   );
 }

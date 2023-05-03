@@ -41,6 +41,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   p, a{
+    margin: 0;
     line-height: 1.5;
   }
 
@@ -82,24 +83,28 @@ const GlobalStyle = createGlobalStyle`
     font-family: Berkshire;
     src: url('/assets/fonts/BerkshireSwashRegular.ttf') format('truetype');
     font-weight: 400;
+    font-display: swap;
   }
 
   @font-face {
     font-family: Oswald-Light;
     src: url('/assets/fonts/OswaldVariable.ttf') format('truetype');
     font-weight: 300;
+    font-display: swap;
   }
 
   @font-face {
     font-family: Oswald-Regular;
     src: url('/assets/fonts/OswaldVariable.ttf') format('truetype');
     font-weight: 400;
+    font-display: swap;
   }
   
   @font-face {
     font-family: Oswald-Medium;
     src: url('/assets/fonts/OswaldVariable.ttf') format('truetype');
     font-weight: 500;
+    font-display: swap;
   }
 `;
 

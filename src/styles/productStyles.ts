@@ -1,3 +1,4 @@
+import { VariantProps } from "@/common/types";
 import styled from "styled-components";
 
 export const Product = styled.div`
@@ -27,6 +28,19 @@ export const Product = styled.div`
     }
   }
 
+  .variants {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: fit-content;
+
+    .color,
+    .size {
+      display: flex;
+      gap: 10px;
+    }
+  }
+
   .to-details {
     font-size: ${({ theme }) => theme.fontSizes.medium_24};
     text-decoration: underline;
@@ -52,6 +66,41 @@ export const Product = styled.div`
 
     .to-details {
       font-size: ${({ theme }) => theme.fontSizes.small_18};
+    }
+  }
+`;
+
+export const Variant = styled.button<VariantProps>`
+  &.color-variant {
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: ${(props) => props.color};
+    width: 30px;
+    height: 30px;
+    ${(props) =>
+      props.active
+        ? "transform: scale(1.3); border: 1.5px solid #8c8b8b;"
+        : "border: 1px solid #8c8b8b;"}
+
+    &:hover {
+      border: 1px solid #8c8b8b;
+    }
+  }
+
+  &.size-variant {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1.5px solid #000;
+    background-color: transparent;
+    cursor: pointer;
+    min-width: 70px;
+
+    ${(props) =>
+      props.active ? "border: 2px solid  #000;" : "border: 1px solid #8c8b8b;"}
+
+    &:hover {
+      border: 2px solid #8c8b8b;
     }
   }
 `;

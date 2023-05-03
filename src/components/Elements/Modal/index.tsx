@@ -8,12 +8,12 @@ export function Modal({
   modalHeader,
   modalBody,
   modalFooter,
-  onClick,
+  close,
 }: ModalProps) {
   return (
     <S.ModalWrapper>
       <S.ContentBox>
-        <button type="button" className="close-modal" onClick={onClick}>
+        <button type="button" className="close-modal" onClick={close}>
           <CloseIcon />
         </button>
         <div className="modal-header">{modalHeader}</div>

@@ -6,46 +6,23 @@ import { Button } from "../Button";
 import { PriceTagIcon } from "@/components/Icons";
 import { Product } from "@/common/types";
 
-import { useDispatch } from "react-redux";
-import { addToCart, handleCartShow } from "@/redux/cart.slice";
 import { formatCurrency } from "utils/format";
 
 export function ProductCard({ id, slug, image, name, price }: Product) {
-  const dispatch = useDispatch();
-
-  const product = {
-    id,
-    slug,
-    image,
-    name,
-    price,
-  };
-
-  const addProduct = () => {
-    dispatch(addToCart(product));
-    dispatch(handleCartShow());
-  };
-
   return (
     <S.Card className="card">
       <S.ImageProduct href={`/produtos/${slug}`}>
-        <Image src={image} fill alt={name} />
+        <Image src={image} fill alt={name} sizes="100vw" />
       </S.ImageProduct>
-      <S.Content>
-        <Link className="product-name" href={`/produtos/${slug}`}>
-          {name}
-        </Link>
+      <S.Content as="a" href={`/produtos/${slug}`}>
+        <div className="product-name">{name}</div>
         <S.Price className="price">
           <PriceTagIcon width="28px" height="28px" color="#000" />
           <span>R$ {formatCurrency(price)}</span>
         </S.Price>
       </S.Content>
 
-      <Button
-        text="adicionar ao carrinho"
-        type="button"
-        onClick={() => addProduct()}
-      />
+      <Button text="ver produto" href={`/produtos/${slug}`} />
     </S.Card>
   );
 }

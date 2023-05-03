@@ -34,6 +34,7 @@ export function Banner({ banners }: BannersProps) {
                     src={banner.bannerDesktop[0].url}
                     alt={banner.alt}
                     fill
+                    priority
                   />
                 </picture>
               </Link>

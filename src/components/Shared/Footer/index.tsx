@@ -33,7 +33,12 @@ export function Footer() {
                   <li key={link.id}>
                     <Link href={link.slug} target="_blank">
                       <div className="icon">
-                        <Image src={link.icon} fill alt={link.title} />
+                        <Image
+                          src={link.icon}
+                          width={18}
+                          height={18}
+                          alt={link.title}
+                        />
                       </div>
                       {link.title}
                     </Link>
@@ -58,7 +63,12 @@ export function Footer() {
                   <li key={link.id}>
                     <Link href={link.slug} target="_blank">
                       <div className="icon">
-                        <Image src={link.icon} fill alt={link.title} />
+                        <Image
+                          src={link.icon}
+                          width={18}
+                          height={18}
+                          alt={link.title}
+                        />
                       </div>
                       {link.title}
                     </Link>

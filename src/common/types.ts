@@ -11,6 +11,8 @@ export interface Product {
   name: string;
   price: number;
   qty?: number;
+  colorVariant?: string;
+  sizeVariant?: string;
 }
 
 export interface Images {
@@ -41,6 +43,7 @@ export interface ButtonProps {
   background?: string;
   color?: string;
   border?: string;
+  as?: any;
 }
 
 export interface ButtonStylesProps {
@@ -106,8 +109,12 @@ export interface StylesProps {
 }
 
 export interface ModalProps {
-  modalHeader: React.ReactNode;
+  modalHeader?: React.ReactNode;
   modalBody: React.ReactNode;
   modalFooter?: React.ReactNode;
-  onClick: MouseEventHandler<HTMLButtonElement>;
+  close: MouseEventHandler<HTMLButtonElement>;
+}
+
+export interface VariantProps {
+  active?: boolean;
 }

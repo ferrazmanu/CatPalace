@@ -110,7 +110,7 @@ export const MenuContainer = styled.div`
   }
 `;
 
-export const MenuList = styled.div<StylesProps>`
+export const MenuList = styled.ul<StylesProps>`
   max-width: fit-content;
   width: 100%;
   display: flex;

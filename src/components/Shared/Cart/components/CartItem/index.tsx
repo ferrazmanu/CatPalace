@@ -14,16 +14,27 @@ import { Quantity } from "@/components/Elements/Quantity";
 import { TrashIcon } from "@/components/Icons";
 import { formatCurrency } from "utils/format";
 
-export function CartItem({ id, slug, image, name, price, qty }: Product) {
+export function CartItem({
+  id,
+  slug,
+  image,
+  name,
+  price,
+  qty,
+  colorVariant,
+  sizeVariant,
+}: Product) {
   const dispatch = useDispatch();
 
   const product = {
-    id: id,
-    image: image,
-    slug: slug,
-    name: name,
-    price: price,
-    qty: qty,
+    id,
+    image,
+    slug,
+    name,
+    price,
+    qty,
+    colorVariant,
+    sizeVariant,
   };
 
   return (
@@ -34,11 +45,18 @@ export function CartItem({ id, slug, image, name, price, qty }: Product) {
         </S.ImageProduct>
         <S.Content>
           <S.Info>
-            <Link className="product-name" href={`/produtos/${slug}`}>
-              {name}
-            </Link>
-            <S.Price>R$ {formatCurrency(qty * price)}</S.Price>
+            <div className="top-info">
+              <Link className="product-name" href={`/produtos/${slug}`}>
+                {name}
+              </Link>
+              <S.Price>R$ {formatCurrency(qty * price)}</S.Price>
+            </div>
+            <div className="variants">
+              {colorVariant && `Cor: ${colorVariant}`}
+              {sizeVariant && `Tamanho: ${sizeVariant}`}
+            </div>
           </S.Info>
+
           <S.Actions>
             <Quantity
               incrementQuantity={() => dispatch(incrementQuantity(product))}

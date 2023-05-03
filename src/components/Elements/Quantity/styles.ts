@@ -25,11 +25,15 @@ export const Quantity = styled.div`
   }
 
   .qty {
-    font-size: ${({ theme }) => theme.fontSizes.small_18};
+    font-size: ${({ theme }) => theme.fontSizes.small_12};
     color: ${({ theme }) => theme.colors.primary};
   }
 
   button {
     border: none;
+  }
+
+  @media only screen and (max-width: 420px) {
+    font-size: ${({ theme }) => theme.fontSizes.small_18};
   }
 `;
