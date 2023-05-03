@@ -8,9 +8,9 @@ export function WhatsappButton() {
   const message = () => {
     const number = "+5543991940137";
 
-    let formattedMessage = `Olá, *CatPalace*!`
-      .replace(/^\s+/gm, "")
-      .replace(/\n/g, "\n \n");
+    let formattedMessage = `
+      Olá, *CatPalace* \n
+      Gostaria de conhecer mais sobre a loja!`.replace(/^\s+/gm, "");
 
     let url = `https://api.whatsapp.com/send?phone=${number}`;
     url += `&text=${encodeURI(formattedMessage)}`;
