@@ -66,8 +66,7 @@ export function Cart({ open }) {
     let url = `https://api.whatsapp.com/send?phone=${number}`;
     url += `&text=${encodeURI(formattedMessage)}`;
 
-    // window.open(url);
-    console.log(formattedMessage);
+    window.open(url);
     dispatch(clearCart());
     dispatch(closeCart());
     formattedMessage = "";

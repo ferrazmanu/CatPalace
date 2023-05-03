@@ -105,8 +105,7 @@ export default function Product({ product, otherProducts }) {
       let url = `https://api.whatsapp.com/send?phone=${number}`;
       url += `&text=${encodeURI(formattedMessage)}`;
 
-      // window.open(url);
-      console.log(formattedMessage);
+      window.open(url);
       formattedMessage = "";
     }
   };
