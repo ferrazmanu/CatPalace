@@ -75,7 +75,7 @@ export default function Product({ product, otherProducts }) {
   };
 
   const addProduct = () => {
-    if (!variantMessage()) {
+    if (!variantMessage() && variant.length > 0) {
       setVariantWarningModal(true);
     } else {
       dispatch(addToCart(cartProduct));

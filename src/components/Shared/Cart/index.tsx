@@ -91,7 +91,7 @@ export function Cart({ open }) {
               {cart.cartItems.map((item) => {
                 return (
                   <CartItem
-                    key={item.id}
+                    key={`${item.id}-${Math.random()}`}
                     id={item.id}
                     image={item.image}
                     slug={item.slug}
