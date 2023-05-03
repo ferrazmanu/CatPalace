@@ -67,11 +67,12 @@ export default function Product({ product, otherProducts }) {
 
   const variantMessage = () => {
     if (cartProduct.sizeVariant) {
-      return `Tamanho: ${sizeVariant}`;
+      return `Tamanho: ${sizeVariant} - `;
     }
     if (cartProduct.colorVariant) {
-      return `Cor: ${colorVariant}`;
+      return `Cor: ${colorVariant} - `;
     }
+    return "";
   };
 
   const addProduct = () => {
@@ -86,7 +87,7 @@ export default function Product({ product, otherProducts }) {
   const sendOrder = () => {
     const number = "+5543991940137";
 
-    if (!variantMessage()) {
+    if (!variantMessage() && variant.length > 0) {
       setVariantWarningModal(true);
     } else {
       let formattedMessage = `
@@ -94,7 +95,7 @@ export default function Product({ product, otherProducts }) {
 
       ${`${cartProduct.qty}x ${
         cartProduct.name
-      } - ${variantMessage()} - R$${formatCurrency(cartProduct.price)}`}
+      } - ${variantMessage()}R$${formatCurrency(cartProduct.price)}`}
         
       *Valor total do pedido*: R$${formatCurrency(product.price)}
     `
@@ -104,7 +105,8 @@ export default function Product({ product, otherProducts }) {
       let url = `https://api.whatsapp.com/send?phone=${number}`;
       url += `&text=${encodeURI(formattedMessage)}`;
 
-      window.open(url);
+      // window.open(url);
+      console.log(formattedMessage);
       formattedMessage = "";
     }
   };

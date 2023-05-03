@@ -32,6 +32,16 @@ export function Cart({ open }) {
     );
   };
 
+  const variantMessage = (x) => {
+    if (x.sizeVariant) {
+      return `Tamanho: ${x.sizeVariant} - `;
+    }
+    if (x.colorVariant) {
+      return `Cor: ${x.colorVariant} - `;
+    }
+    return "";
+  };
+
   const sendOrder = () => {
     const number = "+5543991940137";
     const message = cart.cartItems;
@@ -42,9 +52,9 @@ export function Cart({ open }) {
       ${message
         .map(
           (item) =>
-            `${item.qty}x ${item.name} - ${
-              item.colorVariant ? item.colorVariant : item.sizeVariant
-            } - R$${formatCurrency(item.price * item.qty)}`
+            `${item.qty}x ${item.name} - ${variantMessage(
+              item
+            )}R$${formatCurrency(item.price * item.qty)}`
         )
         .join("\n")}
         
@@ -56,7 +66,8 @@ export function Cart({ open }) {
     let url = `https://api.whatsapp.com/send?phone=${number}`;
     url += `&text=${encodeURI(formattedMessage)}`;
 
-    window.open(url);
+    // window.open(url);
+    console.log(formattedMessage);
     dispatch(clearCart());
     dispatch(closeCart());
     formattedMessage = "";

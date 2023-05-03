@@ -23,7 +23,7 @@ export const ModalWrapper = styled.div`
 
 export const ContentBox = styled.div`
   background-color: #fff;
-  max-width: 40%;
+  max-width: 45%;
   width: 100%;
   min-height: 100px;
   height: fit-content;
