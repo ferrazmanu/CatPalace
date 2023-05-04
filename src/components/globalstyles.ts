@@ -57,7 +57,7 @@ const GlobalStyle = createGlobalStyle`
 
   body{
     background-color: ${({ theme }) => theme.colors.tertiary};
-    background-image: url('/assets/static/BG.png');
+    background-image: url('/assets/static/BG-1920x1080.png');
     background-repeat: repeat;
     background-position: center center;
     background-size: contain;
