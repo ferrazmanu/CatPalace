@@ -80,7 +80,7 @@ export default function FAQ() {
 
           <S.PostContainer>
             <S.Post>
-              <S.Title center>
+              <S.Title style={{ textAlign: "center" }}>
                 <div className="title">
                   <h2>Dúvidas e Sugestões</h2>
                 </div>

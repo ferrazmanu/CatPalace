@@ -118,7 +118,3 @@ export interface ModalProps {
 export interface VariantProps {
   active?: boolean;
 }
-
-export interface PostTitleProps {
-  center?: boolean;
-}
