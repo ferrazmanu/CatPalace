@@ -5,8 +5,14 @@ import { Container } from "@/components/sharedstyles";
 import * as S from "styles/postStyles";
 import "swiper/css";
 import "swiper/css/navigation";
+import { Breadcrumb } from "@/components/Elements/Breadcrumb";
 
 export default function TermosDeUso() {
+  const breadcrumb = [
+    { url: "/", text: "Início" },
+    { url: "/consulte/termos-uso", text: "Termos de Uso" },
+  ];
+
   return (
     <>
       <Head>
@@ -32,6 +38,8 @@ export default function TermosDeUso() {
       />
       <main>
         <Container>
+          <Breadcrumb breadcrumb={breadcrumb} />
+
           <S.PostContainer>
             <S.Post>
               <S.Title>

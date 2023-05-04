@@ -70,6 +70,7 @@ export const MenuContainer = styled.div`
 
           .icon {
             position: relative;
+            display: flex;
             width: 18px;
             height: 18px;
 

@@ -12,6 +12,7 @@ const theme: DefaultTheme = {
     big_64: "clamp(1.875rem, 64px, 4rem)",
     big_60: "clamp(1.75rem, 60px, 3.75rem)",
     big_48: "clamp(1.375rem, 48px, 3rem)",
+    big_42: "clamp(1.375rem, 42px, 2.62rem)",
     medium_36: "clamp(1.313rem, 36px, 2.25rem)",
     medium_32: "clamp(1.25rem, 32px, 2rem)",
     medium_30: "clamp(1.375rem, 30px, 1.875rem)",

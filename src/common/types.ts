@@ -38,8 +38,8 @@ export interface PostProps {
 export interface ButtonProps {
   href?: string;
   text: string;
-  type?: string;
-  onClick?: MouseEventHandler<HTMLAnchorElement>;
+  type?: any;
+  onClick?: MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
   background?: string;
   color?: string;
   border?: string;
@@ -117,4 +117,8 @@ export interface ModalProps {
 
 export interface VariantProps {
   active?: boolean;
+}
+
+export interface PostTitleProps {
+  center?: boolean;
 }

@@ -11,17 +11,32 @@ export function Button({
   border,
 }: ButtonProps) {
   return (
-    <S.Button
-      href={href}
-      className="button"
-      type={type}
-      onClick={onClick}
-      background={background}
-      color={color}
-      border={border}
-      aria-label={text}
-    >
-      {text}
-    </S.Button>
+    <>
+      {type ? (
+        <S.Button
+          className="button"
+          type={type}
+          onClick={onClick}
+          background={background}
+          color={color}
+          border={border}
+          aria-label={text}
+        >
+          {text}
+        </S.Button>
+      ) : (
+        <S.Link
+          href={href}
+          className="button"
+          onClick={onClick}
+          background={background}
+          color={color}
+          border={border}
+          aria-label={text}
+        >
+          {text}
+        </S.Link>
+      )}
+    </>
   );
 }

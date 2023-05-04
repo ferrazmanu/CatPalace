@@ -5,8 +5,17 @@ import { Container } from "@/components/sharedstyles";
 import * as S from "styles/postStyles";
 import "swiper/css";
 import "swiper/css/navigation";
+import { Breadcrumb } from "@/components/Elements/Breadcrumb";
 
 export default function PoliticasDePrivacidade() {
+  const breadcrumb = [
+    { url: "/", text: "Início" },
+    {
+      url: "/consulte/politicas-privacidade",
+      text: "Políticas de Privacidade",
+    },
+  ];
+
   return (
     <>
       <Head>
@@ -32,6 +41,8 @@ export default function PoliticasDePrivacidade() {
       />
       <main>
         <Container>
+          <Breadcrumb breadcrumb={breadcrumb} />
+
           <S.PostContainer>
             <S.Post>
               <S.Title>

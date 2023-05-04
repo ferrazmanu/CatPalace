@@ -6,8 +6,14 @@ import * as S from "styles/postStyles";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Details } from "@/components/Elements/Details";
+import { Breadcrumb } from "@/components/Elements/Breadcrumb";
 
 export default function FAQ() {
+  const breadcrumb = [
+    { url: "/", text: "Início" },
+    { url: "/consulte/faq", text: "Perguntas Frequentes" },
+  ];
+
   return (
     <>
       <Head>
@@ -33,6 +39,8 @@ export default function FAQ() {
       />
       <main>
         <Container>
+          <Breadcrumb breadcrumb={breadcrumb} />
+
           <S.PostContainer>
             <S.Post>
               <S.Title>

@@ -13,6 +13,7 @@ declare module "styled-components" {
       big_64: string;
       big_60: string;
       big_48: string;
+      big_42: string;
       medium_36: string;
       medium_30: string;
       medium_32: string;

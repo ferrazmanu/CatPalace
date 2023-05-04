@@ -1,3 +1,4 @@
+import { PostTitleProps } from "@/common/types";
 import styled from "styled-components";
 
 export const PostContainer = styled.div`
@@ -33,13 +34,14 @@ export const ImageContainer = styled.div`
   }
 `;
 
-export const Title = styled.div`
+export const Title = styled.div<PostTitleProps>`
   display: flex;
   flex-direction: column;
+  ${(props) => props.center && "text-align: center"};
 
   .title {
     h2 {
-      font-size: ${({ theme }) => theme.fontSizes.big_48};
+      font-size: ${({ theme }) => theme.fontSizes.big_42};
     }
   }
 

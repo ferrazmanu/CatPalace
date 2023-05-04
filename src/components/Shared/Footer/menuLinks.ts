@@ -32,6 +32,12 @@ export const contactLinks = [
     title: "store.catpalace@gmail.com",
     slug: "mailto:store.catpalace@gmail.com",
   },
+  {
+    id: "3",
+    icon: "/assets/static/icons/sugestoes.png",
+    title: "Dúvidas e Sugestões",
+    slug: "/sugestoes",
+  },
 ];
 
 export const consulteLinks = [
@@ -46,7 +52,7 @@ export const consulteLinks = [
     slug: "/consulte/politicas-privacidade",
   },
   {
-    id: "3",
+    id: "4",
     title: "FAQ",
     slug: "/consulte/faq",
   },
