@@ -47,9 +47,9 @@ export default function TermosDeUso() {
                   A página que você está tentando acessar não foi encontrada.
                 </p>
                 <p>
-                  Caso queira, você pode deixar uma sugestão na nossa{" "}
-                  <Link href={"/sugestoes"}>página de dúvidas e sugestões</Link>
-                  para que possamos melhorar!
+                  Caso queira, você pode deixar uma sugestão na nossa página de{" "}
+                  <Link href={"/sugestoes"}>dúvidas e sugestões</Link> para que
+                  possamos melhorar!
                 </p>
               </S.Text>
             </S.Post>

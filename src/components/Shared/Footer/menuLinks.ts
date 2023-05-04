@@ -3,19 +3,19 @@ export const socialLinks = [
     id: "1",
     icon: "/assets/static/icons/facebook.png",
     title: "CatPalace",
-    slug: "https://www.facebook.com/",
+    slug: "https://www.facebook.com/profile.php?id=100091774399203",
   },
   {
     id: "2",
     icon: "/assets/static/icons/instagram.png",
     title: "@_catpalace",
-    slug: "https://www.instagram.com/",
+    slug: "https://www.instagram.com/catpalace.store/",
   },
   {
     id: "3",
     icon: "/assets/static/icons/tiktok.png",
     title: "@_catpalace",
-    slug: "https://www.tiktok.com/",
+    slug: "https://www.tiktok.com/@catpalace.store",
   },
 ];
 

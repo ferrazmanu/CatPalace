@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Details } from "@/components/Elements/Details";
 import { Breadcrumb } from "@/components/Elements/Breadcrumb";
+import Link from "next/link";
 
 export default function FAQ() {
   const breadcrumb = [
@@ -116,9 +117,12 @@ export default function FAQ() {
                   children={
                     <p>
                       Para qualquer dúvida, basta entrar em contato conosco
-                      através do nosso WhatsApp (link clicável), trabalhamos de
-                      segunda a sexta das 08h30 às 18h e sábado das 08h30 às
-                      12h.
+                      direto por do nosso{" "}
+                      <Link href={"tel:5543991940137"}>WhatsApp</Link> ou por
+                      nossa página de{" "}
+                      <Link href={"/sugestoes"}>dúvidas e sugestões</Link>.
+                      Trabalhamos de segunda a sexta das 08h30 às 18h e sábado
+                      das 08h30 às 12h.
                     </p>
                   }
                 />
@@ -137,10 +141,31 @@ export default function FAQ() {
                   children={
                     <p>
                       No momento ainda não temos loja física, você pode conferir
-                      os nossos produtos aqui no site, ou através do nosso
-                      Instagram (link clicável), Facebook (link clicável),
-                      TikTok (link clicável) ou pelo nosso catálogo digital no
-                      WhatsApp (link clicável).
+                      os nossos produtos aqui no site, ou através do nosso{" "}
+                      <Link
+                        href={"https://www.instagram.com/catpalace.store/"}
+                        target="_blank"
+                      >
+                        Instagram
+                      </Link>
+                      ,{" "}
+                      <Link
+                        href={
+                          "https://www.facebook.com/profile.php?id=100091774399203"
+                        }
+                        target="_blank"
+                      >
+                        Facebook
+                      </Link>
+                      ,{" "}
+                      <Link
+                        href={"https://www.tiktok.com/@catpalace.store"}
+                        target="_blank"
+                      >
+                        TikTok
+                      </Link>{" "}
+                      ou pelo nosso catálogo digital no{" "}
+                      <Link href={"tel:5543991940137"}>WhatsApp</Link>.
                     </p>
                   }
                 />

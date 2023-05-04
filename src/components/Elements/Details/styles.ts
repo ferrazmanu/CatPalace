@@ -21,6 +21,7 @@ export const Details = styled.details`
     align-items: center;
     width: 100%;
     position: relative;
+    padding-right: 20px;
 
     &::-webkit-details-marker {
       display: none;

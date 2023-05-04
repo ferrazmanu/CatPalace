@@ -75,7 +75,6 @@ export const Text = styled.div`
 
   a {
     text-decoration: underline;
-    margin-right: 4px;
   }
 
   &.faq {
