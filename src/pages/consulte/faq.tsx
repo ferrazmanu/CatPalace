@@ -165,7 +165,14 @@ export default function FAQ() {
                         TikTok
                       </Link>{" "}
                       ou pelo nosso catálogo digital no{" "}
-                      <Link href={"tel:5543991940137"}>WhatsApp</Link>.
+                      <Link
+                        href={
+                          "https://api.whatsapp.com/send/?phone=5543991940137&text=Ol%C3%A1%2C+gostaria+de+falar+com+um+atendente."
+                        }
+                      >
+                        WhatsApp
+                      </Link>
+                      .
                     </p>
                   }
                 />

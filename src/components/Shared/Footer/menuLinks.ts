@@ -24,7 +24,7 @@ export const contactLinks = [
     id: "1",
     icon: "/assets/static/icons/whatsapp.png",
     title: "(43) 991940137",
-    slug: "https://wa.me/5543991940137?text=Ol%C3%A1%2C%20Atendimento%20Cat%20Palace!",
+    slug: "https://api.whatsapp.com/send/?phone=5543991940137&text=Ol%C3%A1%2C+gostaria+de+falar+com+um+atendente.",
   },
   {
     id: "2",
