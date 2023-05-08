@@ -48,7 +48,8 @@ export const ImageProduct = styled.a`
   overflow: hidden;
 
   img {
-    object-fit: cover;
+    object-fit: contain;
+    background: #fff;
   }
 
   @media only screen and (max-width: 1024px) {
