@@ -141,7 +141,8 @@ export const SwiperContainer = styled.div`
       overflow: hidden;
 
       img {
-        object-fit: cover;
+        object-fit: contain;
+        background: #fff;
       }
     }
 
