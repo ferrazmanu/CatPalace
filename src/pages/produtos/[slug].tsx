@@ -235,8 +235,14 @@ export default function Product({ product, otherProducts }) {
                   </div>
 
                   <div className="price">
-                    <div className="previous-price">R$ {product.oldPrice}</div>
-                    <div className="current-price">R$ {product.price}</div>
+                    {product.oldPrice && (
+                      <div className="previous-price">
+                        R$ {formatCurrency(product.oldPrice)}
+                      </div>
+                    )}
+                    <div className="current-price">
+                      R$ {formatCurrency(product.price)}
+                    </div>
                   </div>
 
                   <div className="variants">
