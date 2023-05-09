@@ -51,6 +51,11 @@ export const Details = styled.details`
     position: relative;
     width: fit-content;
 
+    a {
+      height: inherit;
+      width: 100%;
+    }
+
     &::after {
       position: absolute;
       transition: 0.3s;

@@ -314,11 +314,17 @@ export async function GetCategories() {
   const GET_CATEGORIES = gql`
     {
       categories {
+        products {
+          id
+        }
         name
         slug
         subcategories {
           name
           slug
+          products {
+            id
+          }
         }
       }
     }

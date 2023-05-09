@@ -6,7 +6,7 @@ export const Button = styled.button<ButtonStylesProps>`
   font-family: ${({ theme }) => theme.fonts.primary_light};
   font-size: ${({ theme }) => theme.fontSizes.medium_24};
   color: ${(props) =>
-    props.color ? props.color : `${({ theme }) => theme.colors.primary}`};
+    props.color ? props.color : ({ theme }) => theme.colors.primary};
   background-color: ${(props) =>
     props.background ? props.background : `transparent`};
   border: ${(props) => (props.border ? props.border : `1px solid #000`)};
@@ -42,7 +42,7 @@ export const Link = styled.a<ButtonStylesProps>`
   font-family: ${({ theme }) => theme.fonts.primary_light};
   font-size: ${({ theme }) => theme.fontSizes.medium_24};
   color: ${(props) =>
-    props.color ? props.color : `${({ theme }) => theme.colors.primary}`};
+    props.color ? props.color : ({ theme }) => theme.colors.primary};
   background-color: ${(props) =>
     props.background ? props.background : `transparent`};
   border: ${(props) => (props.border ? props.border : `1px solid #000`)};

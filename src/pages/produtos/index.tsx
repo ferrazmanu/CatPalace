@@ -18,7 +18,6 @@ import { Loading } from "@/components/Elements/Loading";
 export default function Products({ products, categories }) {
   const [productsArray, setProductsArray] = useState(products);
   const [openFilter, setOpenFilter] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("Todos");
 
   const breadcrumb = [
@@ -28,7 +27,6 @@ export default function Products({ products, categories }) {
 
   const handleCategoryChange = (category, subcategoryName, e) => {
     e.preventDefault();
-    setLoading(true);
     setOpenFilter(false);
 
     if (category) {
@@ -42,12 +40,11 @@ export default function Products({ products, categories }) {
     } else {
       setProductsArray(
         products.filter(
-          (produto) => produto.subcategory.name === subcategoryName
+          (produto) =>
+            produto.subcategory && produto.subcategory.name === subcategoryName
         )
       );
     }
-
-    setLoading(false);
   };
 
   const handleOpenFilter = () => {
@@ -115,70 +112,75 @@ export default function Products({ products, categories }) {
                 </div>
                 {categories.map((category) => {
                   return (
-                    <Details
-                      key={category.name}
-                      summary={category.name}
-                      children={
-                        <ul>
-                          {category.subcategories.map((subcategory) => {
-                            return (
-                              <li
-                                key={subcategory.name}
-                                className="product-category"
-                              >
-                                <Link
-                                  href="#"
-                                  onClick={(e) =>
-                                    handleCategoryChange(
-                                      category,
-                                      subcategory.name,
-                                      e
-                                    )
-                                  }
-                                >
-                                  {subcategory.name}
-                                </Link>
-                              </li>
-                            );
-                          })}
-                        </ul>
-                      }
-                    />
+                    <>
+                      {category.products && category.products.length > 0 && (
+                        <Details
+                          key={category.name}
+                          summary={category.name}
+                          children={
+                            <ul>
+                              {category.subcategories.map((subcategory) => {
+                                return (
+                                  <>
+                                    {subcategory.products &&
+                                      subcategory.products.length > 0 && (
+                                        <li
+                                          key={subcategory.name}
+                                          className="product-category"
+                                        >
+                                          <Link
+                                            href="#"
+                                            onClick={(e) =>
+                                              handleCategoryChange(
+                                                category,
+                                                subcategory.name,
+                                                e
+                                              )
+                                            }
+                                          >
+                                            {subcategory.name}
+                                          </Link>
+                                        </li>
+                                      )}
+                                  </>
+                                );
+                              })}
+                            </ul>
+                          }
+                        />
+                      )}
+                    </>
                   );
                 })}
               </S.Categories>
             </S.CategoriesContainer>
 
-            {loading ? (
-              <Loading />
-            ) : (
-              <div className="grid">
-                <div className="selected-category">
-                  Resultados para: <strong>{selectedCategory}</strong>
-                </div>
-                <GridContainer responsive={true}>
-                  {productsArray && productsArray.length > 0 ? (
-                    productsArray.map((product) => {
-                      return (
-                        <ProductCard
-                          key={product.id}
-                          id={product.id}
-                          slug={product.slug}
-                          image={product.images[0].url}
-                          name={product.name}
-                          price={product.price}
-                          qty={product.qty}
-                        />
-                      );
-                    })
-                  ) : (
-                    <S.MessageContainer>
-                      Por enquanto, não há produtos nesta categoria :(
-                    </S.MessageContainer>
-                  )}
-                </GridContainer>
+            <div className="grid">
+              <div className="selected-category">
+                Resultados para: <strong>{selectedCategory}</strong>
               </div>
-            )}
+              <GridContainer responsive={true}>
+                {productsArray && productsArray.length > 0 ? (
+                  productsArray.map((product) => {
+                    return (
+                      <ProductCard
+                        key={product.id}
+                        id={product.id}
+                        slug={product.slug}
+                        image={product.images[0].url}
+                        name={product.name}
+                        price={product.price}
+                        qty={product.qty}
+                      />
+                    );
+                  })
+                ) : (
+                  <S.MessageContainer>
+                    Por enquanto, não há produtos nesta categoria :(
+                  </S.MessageContainer>
+                )}
+              </GridContainer>
+            </div>
           </S.ContentHolder>
         </Container>
       </main>

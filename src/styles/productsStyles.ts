@@ -44,6 +44,11 @@ export const Categories = styled.div<CategoriesProps>`
     align-items: center;
     width: 100%;
     position: relative;
+
+    a {
+      height: inherit;
+      width: 100%;
+    }
   }
 
   @media only screen and (max-width: 1024px) {

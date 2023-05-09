@@ -30,6 +30,7 @@ const ResponsiveSwiperContainer = styled.div`
 
   .swiper-slide {
     height: auto;
+    display: flex;
   }
 
   .swiper-button-next,
