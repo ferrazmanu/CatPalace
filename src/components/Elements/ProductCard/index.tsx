@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import * as S from "./styles";
 import { Button } from "../Button";
@@ -11,12 +10,10 @@ import { formatCurrency } from "utils/format";
 export function ProductCard({ id, slug, image, name, price }: Product) {
   return (
     <S.Card className="card">
-      <S.ImageProduct
-        href={`/produtos/${slug}`}
-        // style={{ backgroundImage: `url("${image}")` }}
-      >
+      <S.ImageProduct href={`/produtos/${slug}`}>
         <Image src={image} fill alt={name} sizes="100vw" />
       </S.ImageProduct>
+
       <S.Content as="a" href={`/produtos/${slug}`}>
         <div className="product-name">{name}</div>
         <S.Price className="price">

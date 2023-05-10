@@ -36,7 +36,6 @@ export const Card = styled.div`
 `;
 
 export const ImageProduct = styled.a`
-  background-color: ${({ theme }) => theme.colors.quarternary};
   width: 100%;
   border-radius: 10px;
   display: flex;

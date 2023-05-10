@@ -9,6 +9,7 @@
     "@graphcms/rich-text-react-renderer": "^0.6.1",
     "@reduxjs/toolkit": "^1.9.3",
     "@types/moment": "^2.13.0",
+    "color-thief-react": "^2.1.0",
     "graphql": "^16.6.0",
     "graphql-request": "^5.1.0",
     "js-cookie": "^3.0.1",
