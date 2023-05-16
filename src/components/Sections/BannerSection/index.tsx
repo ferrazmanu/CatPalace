@@ -9,6 +9,7 @@ import "swiper/css";
 import * as S from "./styles";
 
 export function Banner({ banners }: BannersProps) {
+  console.log(banners);
   return (
     <S.Banner>
       <Swiper
@@ -24,7 +25,23 @@ export function Banner({ banners }: BannersProps) {
         {banners.map((banner) => {
           return (
             <SwiperSlide key={banner.id}>
-              <Link href={banner.link}>
+              {banner.link && (
+                <Link href={banner.link}>
+                  <picture>
+                    <source
+                      media="(max-width: 992px)"
+                      srcSet={banner.bannerMobile.url}
+                    />
+                    <Image
+                      src={banner.bannerDesktop[0].url}
+                      alt={banner.alt}
+                      fill
+                      priority
+                    />
+                  </picture>
+                </Link>
+              )}
+              {!banner.link && (
                 <picture>
                   <source
                     media="(max-width: 992px)"
@@ -37,7 +54,7 @@ export function Banner({ banners }: BannersProps) {
                     priority
                   />
                 </picture>
-              </Link>
+              )}
             </SwiperSlide>
           );
         })}
