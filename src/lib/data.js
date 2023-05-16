@@ -162,6 +162,7 @@ export async function GetHomeBanners() {
         alt
         link
         id
+        outraAba
       }
     }
   `;

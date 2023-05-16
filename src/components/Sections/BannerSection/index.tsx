@@ -9,7 +9,6 @@ import "swiper/css";
 import * as S from "./styles";
 
 export function Banner({ banners }: BannersProps) {
-  console.log(banners);
   return (
     <S.Banner>
       <Swiper
@@ -26,7 +25,10 @@ export function Banner({ banners }: BannersProps) {
           return (
             <SwiperSlide key={banner.id}>
               {banner.link && (
-                <Link href={banner.link}>
+                <Link
+                  href={banner.link}
+                  target={banner.outraAba ? "_blank" : "_self"}
+                >
                   <picture>
                     <source
                       media="(max-width: 992px)"

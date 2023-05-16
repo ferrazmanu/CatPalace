@@ -75,6 +75,7 @@ export interface Banner {
   bannerDesktop: Images[];
   bannerMobile: Images;
   alt?: string;
+  outraAba: boolean;
 }
 
 export interface PostsProps {
