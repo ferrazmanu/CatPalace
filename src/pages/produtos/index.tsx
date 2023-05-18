@@ -112,44 +112,41 @@ export default function Products({ products, categories }) {
                 </div>
                 {categories.map((category) => {
                   return (
-                    <>
-                      {category.products && category.products.length > 0 && (
-                        <Details
-                          key={category.name}
-                          summary={category.name}
-                          children={
-                            <ul>
-                              {category.subcategories.map((subcategory) => {
-                                return (
-                                  <>
-                                    {subcategory.products &&
-                                      subcategory.products.length > 0 && (
-                                        <li
-                                          key={subcategory.name}
-                                          className="product-category"
-                                        >
-                                          <Link
-                                            href="#"
-                                            onClick={(e) =>
-                                              handleCategoryChange(
-                                                category,
-                                                subcategory.name,
-                                                e
-                                              )
-                                            }
-                                          >
-                                            {subcategory.name}
-                                          </Link>
-                                        </li>
-                                      )}
-                                  </>
-                                );
-                              })}
-                            </ul>
-                          }
-                        />
-                      )}
-                    </>
+                    category.products &&
+                    category.products.length > 0 && (
+                      <Details
+                        key={category.name}
+                        summary={category.name}
+                        children={
+                          <ul>
+                            {category.subcategories.map((subcategory) => {
+                              return (
+                                subcategory.products &&
+                                subcategory.products.length > 0 && (
+                                  <li
+                                    key={subcategory.name}
+                                    className="product-category"
+                                  >
+                                    <Link
+                                      href="#"
+                                      onClick={(e) =>
+                                        handleCategoryChange(
+                                          category,
+                                          subcategory.name,
+                                          e
+                                        )
+                                      }
+                                    >
+                                      {subcategory.name}
+                                    </Link>
+                                  </li>
+                                )
+                              );
+                            })}
+                          </ul>
+                        }
+                      />
+                    )
                   );
                 })}
               </S.Categories>

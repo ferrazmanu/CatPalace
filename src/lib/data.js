@@ -124,7 +124,7 @@ export async function GetAllPosts() {
 export async function GetAllProducts() {
   const GET_ALL_PRODUCTS = gql`
     {
-      products {
+      products(orderBy: publishedAt_DESC) {
         id
         price
         slug

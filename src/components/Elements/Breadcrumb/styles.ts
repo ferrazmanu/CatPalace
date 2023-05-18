@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Breadcrumb = styled.nav`
   display: flex;
   gap: 15px;
-  font-size: ${({ theme }) => theme.fontSizes.medium_24};
+  font-size: ${({ theme }) => theme.fontSizes.small_18};
 
   a {
     display: flex;
