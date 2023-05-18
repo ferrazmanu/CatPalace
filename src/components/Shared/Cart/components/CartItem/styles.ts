@@ -82,7 +82,7 @@ export const Actions = styled.div`
 `;
 
 export const ImageProduct = styled.a`
-  background-color: ${({ theme }) => theme.colors.quarternary};
+  background-color: ${({ theme }) => theme.colors.tertiary};
   width: 100%;
   height: 130px;
   max-width: 120px;
