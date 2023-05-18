@@ -7,6 +7,7 @@ export const SearchBar = styled.div`
   width: 100%;
   border-bottom: 1px solid #000;
   height: 35px;
+  align-items: center;
 
   input {
     width: 100%;
@@ -14,8 +15,8 @@ export const SearchBar = styled.div`
     position: absolute;
     border: none;
     background-color: transparent;
-    font-size: ${({ theme }) => theme.fontSizes.medium_24};
-    font-family: ${({ theme }) => theme.fonts.primary_regular};
+    font-size: ${({ theme }) => theme.fontSizes.small_18};
+    font-family: ${({ theme }) => theme.fonts.primary_light};
   }
 
   button {
@@ -26,6 +27,13 @@ export const SearchBar = styled.div`
     border: none;
     right: 0;
     padding: 0;
+    width: 18px;
+    height: 18px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   @media only screen and (max-width: 992px) {

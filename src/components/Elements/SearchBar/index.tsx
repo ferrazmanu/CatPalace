@@ -11,7 +11,7 @@ export function SearchBar({ onChange }) {
           placeholder="Pesquisar..."
           onChange={onChange}
         />
-        <button type="submit">
+        <button type="button">
           <SearchIcon width="22px" height="22px" />
         </button>
       </S.SearchBar>

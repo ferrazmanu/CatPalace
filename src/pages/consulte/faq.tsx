@@ -118,8 +118,15 @@ export default function FAQ() {
                     <p>
                       Para qualquer dúvida, basta entrar em contato conosco
                       direto por do nosso{" "}
-                      <Link href={"tel:5543991940137"}>WhatsApp</Link> ou por
-                      nossa página de{" "}
+                      <Link
+                        href={
+                          "https://api.whatsapp.com/send/?phone=5543991940137&text=Ol%C3%A1%2C+gostaria+de+falar+com+um+atendente."
+                        }
+                        target="_blank"
+                      >
+                        WhatsApp
+                      </Link>{" "}
+                      ou por nossa página de{" "}
                       <Link href={"/sugestoes"}>dúvidas e sugestões</Link>.
                       Trabalhamos de segunda a sexta das 08h30 às 18h e sábado
                       das 08h30 às 12h.
@@ -131,7 +138,7 @@ export default function FAQ() {
                   children={
                     <p>
                       Sim, enviamos para todo o Brasil. O envio para cidades
-                      fora de Londrina-PR irá apresentar uma taxa mediante ao
+                      fora de Londrina/PR irá apresentar uma taxa mediante ao
                       frete.
                     </p>
                   }
@@ -169,6 +176,7 @@ export default function FAQ() {
                         href={
                           "https://api.whatsapp.com/send/?phone=5543991940137&text=Ol%C3%A1%2C+gostaria+de+falar+com+um+atendente."
                         }
+                        target="_blank"
                       >
                         WhatsApp
                       </Link>
@@ -184,8 +192,8 @@ export default function FAQ() {
                     <p>
                       Queremos sempre trazer o melhor para você e o seu felino,
                       então, todos os feedbacks são muito bem-vindos. Você pode
-                      enviá-los através do nosso canal de sugestões, clicando
-                      aqui.
+                      enviá-los através do nosso canal de sugestões,{" "}
+                      <Link href={"/sugestoes"}>clicando aqui.</Link>
                     </p>
                   }
                 />

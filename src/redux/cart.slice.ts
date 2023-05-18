@@ -31,17 +31,26 @@ const cartSlice = createSlice({
     },
     incrementQuantity: (state, action: PayloadAction<Product>) => {
       const item = state.cartItems.find(
-        (item) => item.id === action.payload.id
+        (item) =>
+          item.id === action.payload.id &&
+          item.colorVariant === action.payload.colorVariant &&
+          item.sizeVariant === action.payload.sizeVariant
       );
       item.qty++;
     },
     decrementQuantity: (state, action: PayloadAction<Product>) => {
       const item = state.cartItems.find(
-        (item) => item.id === action.payload.id
+        (item) =>
+          item.id === action.payload.id &&
+          item.colorVariant === action.payload.colorVariant &&
+          item.sizeVariant === action.payload.sizeVariant
       );
       if (item.qty === 1) {
         const index = state.cartItems.findIndex(
-          (item) => item.id === action.payload.id
+          (item) =>
+            item.id === action.payload.id &&
+            item.colorVariant === action.payload.colorVariant &&
+            item.sizeVariant === action.payload.sizeVariant
         );
         state.cartItems.splice(index, 1);
       } else {
@@ -50,7 +59,10 @@ const cartSlice = createSlice({
     },
     removeFromCart: (state, action: PayloadAction<Product>) => {
       const index = state.cartItems.findIndex(
-        (item) => item.id === action.payload.id
+        (item) =>
+          item.id === action.payload.id &&
+          item.colorVariant === action.payload.colorVariant &&
+          item.sizeVariant === action.payload.sizeVariant
       );
       state.cartItems.splice(index, 1);
     },
