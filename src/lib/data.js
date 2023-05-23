@@ -8,6 +8,9 @@ export async function GetProductsBySlug() {
     {
       products {
         slug
+        category {
+          slug
+        }
       }
     }
   `;
@@ -48,6 +51,9 @@ export async function GetProduct(slug) {
             name
             size
           }
+        }
+        category {
+          slug
         }
       }
     }
@@ -135,8 +141,8 @@ export async function GetAllProducts() {
         subcategory {
           name
         }
-        categories {
-          name
+        category {
+          slug
         }
       }
     }
@@ -219,6 +225,9 @@ export async function GetHomeProducts() {
         images(first: 1) {
           url
         }
+        category {
+          slug
+        }
       }
     }
   `;
@@ -250,10 +259,13 @@ export async function GetOtherPosts(slug) {
   return data.posts;
 }
 
-export async function GetOtherProducts(slug) {
+export async function GetOtherProducts(slug, category) {
   const OTHER_PRODUCTS = gql`
-    query GetOtherProducts($slug: String!) {
-      products(first: 3, where: { NOT: { slug: $slug } }) {
+    query GetOtherProducts($slug: String!, $category: String!) {
+      products(
+        first: 3
+        where: { NOT: { slug: $slug }, category: { slug_contains: $category } }
+      ) {
         id
         price
         slug
@@ -265,7 +277,10 @@ export async function GetOtherProducts(slug) {
     }
   `;
 
-  const variables = { slug };
+  const variables = {
+    slug,
+    category,
+  };
   const data = await api_endpoint.request(OTHER_PRODUCTS, variables);
 
   return data.products;

@@ -19,13 +19,7 @@ import { SectionContainer } from "@/components/Containers/SectionContainer";
 import { GridContainer } from "@/components/Containers/GridContainer";
 import { ProductCard } from "@/components/Elements/ProductCard";
 import { Loading } from "@/components/Elements/Loading";
-import { Quantity } from "@/components/Elements/Quantity";
-import {
-  decrementQuantity,
-  handleCartShow,
-  incrementQuantity,
-  removeFromCart,
-} from "@/redux/cart.slice";
+import { handleCartShow } from "@/redux/cart.slice";
 import { GetOtherProducts, GetProduct, GetProductsBySlug } from "@/lib/data";
 
 import * as S from "@/styles/productStyles";
@@ -63,6 +57,7 @@ export default function Product({ product, otherProducts }) {
     colorVariant,
     sizeVariant,
     qty: 1,
+    category: { slug: product.category.slug },
   };
 
   const variantMessage = () => {
@@ -330,44 +325,16 @@ export default function Product({ product, otherProducts }) {
               </S.ProductDetails>
             </S.Product>
 
-            <SectionContainer
-              sectionTitle={"Outros Produtos"}
-              className="outros"
-              children={
-                <>
-                  <ResponsiveSwiperContainer>
-                    <GridContainer responsive={false}>
-                      {otherProducts.map((product) => {
-                        return (
-                          <ProductCard
-                            key={product.id}
-                            slug={product.slug}
-                            image={product.images[0].url}
-                            name={product.name}
-                            price={product.price}
-                            id={product.id}
-                            qty={product.qty}
-                          />
-                        );
-                      })}
-                    </GridContainer>
-                    <Swiper
-                      breakpoints={{
-                        0: {
-                          slidesPerView: 1,
-                          spaceBetween: 10,
-                        },
-                        576: {
-                          slidesPerView: 2,
-                          spaceBetween: 20,
-                        },
-                      }}
-                      pagination={{ clickable: true }}
-                      modules={[Pagination]}
-                    >
-                      {otherProducts.map((product) => {
-                        return (
-                          <SwiperSlide key={product.id}>
+            {otherProducts && otherProducts.length > 0 && (
+              <SectionContainer
+                sectionTitle={"Outros Produtos"}
+                className="outros"
+                children={
+                  <>
+                    <ResponsiveSwiperContainer>
+                      <GridContainer responsive={false}>
+                        {otherProducts.map((product) => {
+                          return (
                             <ProductCard
                               key={product.id}
                               slug={product.slug}
@@ -376,15 +343,47 @@ export default function Product({ product, otherProducts }) {
                               price={product.price}
                               id={product.id}
                               qty={product.qty}
+                              category={cartProduct.category}
                             />
-                          </SwiperSlide>
-                        );
-                      })}
-                    </Swiper>
-                  </ResponsiveSwiperContainer>
-                </>
-              }
-            />
+                          );
+                        })}
+                      </GridContainer>
+                      <Swiper
+                        breakpoints={{
+                          0: {
+                            slidesPerView: 1,
+                            spaceBetween: 10,
+                          },
+                          576: {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                          },
+                        }}
+                        pagination={{ clickable: true }}
+                        modules={[Pagination]}
+                      >
+                        {otherProducts.map((product) => {
+                          return (
+                            <SwiperSlide key={product.id}>
+                              <ProductCard
+                                key={product.id}
+                                slug={product.slug}
+                                image={product.images[0].url}
+                                name={product.name}
+                                price={product.price}
+                                id={product.id}
+                                qty={product.qty}
+                                category={cartProduct.category}
+                              />
+                            </SwiperSlide>
+                          );
+                        })}
+                      </Swiper>
+                    </ResponsiveSwiperContainer>
+                  </>
+                }
+              />
+            )}
           </Container>
         )}
       </main>
@@ -407,19 +406,27 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const res = await GetProductsBySlug();
 
   const paths = res.map((product) => {
+    const category = product.category.slug.toString();
+
     return {
-      params: { slug: product.slug },
+      params: {
+        slug: product.slug,
+        category: category,
+      },
     };
   });
+
   return {
-    paths: paths,
+    paths,
     fallback: "blocking",
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const product = await (GetProduct(params.slug) || []);
-  const otherProducts = await (GetOtherProducts(params.slug) || []);
+  const { slug, category } = params;
+
+  const product = await (GetProduct(slug) || []);
+  const otherProducts = await (GetOtherProducts(slug, category) || []);
 
   return {
     props: { product, otherProducts },

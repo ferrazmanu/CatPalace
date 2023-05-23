@@ -1,19 +1,18 @@
 import { useState } from "react";
 import Head from "next/head";
+import Link from "next/link";
 import { GetStaticProps } from "next";
 
 import { Breadcrumb } from "@/components/Elements/Breadcrumb";
 import { Container, Overlay, TopContainer } from "@/components/sharedstyles";
 import { GridContainer } from "@/components/Containers/GridContainer";
 import { ProductCard } from "@/components/Elements/ProductCard";
+import { Details } from "@/components/Elements/Details";
+import { CloseIcon, FilterIcon } from "@/components/Icons";
 
 import { GetAllProducts, GetCategories } from "@/lib/data";
 
 import * as S from "@/styles/productsStyles";
-import { Details } from "@/components/Elements/Details";
-import Link from "next/link";
-import { CloseIcon, FilterIcon } from "@/components/Icons";
-import { Loading } from "@/components/Elements/Loading";
 
 export default function Products({ products, categories }) {
   const [productsArray, setProductsArray] = useState(products);
@@ -24,6 +23,19 @@ export default function Products({ products, categories }) {
     { url: "/", text: "Início" },
     { url: "/produtos", text: "Produtos" },
   ];
+
+  // const orderOptions = [
+  //   {
+  //     id: 1,
+  //     value: "maiorPreco",
+  //     title: "Maior Preço",
+  //   },
+  //   {
+  //     id: 2,
+  //     value: "menorPreco",
+  //     title: "Menor Preço",
+  //   },
+  // ];
 
   const handleCategoryChange = (category, subcategoryName, e) => {
     e.preventDefault();
@@ -112,8 +124,7 @@ export default function Products({ products, categories }) {
                 </div>
                 {categories.map((category) => {
                   return (
-                    category.products &&
-                    category.products.length > 0 && (
+                    category.products && (
                       <Details
                         key={category.name}
                         summary={category.name}
@@ -153,8 +164,15 @@ export default function Products({ products, categories }) {
             </S.CategoriesContainer>
 
             <div className="grid">
-              <div className="selected-category">
-                Resultados para: <strong>{selectedCategory}</strong>
+              <div className="top-grid">
+                <div className="selected-category">
+                  Resultados para: <strong>{selectedCategory}</strong>
+                </div>
+
+                {/* <div className="order-per">
+                  <Form.Label htmlFor="order">Ordenar por:</Form.Label>
+                  <Form.Select name="order" options={orderOptions} onChange={() => onChange()}/>
+                </div> */}
               </div>
               <GridContainer responsive={true}>
                 {productsArray && productsArray.length > 0 ? (
@@ -168,6 +186,7 @@ export default function Products({ products, categories }) {
                         name={product.name}
                         price={product.price}
                         qty={product.qty}
+                        category={{ slug: product.category.slug }}
                       />
                     );
                   })

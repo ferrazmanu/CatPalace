@@ -6,7 +6,7 @@ import { ResponsiveSwiperContainer } from "@/components/sharedstyles";
 import { ProductsProps } from "@/common/types";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper";
+import { Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -26,6 +26,7 @@ export function ProductsSection({ products }: ProductsProps) {
                   slug={product.slug}
                   name={product.name}
                   price={product.price}
+                  category={{ slug: product.category.slug }}
                 />
               );
             })}
@@ -54,6 +55,7 @@ export function ProductsSection({ products }: ProductsProps) {
                     slug={product.slug}
                     name={product.name}
                     price={product.price}
+                    category={{ slug: product.category.slug }}
                   />
                 </SwiperSlide>
               );

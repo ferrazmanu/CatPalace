@@ -13,6 +13,7 @@ export interface Product {
   qty?: number;
   colorVariant?: string;
   sizeVariant?: string;
+  category: { slug: string };
 }
 
 export interface Images {

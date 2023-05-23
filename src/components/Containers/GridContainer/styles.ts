@@ -19,4 +19,9 @@ export const Grid = styled.div<GridProps>`
   @media only screen and (max-width: 768px) {
     justify-items: center;
   }
+
+  @media only screen and (max-width: 360px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;

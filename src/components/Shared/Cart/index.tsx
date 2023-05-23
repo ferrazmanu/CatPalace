@@ -25,6 +25,8 @@ export function Cart({ open }) {
 
   const cart = useSelector((state: RootState) => state.cart);
 
+  console.log(cart);
+
   const getTotalPrice = () => {
     return cart.cartItems.reduce(
       (accumulator, item) => accumulator + item.qty * item.price,
@@ -110,6 +112,7 @@ export function Cart({ open }) {
                     qty={item.qty}
                     colorVariant={item.colorVariant}
                     sizeVariant={item.sizeVariant}
+                    category={item.category}
                   />
                 );
               })}

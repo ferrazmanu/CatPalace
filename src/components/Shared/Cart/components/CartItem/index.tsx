@@ -23,6 +23,7 @@ export function CartItem({
   qty,
   colorVariant,
   sizeVariant,
+  category,
 }: Product) {
   const dispatch = useDispatch();
 
@@ -35,18 +36,22 @@ export function CartItem({
     qty,
     colorVariant,
     sizeVariant,
+    category,
   };
 
   return (
     <>
       <S.ItemContainer>
-        <S.ImageProduct href={`/produtos/${slug}`}>
+        <S.ImageProduct href={`/produtos/${category.slug}/${slug}`}>
           <Image src={image} fill alt={name} />
         </S.ImageProduct>
         <S.Content>
           <S.Info>
             <div className="top-info">
-              <Link className="product-name" href={`/produtos/${slug}`}>
+              <Link
+                className="product-name"
+                href={`/produtos/${category.slug}/${slug}`}
+              >
                 {name}
               </Link>
               <S.Price>R$ {formatCurrency(qty * price)}</S.Price>

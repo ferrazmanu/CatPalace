@@ -19,6 +19,32 @@ export const Label = styled.label`
   font-size: ${({ theme }) => theme.fontSizes.medium_24};
 `;
 
+const SelectStyles = styled.select`
+  font-size: ${({ theme }) => theme.fontSizes.small_18};
+  font-family: ${({ theme }) => theme.fonts.primary_light};
+  border: none;
+  border-bottom: 1px solid #000;
+`;
+
+const OptionsStyles = styled.option`
+  &:hover {
+  }
+`;
+
+export function Select({ options, name, onChange }) {
+  return (
+    <SelectStyles name={name} onChange={onChange}>
+      {options.map((option) => {
+        return (
+          <OptionsStyles key={option.id} value={option.value}>
+            {option.title}
+          </OptionsStyles>
+        );
+      })}
+    </SelectStyles>
+  );
+}
+
 export const Input = styled.input`
   height: 28px;
   padding: 2px 8px;

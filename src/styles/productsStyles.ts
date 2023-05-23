@@ -15,6 +15,23 @@ export const ContentHolder = styled.div`
     flex-direction: column;
     gap: 20px;
 
+    .top-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: flex-end;
+    }
+
+    .order-per {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+
+      label {
+        font-size: ${({ theme }) => theme.fontSizes.small_18};
+      }
+    }
+
     .selected-category {
       font-size: ${({ theme }) => theme.fontSizes.small_18};
     }
