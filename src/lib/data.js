@@ -330,7 +330,7 @@ export async function GetCategories() {
   const GET_CATEGORIES = gql`
     {
       categories {
-        products {
+        product {
           id
         }
         name

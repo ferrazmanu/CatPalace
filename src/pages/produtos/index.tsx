@@ -19,6 +19,8 @@ export default function Products({ products, categories }) {
   const [openFilter, setOpenFilter] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("Todos");
 
+  console.log(products);
+
   const breadcrumb = [
     { url: "/", text: "Início" },
     { url: "/produtos", text: "Produtos" },
@@ -124,7 +126,7 @@ export default function Products({ products, categories }) {
                 </div>
                 {categories.map((category) => {
                   return (
-                    category.products && (
+                    category.product && (
                       <Details
                         key={category.name}
                         summary={category.name}
