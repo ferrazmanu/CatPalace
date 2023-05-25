@@ -86,4 +86,15 @@ const Overlay = styled.div<StylesProps>`
   ${(props) => (props.open ? "display: block;" : "display: none;")}
 `;
 
-export { Container, ResponsiveSwiperContainer, TopContainer, Overlay };
+const MessageContainer = styled.div`
+  font-size: ${({ theme }) => theme.fontSizes.small_18};
+  font-weight: 400;
+`;
+
+export {
+  Container,
+  ResponsiveSwiperContainer,
+  TopContainer,
+  Overlay,
+  MessageContainer,
+};

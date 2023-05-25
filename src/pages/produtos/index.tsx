@@ -4,11 +4,17 @@ import Link from "next/link";
 import { GetStaticProps } from "next";
 
 import { Breadcrumb } from "@/components/Elements/Breadcrumb";
-import { Container, Overlay, TopContainer } from "@/components/sharedstyles";
+import {
+  Container,
+  MessageContainer,
+  Overlay,
+  TopContainer,
+} from "@/components/sharedstyles";
 import { GridContainer } from "@/components/Containers/GridContainer";
 import { ProductCard } from "@/components/Elements/ProductCard";
 import { Details } from "@/components/Elements/Details";
 import { CloseIcon, FilterIcon } from "@/components/Icons";
+import { SearchBar } from "@/components/Elements/SearchBar";
 
 import { GetAllProducts, GetCategories } from "@/lib/data";
 
@@ -23,6 +29,8 @@ export default function Products({ products, categories }) {
     { url: "/", text: "Início" },
     { url: "/produtos", text: "Produtos" },
   ];
+
+  const [query, setQuery] = useState("");
 
   // const orderOptions = [
   //   {
@@ -67,6 +75,12 @@ export default function Products({ products, categories }) {
     }
   };
 
+  const searchFilter = productsArray.filter((product) => {
+    if (product.name.toLowerCase().includes(query.toLowerCase())) {
+      return product;
+    }
+  });
+
   return (
     <>
       <Head>
@@ -94,6 +108,7 @@ export default function Products({ products, categories }) {
         <Container>
           <TopContainer>
             <Breadcrumb breadcrumb={breadcrumb} />
+            <SearchBar onChange={(event) => setQuery(event.target.value)} />
           </TopContainer>
 
           <S.ContentHolder>
@@ -166,7 +181,13 @@ export default function Products({ products, categories }) {
             <div className="grid">
               <div className="top-grid">
                 <div className="selected-category">
-                  Resultados para: <strong>{selectedCategory}</strong>
+                  Resultados para
+                  {query && (
+                    <>
+                      <strong> "{query}" </strong> em
+                    </>
+                  )}
+                  : <strong>{selectedCategory}</strong>
                 </div>
 
                 {/* <div className="order-per">
@@ -176,7 +197,7 @@ export default function Products({ products, categories }) {
               </div>
               <GridContainer responsive={true}>
                 {productsArray && productsArray.length > 0 ? (
-                  productsArray.map((product) => {
+                  searchFilter.map((product) => {
                     return (
                       <ProductCard
                         key={product.id}
@@ -191,9 +212,16 @@ export default function Products({ products, categories }) {
                     );
                   })
                 ) : (
-                  <S.MessageContainer>
-                    Por enquanto, não há produtos nesta categoria :(
-                  </S.MessageContainer>
+                  <MessageContainer>
+                    Por enquanto, não há produtos nesta categoria :c
+                  </MessageContainer>
+                )}
+                {searchFilter && searchFilter.length === 0 && (
+                  <>
+                    <MessageContainer>
+                      Nenhum produto com esse nome :c
+                    </MessageContainer>
+                  </>
                 )}
               </GridContainer>
             </div>

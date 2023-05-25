@@ -4,7 +4,11 @@ import Head from "next/head";
 
 import { Breadcrumb } from "@/components/Elements/Breadcrumb";
 import { SearchBar } from "@/components/Elements/SearchBar";
-import { Container, TopContainer } from "@/components/sharedstyles";
+import {
+  Container,
+  TopContainer,
+  MessageContainer,
+} from "@/components/sharedstyles";
 import { GridContainer } from "@/components/Containers/GridContainer";
 import { BlogPostCard } from "@/components/Elements/BlogCard";
 
@@ -17,6 +21,12 @@ export default function Blog({ posts }) {
   ];
 
   const [query, setQuery] = useState("");
+
+  const searchFilter = posts.filter((post) => {
+    if (post.title.toLowerCase().includes(query.toLowerCase())) {
+      return post;
+    }
+  });
 
   return (
     <>
@@ -49,27 +59,24 @@ export default function Blog({ posts }) {
           </TopContainer>
 
           <GridContainer responsive={true}>
-            {posts
-              .filter((post) => {
-                if (query === "") {
-                  return post;
-                } else if (
-                  post.title.toLowerCase().includes(query.toLowerCase())
-                ) {
-                  return post;
-                }
-              })
-              .map((post) => {
-                return (
-                  <BlogPostCard
-                    key={post.id}
-                    slug={post.slug}
-                    coverImage={post.coverImage.url}
-                    title={post.title}
-                    exerpt={post.exerpt}
-                  />
-                );
-              })}
+            {searchFilter.map((post) => {
+              return (
+                <BlogPostCard
+                  key={post.id}
+                  slug={post.slug}
+                  coverImage={post.coverImage.url}
+                  title={post.title}
+                  exerpt={post.exerpt}
+                />
+              );
+            })}
+            {searchFilter && searchFilter.length === 0 && (
+              <>
+                <MessageContainer>
+                  Nenhum post com esse nome :c
+                </MessageContainer>
+              </>
+            )}
           </GridContainer>
         </Container>
       </main>

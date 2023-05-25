@@ -122,11 +122,6 @@ export const CategoriesContainer = styled.div`
   }
 `;
 
-export const MessageContainer = styled.div`
-  font-size: ${({ theme }) => theme.fontSizes.medium_30};
-  font-weight: 400;
-`;
-
 export const FilterMobile = styled.div`
   display: none;
   font-size: ${({ theme }) => theme.fontSizes.medium_24};
