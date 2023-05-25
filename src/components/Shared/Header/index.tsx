@@ -54,7 +54,7 @@ export function Header() {
               </button>
               {menuLinks.map((links) => {
                 return (
-                  <li key={links.id}>
+                  <li key={links.id} onClick={() => setOpenMenu(false)}>
                     <Link href={links.slug}>{links.title}</Link>
                   </li>
                 );

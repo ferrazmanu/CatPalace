@@ -6,6 +6,7 @@ import { Product } from "@/common/types";
 
 import * as S from "./styles";
 import {
+  closeCart,
   decrementQuantity,
   incrementQuantity,
   removeFromCart,
@@ -42,7 +43,10 @@ export function CartItem({
   return (
     <>
       <S.ItemContainer>
-        <S.ImageProduct href={`/produtos/${category.slug}/${slug}`}>
+        <S.ImageProduct
+          href={`/produtos/${category.slug}/${slug}`}
+          onClick={() => dispatch(closeCart())}
+        >
           <Image src={image} fill alt={name} />
         </S.ImageProduct>
         <S.Content>
@@ -51,6 +55,7 @@ export function CartItem({
               <Link
                 className="product-name"
                 href={`/produtos/${category.slug}/${slug}`}
+                onClick={() => dispatch(closeCart())}
               >
                 {name}
               </Link>
