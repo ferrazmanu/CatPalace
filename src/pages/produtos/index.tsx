@@ -19,8 +19,6 @@ export default function Products({ products, categories }) {
   const [openFilter, setOpenFilter] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("Todos");
 
-  console.log(products);
-
   const breadcrumb = [
     { url: "/", text: "Início" },
     { url: "/produtos", text: "Produtos" },
