@@ -19,6 +19,10 @@ export default function Home({ posts, products, banners, promotions }) {
       <Head>
         <title>CatPalace | Aqui, seu gato é realeza</title>
         <meta name="description" content="Aqui, seu gato é realeza!" />
+        <meta
+          name="facebook-domain-verification"
+          content="6j0sdu8llbl603934qi3xgbnk0hj1i"
+        />
         <link rel="icon" href="/assets/static/favicon.ico" />
       </Head>
       {/* Google tag (gtag.js) */}
