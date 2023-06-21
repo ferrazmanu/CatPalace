@@ -75,8 +75,15 @@ export default function Products({ products, categories }) {
     }
   };
 
+  const formatText = (text) => {
+    return text
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  };
+
   const searchFilter = productsArray.filter((product) => {
-    if (product.name.toLowerCase().includes(query.toLowerCase())) {
+    if (formatText(product.name).includes(formatText(query))) {
       return product;
     }
   });
@@ -117,7 +124,7 @@ export default function Products({ products, categories }) {
 
               <Overlay open={openFilter} onClick={handleOpenFilter}></Overlay>
               <S.FilterMobile onClick={handleOpenFilter}>
-                Filter <FilterIcon />
+                Filtros <FilterIcon />
               </S.FilterMobile>
 
               <S.Categories open={openFilter}>
