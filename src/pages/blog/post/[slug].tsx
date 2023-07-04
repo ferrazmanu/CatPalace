@@ -31,7 +31,6 @@ export default function Post({ post, otherPosts }) {
     { url: "/blog", text: "Blog" },
     { url: `${post.slug}`, text: `${post.title}` },
   ];
-  console.log(post);
   return (
     <>
       <Head>
