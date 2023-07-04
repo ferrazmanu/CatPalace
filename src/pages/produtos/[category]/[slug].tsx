@@ -122,8 +122,13 @@ export default function Product({ product, otherProducts }) {
   return (
     <>
       <Head>
-        <title>{product.seo.title}</title>
-        <meta name="description" content={product.seo.decription} />
+        <title>
+          {product.seo ? product.seo.title : ` ${product.name} | CatPalace`}
+        </title>
+        <meta
+          name="description"
+          content={product.description && product.description}
+        />
         <link rel="icon" href="/assets/static/favicon.ico" />
       </Head>
       {/* Google tag (gtag.js) */}

@@ -31,12 +31,17 @@ export default function Post({ post, otherPosts }) {
     { url: "/blog", text: "Blog" },
     { url: `${post.slug}`, text: `${post.title}` },
   ];
-
+  console.log(post);
   return (
     <>
       <Head>
-        <title>{post.seo.title}</title>
-        <meta name="description" content={post.seo.description} />
+        <title>
+          {post.seo ? post.seo.title : ` ${post.title} | CatPalace`}
+        </title>
+        <meta
+          name="description"
+          content={post.description && post.description}
+        />
         <link rel="icon" href="/assets/static/favicon.ico" />
       </Head>
       {/* Google tag (gtag.js) */}
