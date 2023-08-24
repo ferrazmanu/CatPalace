@@ -201,7 +201,7 @@ export async function GetHomePromotions() {
 export async function GetHomePosts() {
   const GET_HOME_POSTS = gql`
     {
-      posts(first: 3) {
+      posts(last: 3) {
         id
         slug
         title
@@ -220,7 +220,7 @@ export async function GetHomePosts() {
 export async function GetHomeProducts() {
   const GET_HOME_PRODUCTS = gql`
     {
-      products(first: 3) {
+      products(last: 3) {
         id
         price
         slug
@@ -244,7 +244,7 @@ export async function GetHomeProducts() {
 export async function GetOtherPosts(slug) {
   const OTHER_POSTS = gql`
     query GetOtherPosts($slug: String!) {
-      posts(first: 3, where: { NOT: { slug: $slug } }) {
+      posts(last: 3, where: { NOT: { slug: $slug } }) {
         id
         exerpt
         slug
@@ -266,7 +266,7 @@ export async function GetOtherProducts(slug, category) {
   const OTHER_PRODUCTS = gql`
     query GetOtherProducts($slug: String!, $category: String!) {
       products(
-        first: 3
+        last: 3
         where: { NOT: { slug: $slug }, category: { slug_contains: $category } }
       ) {
         id
