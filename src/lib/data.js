@@ -30,6 +30,7 @@ export async function GetProduct(slug) {
         name
         oldPrice
         price
+        productQuantity
         specifications {
           html
         }
@@ -45,11 +46,13 @@ export async function GetProduct(slug) {
             id
             colorHex
             color
+            variantQuantity
           }
           ... on ProductSizeVariant {
             id
             name
             size
+            variantQuantity
           }
         }
         category {

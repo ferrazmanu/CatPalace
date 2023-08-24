@@ -30,7 +30,6 @@ export const Product = styled.div`
 
   .variants {
     display: flex;
-    flex-direction: column;
     gap: 20px;
     width: fit-content;
 
@@ -39,6 +38,10 @@ export const Product = styled.div`
       display: flex;
       gap: 10px;
     }
+  }
+
+  .quantity {
+    font-size: ${({ theme }) => theme.fontSizes.small_18};
   }
 
   .to-details {

@@ -36,7 +36,9 @@ const cartSlice = createSlice({
           item.colorVariant === action.payload.colorVariant &&
           item.sizeVariant === action.payload.sizeVariant
       );
-      item.qty++;
+      if (item.qty < 5) {
+        item.qty++;
+      }
     },
     decrementQuantity: (state, action: PayloadAction<Product>) => {
       const item = state.cartItems.find(

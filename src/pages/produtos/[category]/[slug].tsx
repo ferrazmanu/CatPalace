@@ -34,11 +34,25 @@ export default function Product({ product, otherProducts }) {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const [colorVariant, setColorVariant] = useState("");
-  const [sizeVariant, setSizeVariant] = useState("");
-  const [activeVariant, setActiveVariant] = useState(0);
-  const [variantWarningModal, setVariantWarningModal] = useState(false);
+  const [state, setState] = useState({
+    thumbsSwiper: null,
+    colorVariant: "",
+    sizeVariant: "",
+    activeVariant: 0,
+    variantWarningModal: false,
+    quantity: null,
+  });
+
+  const {
+    colorVariant,
+    sizeVariant,
+    activeVariant,
+    quantity,
+    thumbsSwiper,
+    variantWarningModal,
+  } = state;
+
+  const { id, slug, images, name, price, variants, category } = product;
 
   const variant = product.variants;
 
@@ -49,74 +63,88 @@ export default function Product({ product, otherProducts }) {
   ];
 
   const cartProduct = {
-    id: product.id,
-    slug: product.slug,
-    image: product.images[0].url,
-    name: product.name,
-    price: product.price,
+    id,
+    slug,
+    image: images[0].url,
+    name,
+    price,
     colorVariant,
     sizeVariant,
     qty: 1,
-    category: { slug: product.category.slug },
+    category: { slug: category.slug },
   };
 
   const variantMessage = () => {
-    if (cartProduct.sizeVariant) {
+    if (sizeVariant) {
       return `Tamanho: ${sizeVariant} - `;
     }
-    if (cartProduct.colorVariant) {
+    if (colorVariant) {
       return `Cor: ${colorVariant} - `;
     }
     return "";
   };
 
+  const sendOrder = () => {
+    const number = "+5543991940137";
+
+    if (!variantMessage() && variants.length > 0) {
+      setState((prevState) => ({ ...prevState, variantWarningModal: true }));
+    } else {
+      const formattedMessage = `
+        Olá, *CatPalace*! Gostaria de realizar o pedido do seguinte item da loja:
+  
+        ${`${cartProduct.qty}x ${
+          cartProduct.name
+        } - ${variantMessage()}R$${formatCurrency(cartProduct.price)}`}
+          
+        *Valor total do pedido*: R$${formatCurrency(product.price)}
+      `
+        .replace(/^\s+/gm, "")
+        .replace(/\n/g, "\n \n");
+
+      const url = `https://api.whatsapp.com/send?phone=${number}&text=${encodeURI(
+        formattedMessage
+      )}`;
+      window.open(url);
+    }
+  };
+
   const addProduct = () => {
-    if (!variantMessage() && variant.length > 0) {
-      setVariantWarningModal(true);
+    if (!variantMessage() && variants.length > 0) {
+      setState((prevState) => ({ ...prevState, variantWarningModal: true }));
     } else {
       dispatch(addToCart(cartProduct));
       dispatch(handleCartShow());
     }
   };
 
-  const sendOrder = () => {
-    const number = "+5543991940137";
-
-    if (!variantMessage() && variant.length > 0) {
-      setVariantWarningModal(true);
-    } else {
-      let formattedMessage = `
-      Olá, *CatPalace*! Gostaria de realizar o pedido do seguinte item da loja:
-
-      ${`${cartProduct.qty}x ${
-        cartProduct.name
-      } - ${variantMessage()}R$${formatCurrency(cartProduct.price)}`}
-        
-      *Valor total do pedido*: R$${formatCurrency(product.price)}
-    `
-        .replace(/^\s+/gm, "")
-        .replace(/\n/g, "\n \n");
-
-      let url = `https://api.whatsapp.com/send?phone=${number}`;
-      url += `&text=${encodeURI(formattedMessage)}`;
-
-      window.open(url);
-      formattedMessage = "";
-    }
-  };
-
-  const selectVariant = (variantData, index, variantType) => {
+  const selectVariant = (variantData, index, variantType, qty) => {
     if (variantType === "color") {
-      setColorVariant(variantData);
+      setState((prevState) => ({ ...prevState, colorVariant: variantData }));
     }
     if (variantType === "size") {
-      setSizeVariant(variantData);
+      setState((prevState) => ({ ...prevState, sizeVariant: variantData }));
     }
-    setActiveVariant(index);
+    setState((prevState) => ({
+      ...prevState,
+      quantity: qty,
+      activeVariant: index,
+    }));
   };
 
   useEffect(() => {
-    setActiveVariant(null);
+    setState((prevState) => ({ ...prevState, activeVariant: null }));
+  }, []);
+
+  useEffect(() => {
+    const totalVariants = variants.reduce(
+      (total, { variantQuantity }) => total + variantQuantity,
+      0
+    );
+    const totalQuantity =
+      variants && variants.length > 0 ? totalVariants : product.productQuantity;
+
+    setState((prevState) => ({ ...prevState, quantity: totalQuantity }));
   }, []);
 
   return (
@@ -209,7 +237,12 @@ export default function Product({ product, otherProducts }) {
                         })}
                       </Swiper>
                       <Swiper
-                        onSwiper={setThumbsSwiper}
+                        onSwiper={(swiper) =>
+                          setState((prevState) => ({
+                            ...prevState,
+                            thumbsSwiper: swiper,
+                          }))
+                        }
                         loop={true}
                         spaceBetween={10}
                         slidesPerView={4}
@@ -251,42 +284,47 @@ export default function Product({ product, otherProducts }) {
                     </div>
                   </div>
 
-                  <div className="variants">
-                    {variant.some((x) => x.hasOwnProperty("color")) && (
-                      <div className="color">
-                        {variant.map((variant, index) => {
-                          return (
-                            <S.Variant
-                              className="color-variant"
-                              active={index === activeVariant ? true : false}
-                              key={variant.id}
-                              color={variant.colorHex}
-                              onClick={() =>
-                                selectVariant(variant.color, index, "color")
-                              }
-                            />
-                          );
-                        })}
-                      </div>
-                    )}
-                    {variant.some((x) => x.hasOwnProperty("size")) && (
-                      <div className="size">
-                        {variant.map((variant, index) => {
-                          return (
-                            <S.Variant
-                              className="size-variant"
-                              active={index === activeVariant ? true : false}
-                              key={variant.id}
-                              onClick={() =>
-                                selectVariant(variant.size, index, "size")
-                              }
-                            >
-                              {variant.size}
-                            </S.Variant>
-                          );
-                        })}
-                      </div>
-                    )}
+                  {variant && variant.length > 0 && (
+                    <div className="variants">
+                      {variant.map((variant, index) => (
+                        <div
+                          className={
+                            variant.hasOwnProperty("color") ? "color" : "size"
+                          }
+                          key={variant.id}
+                        >
+                          <S.Variant
+                            className={
+                              variant.hasOwnProperty("color")
+                                ? "color-variant"
+                                : "size-variant"
+                            }
+                            active={index === activeVariant}
+                            color={variant.colorHex}
+                            onClick={() =>
+                              selectVariant(
+                                variant[
+                                  variant.hasOwnProperty("color")
+                                    ? "color"
+                                    : "size"
+                                ],
+                                index,
+                                variant.hasOwnProperty("color")
+                                  ? "color"
+                                  : "size",
+                                variant.variantQuantity
+                              )
+                            }
+                          >
+                            {variant.hasOwnProperty("size") && variant.size}
+                          </S.Variant>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  <div className="quantity">
+                    Quantidade disponível: {quantity}
                   </div>
 
                   <Link href="#detalhes" className="to-details">
@@ -400,7 +438,12 @@ export default function Product({ product, otherProducts }) {
               pedido possa ser enviado!
             </p>
           }
-          close={() => setVariantWarningModal(false)}
+          close={() =>
+            setState((prevState) => ({
+              ...prevState,
+              variantWarningModal: false,
+            }))
+          }
         />
       )}
     </>
