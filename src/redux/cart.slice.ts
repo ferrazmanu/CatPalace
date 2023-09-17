@@ -17,6 +17,7 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<Product>) => {
+      console.log(action.payload);
       const itemExists = state.cartItems.find(
         (item) =>
           item.id === action.payload.id &&
@@ -24,7 +25,9 @@ const cartSlice = createSlice({
           item.sizeVariant === action.payload.sizeVariant
       );
       if (itemExists) {
-        itemExists.qty++;
+        if (itemExists.qty < itemExists.availableQty) {
+          itemExists.qty++;
+        }
       } else {
         state.cartItems.push({ ...action.payload, qty: 1 });
       }
@@ -36,7 +39,7 @@ const cartSlice = createSlice({
           item.colorVariant === action.payload.colorVariant &&
           item.sizeVariant === action.payload.sizeVariant
       );
-      if (item.qty < 5) {
+      if (item.qty < item.availableQty) {
         item.qty++;
       }
     },

@@ -5,8 +5,7 @@ export const Button = styled.button<ButtonStylesProps>`
   border-radius: 30px;
   font-family: ${({ theme }) => theme.fonts.primary_light};
   font-size: ${({ theme }) => theme.fontSizes.medium_24};
-  color: ${(props) =>
-    props.color ? props.color : ({ theme }) => theme.colors.primary};
+  font-family: ${({ theme }) => theme.fonts.primary_light};
   background-color: ${(props) =>
     props.background ? props.background : `transparent`};
   border: ${(props) => (props.border ? props.border : `1px solid #000`)};
@@ -23,8 +22,19 @@ export const Button = styled.button<ButtonStylesProps>`
   transition: 0.2s ease-in-out;
   text-align: center;
 
+  &[disabled] {
+    cursor: not-allowed;
+    border-color: gray;
+    color: gray;
+    background-color: #ebe7e7;
+  }
+
   &:hover {
     box-shadow: inset 0px 0px 1px 1px #000;
+
+    &[disabled] {
+      box-shadow: none;
+    }
   }
 
   &::after {

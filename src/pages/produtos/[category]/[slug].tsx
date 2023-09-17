@@ -41,6 +41,7 @@ export default function Product({ product, otherProducts }) {
     activeVariant: 0,
     variantWarningModal: false,
     quantity: null,
+    disableButton: false,
   });
 
   const {
@@ -71,6 +72,7 @@ export default function Product({ product, otherProducts }) {
     colorVariant,
     sizeVariant,
     qty: 1,
+    availableQty: quantity,
     category: { slug: category.slug },
   };
 
@@ -119,6 +121,11 @@ export default function Product({ product, otherProducts }) {
   };
 
   const selectVariant = (variantData, index, variantType, qty) => {
+    if (qty === 0) {
+      setState((prevState) => ({ ...prevState, disableButton: true }));
+    } else {
+      setState((prevState) => ({ ...prevState, disableButton: false }));
+    }
     if (variantType === "color") {
       setState((prevState) => ({ ...prevState, colorVariant: variantData }));
     }
@@ -332,16 +339,28 @@ export default function Product({ product, otherProducts }) {
                   </Link>
 
                   <div className="buy-buttons">
-                    <Button
-                      text={"comprar"}
-                      type="button"
-                      onClick={() => sendOrder()}
-                    />
-                    <Button
-                      text={"adicionar ao carrinho"}
-                      onClick={() => addProduct()}
-                      type="button"
-                    />
+                    {!state.disableButton ? (
+                      <>
+                        <Button
+                          text={"comprar"}
+                          type="button"
+                          onClick={() => sendOrder()}
+                          disabled={state.disableButton}
+                        />
+                        <Button
+                          text={"adicionar ao carrinho"}
+                          onClick={() => addProduct()}
+                          disabled={state.disableButton}
+                          type="button"
+                        />
+                      </>
+                    ) : (
+                      <Button
+                        text="variação indisponível"
+                        type="button"
+                        disabled={state.disableButton}
+                      />
+                    )}
                   </div>
                 </S.ProductDescription>
               </S.ProductSummary>

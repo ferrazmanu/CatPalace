@@ -9,6 +9,7 @@ export function Button({
   background,
   color,
   border,
+  disabled,
 }: ButtonProps) {
   return (
     <>
@@ -21,6 +22,7 @@ export function Button({
           color={color}
           border={border}
           aria-label={text}
+          disabled={disabled}
         >
           {text}
         </S.Button>
@@ -33,6 +35,7 @@ export function Button({
           color={color}
           border={border}
           aria-label={text}
+          disabled={disabled}
         >
           {text}
         </S.Link>

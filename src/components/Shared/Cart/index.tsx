@@ -108,6 +108,7 @@ export function Cart({ open }) {
                     name={item.name}
                     price={item.price}
                     qty={item.qty}
+                    availableQty={item.availableQty}
                     colorVariant={item.colorVariant}
                     sizeVariant={item.sizeVariant}
                     category={item.category}

@@ -25,6 +25,7 @@ export function CartItem({
   colorVariant,
   sizeVariant,
   category,
+  availableQty,
 }: Product) {
   const dispatch = useDispatch();
 
@@ -38,6 +39,7 @@ export function CartItem({
     colorVariant,
     sizeVariant,
     category,
+    availableQty,
   };
 
   return (

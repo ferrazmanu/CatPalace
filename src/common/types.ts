@@ -13,6 +13,7 @@ export interface Product {
   qty?: number;
   colorVariant?: string;
   sizeVariant?: string;
+  availableQty?: number;
   category: { slug: string };
 }
 
@@ -45,12 +46,14 @@ export interface ButtonProps {
   color?: string;
   border?: string;
   as?: any;
+  disabled?: boolean;
 }
 
 export interface ButtonStylesProps {
   background?: string;
   color?: string;
   border?: string;
+  disabled?: boolean;
 }
 
 export interface DetailsProps {
